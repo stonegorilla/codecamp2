@@ -71,7 +71,7 @@ export const Input1 = styled.input`
     height : 52px;
     margin-bottom : 40px;
 `
-export const Input2 = styled.input`
+export const Input2 = styled.textarea`
     width : 996px;
     height : 480px;
     margin-bottom : 40px;
@@ -113,4 +113,8 @@ export const Button1 = styled.button`
     margin-bottom : 40px;
     background-color: yellow;
     border : 0px;
+`
+export const RedError = styled.div`
+    color : red;
+    font-size : 10px;
 `
