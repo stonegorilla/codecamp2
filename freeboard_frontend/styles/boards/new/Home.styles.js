@@ -1,12 +1,13 @@
 import styled from '@emotion/styled'  //styled 나오면 그냥 css 구나 생각하면 됨
 
-
+// 왠만하면 태그는 의미가 있는 태그로 이름을 지을 것
 
 export const Wrapper = styled.div`
     width : 1200px;
     height : 1847px;
     margin-top : 100px;
     margin-left : 100px;
+    padding:0px 100px;
     border : 1px solid;
     box-shadow : 2px 4px 13px rgba(0,0,0, 0.7);
 `
@@ -21,19 +22,15 @@ export const Title = styled.div`
 `
 
 export const Wrapper1 = styled.div`
-    margin-left : 101px;
-    margin-right : 103px;
     display : flex;
     justify-Content : space-between;
-`
-export const Wrapper2 = styled.div`
 
 `
+export const Wrapper2 = styled.div`
+    margin-bottom : 40px;
+`
 export const Wrapper3 = styled.div`
-    margin-left : 101px;
-    margin-right : 882px;
     display : flex;
-    justify-content: space-between;
 
 `
 
@@ -64,7 +61,7 @@ export const Name1 = styled.span`
 export const Input = styled.input`
     width : 486px;
     height : 52px;
-    margin-bottom : 40px;
+
 `
 export const Input1 = styled.input`
     width : 996px;
@@ -74,13 +71,13 @@ export const Input1 = styled.input`
 export const Input2 = styled.textarea`
     width : 996px;
     height : 480px;
-    margin-bottom : 40px;
 
 `
 export const Input3 = styled.input`
     width : 77px;
     height : 52px;
     margin-bottom : 40px;
+    margin-right: 16px;
 `
 export const Input4 = styled.input`
     margin-bottom : 80px;
@@ -108,8 +105,6 @@ export const Label = styled.label`
 export const Button1 = styled.button`
     width : 179px;
     height : 52px;
-    margin-left : 510px;
-    margin-right : 511px;
     margin-bottom : 40px;
     background-color: yellow;
     border : 0px;
@@ -117,4 +112,9 @@ export const Button1 = styled.button`
 export const RedError = styled.div`
     color : red;
     font-size : 10px;
+`
+export const BtnWrapper = styled.div`
+    width:100%;
+    display: flex;
+    justify-content: center;
 `

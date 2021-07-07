@@ -9,9 +9,13 @@ import {
     Label,
     RedError,
     Rectangle,
-    MenuWrapper,
     Mask,
-    Rectangle2
+    Rectangle2,
+    LogoWrapper,
+    InputWrapper,
+    InputRedWrapper,
+    ButtonMenuWrapper,
+    MenuWrapper
 
 } from '../../styles/itsroad/itsroad.styles'
 // import 할것은 이렇게 세로로 쓰는 것이 좋다.
@@ -45,21 +49,35 @@ export default function ItsRoadRoad(){
     return (
         <Wrapper>
             <Bar></Bar>
-            <Logo></Logo>
-            <ItsRoad>잇츠로드</ItsRoad>
-            <Label type="text" onChange={aaa}></Label>
-            <RedError>{emailError}</RedError>
-            <Label type="password" onChange={bbb}></Label>
-            <RedError>{passwordError}</RedError>
-            <Rectangle onClick={ccc}>로그인</Rectangle>
-            <MenuWrapper>
-                <Mask>이메일 찾기</Mask>
-                <Mask>|</Mask>
-                <Mask>비밀번호 찾기</Mask>
-                <Mask>|</Mask>
-                <Mask>회원가입</Mask>
-            </MenuWrapper>
-            <Rectangle2>카카오톡으로 로그인</Rectangle2>
+
+            <LogoWrapper>
+                <Logo></Logo>
+                <ItsRoad>잇츠로드</ItsRoad>
+            </LogoWrapper>
+
+            <InputWrapper>
+                <InputRedWrapper>
+                    <Label type="text" onChange={aaa}></Label>
+                    <RedError>{emailError}</RedError>
+                </InputRedWrapper>
+                <InputRedWrapper>
+                    <Label type="password" onChange={bbb}></Label>
+                    <RedError>{passwordError}</RedError>
+                </InputRedWrapper>
+            </InputWrapper>
+
+            <ButtonMenuWrapper>
+                <Rectangle onClick={ccc}>로그인</Rectangle>
+                <MenuWrapper>
+                    <Mask>이메일 찾기</Mask>
+                    <Mask>|</Mask>
+                    <Mask>비밀번호 찾기</Mask>
+                    <Mask>|</Mask>
+                    <Mask>회원가입</Mask>
+                </MenuWrapper>
+                <Rectangle2>카카오톡으로 로그인</Rectangle2>
+            </ButtonMenuWrapper>
+
 
         </Wrapper>
     )
