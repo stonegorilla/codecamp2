@@ -5,3 +5,26 @@ npm install -g yarn
 일단은 깃블로그 보다는 티스토리로 쓰는 것이 좋겠다. 
 
 React배우기 1일차 - 194-31 에 넣어볼까.
+
+
+보통 회사에서는 화살표로 함수를 나타낸다. 
+함수형은 현재와서 점점 바뀌어 가고 있음 
+
+함수형 컴포넌트에서도 클래스형 컴포넌트와 동일한 기능을 사용 가능하도록 도구를 만들어 
+주었는데 , 이 도구를 Hooks(훅) 이라고 부른다. 
+
+let + document.get - > state
+
+충돌막기 위해
+git stash 
+git stash pop
+
+Rest-api 가 효율적이지못한 부분이 있다. 
+facebook, github 같은 것은 graphhql api 같은 것을 사용한다. 
+하지만, 아직은 rest-API 를 해야한다. 왜냐하면 아직 많은 회사에서 rest-API를 쓰고 있기
+때문... 
+그런데 사실 생성 , 수정, 삭제 , 조회 모두 막 POST 를 이용해서 쓸 수 있다. 
+
+http://example.codebootcamp.co.kr/api-docs/#/Board/post_board
+https://koreanjson.com/
+ctrl+spacebar API 목록 불러오기 

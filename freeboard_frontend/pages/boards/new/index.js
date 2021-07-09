@@ -1,7 +1,34 @@
 
 import { useState } from 'react' //useState 는 동적인 웹 만들때 많이 사용할 것 같으니 넣어주자. 그리고 이 페이지에선 쓰인다.
-import {Wrapper, Wrapper1, Wrapper2, Wrapper3,Wrapper4, Title, Name,Name1, Input, Input1,
-    Input2, Input3,Input4, Input5, Button,Button1, Box,RedError, BtnWrapper} from '../../../styles/boards/new/Home.styles'   //Home.styles 를 가져와랴
+import {Wrapper,
+        HeadWrapper,
+        NameWrapper,
+        WriterPasswordWrapper,
+        TextInputWrapper,
+        TextAreaInputWrapper,
+        TextZipCodeInputWrapper,
+        TextAddressInputWrapper,
+        TextAddressBottomInputWrapper,
+        ZipCodeWrapper,
+        TextPictureWrapper,
+        UploadWrapper,
+        TextRadioWrapper,
+        RadioButtonWrapper,
+
+        Title,
+        Name,
+        NameYellow,
+        NameRed,
+        InputShort,
+        Input,
+        InputContent,
+        InputZipCode,
+        Inputradio,
+        Button,
+        ButtonYellow,
+        Box,
+
+        BtnWrapper} from '../../../styles/boards/new/Home.styles'   //Home.styles 를 가져와랴
 export default function Home() {
 
   const [name, setName] = useState('')
@@ -67,66 +94,77 @@ export default function Home() {
   return (
     // 반드시 무언가 하나로 감싸주어라 (보통 Wrapper 를 쓴다. )
     <Wrapper>
-      <Title><h1>게시물 등록</h1></Title>
-      <Wrapper1>
-        <Wrapper2>
-            <Name>작성자<Name1>*</Name1></Name>
+      <HeadWrapper><Title>게시물 등록</Title></HeadWrapper>
 
-            <Input type="text" placeholder="이름을 적어 주세요" onChange={aaa}></Input>
-            <RedError>{nameError}</RedError>
-        </Wrapper2>
-        <Wrapper2>
-            <Name>비밀번호</Name>
+      <WriterPasswordWrapper>
+        <TextInputWrapper>
+            <NameWrapper>
+              <Name>작성자</Name>
+              <NameYellow>*</NameYellow>
+              <NameRed>{nameError}</NameRed>
+            </NameWrapper>
+            <InputShort type="text" placeholder="이름을 적어 주세요" onChange={aaa}></InputShort>
+        </TextInputWrapper>
 
-            <Input type="text" placeholder="비밀번호를 입력해 주세요" onChange={bbb}></Input>
-            <RedError>{passwordError}</RedError>
-        </Wrapper2>
-      </Wrapper1>
-      <Wrapper1>
-          <Wrapper2>
-            <Name>제목</Name>
-            <RedError>{titleError}</RedError>
-            <Input1 type="text" placeholder="제목을 작성해 주세요" onChange={ccc}></Input1>
-          </Wrapper2>
-      </Wrapper1>
-      <Wrapper1>
-        <Wrapper2>
-            <Name>내용</Name>
-            <RedError>{contentError}</RedError>
-            <Input2 placeholder="내용을 작성해 주세요" onChange={ddd}></Input2>
-        </Wrapper2>
-      </Wrapper1>
-        <Wrapper2>
-            <Wrapper3>
-            <RedError>{addressError}</RedError>
-            <Name>주소</Name>
-            </Wrapper3>
+        <TextInputWrapper>
+            <NameWrapper>
+              <Name>비밀번호</Name>
+              <NameRed>{passwordError}</NameRed>
+            </NameWrapper>
+            <InputShort type="text" placeholder="비밀번호를 입력해 주세요" onChange={bbb}></InputShort>
+        </TextInputWrapper>
+      </WriterPasswordWrapper>
 
-            <Wrapper3>
 
-                <Input3 type="text" onChange={eee}></Input3>
+          <TextInputWrapper>
+            <NameWrapper>
+              <Name>제목</Name>
+              <NameRed>{titleError}</NameRed>
+            </NameWrapper>
+
+            <Input type="text" placeholder="제목을 작성해 주세요" onChange={ccc}></Input>
+          </TextInputWrapper>
+
+
+
+        <TextAreaInputWrapper>
+            <NameWrapper>
+              <Name>내용</Name>
+              <NameRed>{contentError}</NameRed>
+            </NameWrapper>
+            <InputContent placeholder="내용을 작성해 주세요" onChange={ddd}></InputContent>
+        </TextAreaInputWrapper>
+
+        <TextZipCodeInputWrapper>
+            <NameWrapper>
+              <Name>주소</Name>
+              <NameRed>{addressError}</NameRed>
+            </NameWrapper>
+
+            <ZipCodeWrapper>
+                <InputZipCode type="text" onChange={eee}></InputZipCode>
                 <Button>우편번호검색</Button>
-            </Wrapper3>
+            </ZipCodeWrapper>
+        </TextZipCodeInputWrapper>
 
-        </Wrapper2>
+
+      <TextAddressInputWrapper>
+          <Input type="text"></Input>
+      </TextAddressInputWrapper>
+      <TextAddressBottomInputWrapper>
+          <Input type="text"></Input>
+      </TextAddressBottomInputWrapper>
 
 
-      <Wrapper1>
-          <Input1 type="text"></Input1>
-      </Wrapper1>
-      <Wrapper1>
-          <Input1 type="text"></Input1>
-      </Wrapper1>
-      <Wrapper1>
-          <Wrapper2>
-            <Name >유투브</Name>
-            <Input1 type="text" placeholder="링크를 복사해 주세요"></Input1>
-          </Wrapper2>
-      </Wrapper1>
-      <Wrapper1>
-        <Wrapper2>
+      <TextInputWrapper>
+        <Name >유투브</Name>
+        <Input type="text" placeholder="링크를 복사해 주세요"></Input>
+      </TextInputWrapper>
+
+
+        <TextPictureWrapper>
           <Name>사진첨부</Name>
-          <Wrapper4>
+          <UploadWrapper>
                 <Box>
                     {/* <Label for="Upload1">+</Label>
                     <Label for="Upload1">Upload</Label> */}
@@ -142,18 +180,21 @@ export default function Home() {
                     <Label for="Upload3">Upload</Label> */}
                 </Box>
                     {/* <Input5 type="file" id="Upload3"></Input5> */}
-          </Wrapper4>
-        </Wrapper2>
-      </Wrapper1>
-      <Wrapper1>
-        <Wrapper2>
+          </UploadWrapper>
+        </TextPictureWrapper>
+
+
+        <TextRadioWrapper>
             <Name>메인설정</Name>
-            <Input4 type="radio" name="you"></Input4>유투브
-            <Input4 type="radio" name="you"></Input4>사진
-            </Wrapper2>
-      </Wrapper1>
+            <RadioButtonWrapper>
+              <Inputradio type="radio" name="you"></Inputradio>유투브
+              <Inputradio type="radio" name="you"></Inputradio>사진
+            </RadioButtonWrapper>
+
+        </TextRadioWrapper>
+
       <BtnWrapper>
-      <Button1 onClick = {RedTrigger}>등록하기</Button1>
+      <ButtonYellow onClick = {RedTrigger}>등록하기</ButtonYellow>
       </BtnWrapper>
     </Wrapper>
 

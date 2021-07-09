@@ -1,0 +1,95 @@
+# mutation {
+#   updateProfile(name:"철수", age:35, school:"떡잎유치원"){
+#     message
+#   }
+  
+# }
+
+# query {
+#   fetchProfile(name:"철수"){
+#     name
+#     age
+#     school
+#   }
+# }
+
+# mutation {
+#   createProfile(name:"철수", age:5423, school:"캠프4323444학원"){
+#     message
+#   }
+# }
+
+# mutation{
+#   createBoard(
+#     writer:"스펀지밥", 
+#     password:"1234",
+#     title: "행복합니다.",
+#     contents: "잉잉"
+#   ){
+#     message
+#   }
+# }
+
+# mutation{
+#   updateBoard(
+#     number:9,
+#     writer:"스펀지밥", 
+#     password:"조롱
+#     title: "행복합니ㅇ.",     
+#     contents: "잉잉"
+#   ){
+#     message
+#   }
+# }
+
+# query {
+#   fetchBoards(page:2){
+#     writer
+#     number
+#     title
+#     contents
+#   }
+# }
+
+# mutation{
+#   createProduct(seller:"재석",createProductInput:{
+#     name: "키보드",
+#     detail: "기계식 키보드 좋아요 내가쓰니까",
+#     price: 13000000
+    
+#   }){
+#     message
+#   }
+# }
+
+# mutation{
+  
+# }
+
+# mutation {
+#   deleteProduct(productId: "f9915ba8-42d0-4127-b23d-89ec5553aa0d"){
+#     message
+#   }
+# }
+
+# query{
+#   fetchProducts(page:3){
+#   	_id
+#     seller
+#     name
+#     detail
+#     price
+#   }
+# }
+
+# mutation {
+#   updateProduct(productId:"a9f82a49-76c6-4542-92cf-66f510243fcf",updateProductInput:{
+#     name: "멍뭉이",
+#     detail : "매우 좋은 스피커임",
+#     price : 100000
+    
+    
+#   }){
+#     message
+#   }
+# }

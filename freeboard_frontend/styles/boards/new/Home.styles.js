@@ -5,39 +5,100 @@ import styled from '@emotion/styled'  //styled 나오면 그냥 css 구나 생�
 export const Wrapper = styled.div`
     width : 1200px;
     height : 1847px;
+    // margin은 나중에 설정할듯,
     margin-top : 100px;
     margin-left : 100px;
-    padding:0px 100px;
+    padding-left:101px;
+    padding-right: 103px;
     border : 1px solid;
     box-shadow : 2px 4px 13px rgba(0,0,0, 0.7);
 `
-export const h3 = styled.h3`
+
+
+export const HeadWrapper = styled.div`
+    width : 100%;
+    height : 173px;
+    display : flex;
+    justify-content : center;
+    align-items : center;
+    margin-bottom : 20px;
+    background-color : red;
 `
-export const h4 = styled.h4`
+export const Title = styled.h1`
+    // 그냥 h1
+`
+export const NameWrapper = styled.div`
+    display : flex;
+    justify-content : left;
+
 `
 
-export const Title = styled.div`
-    text-align : center;
-    margin-bottom : 80px;
+export const WriterPasswordWrapper = styled.div`
+    width : 100%;
+    height : 92px;
+    display : flex;
+    justify-Content : space-between;
+    align-items : center;
+
+`
+export const TextInputWrapper = styled.div`
+    height : 92px;
+    display : flex;
+    flex-direction : column;
+    justify-Content : space-between;
+    margin-bottom : 40px;
 `
 
-export const Wrapper1 = styled.div`
+export const TextAreaInputWrapper = styled.div`
+    height : 520px;
+    display : flex;
+    flex-direction : column;
+    justify-Content : space-between;
+    margin-bottom : 40px;
+`
+export const TextZipCodeInputWrapper = styled.div`
+    height : 92px;
+    display : flex;
+    flex-direction : column;
+    justify-Content : space-between;
+    margin-bottom : 16px;
+`
+
+export const TextAddressInputWrapper = styled.div`
+    height : 52px;
+    display : flex;
+    flex-direction : column;
+    justify-Content : top;
+    margin-bottom : 16px;
+`
+export const TextAddressBottomInputWrapper = styled.div`
+    height : 52px;
+    display : flex;
+    flex-direction : column;
+    justify-Content : top;
+    margin-bottom : 40px;
+`
+
+export const ZipCodeWrapper = styled.div`
+    width : 217px;
+    height : 52px;
     display : flex;
     justify-Content : space-between;
 
+
 `
-export const Wrapper2 = styled.div`
+export const TextPictureWrapper = styled.div`
+    height : 118px;
+    display : flex;
+    flex-direction : column;
+    justify-Content : space-between;
     margin-bottom : 40px;
 `
-export const Wrapper3 = styled.div`
-    display : flex;
-
-`
-
-export const Wrapper4 = styled.div`
+export const UploadWrapper = styled.div`
     width : 282px;
     display : flex;
     justify-Content : space-between;
+
 `
 export const Box = styled.div`
     width : 78px;
@@ -49,45 +110,68 @@ export const Box = styled.div`
     align-items : center;
     background-color: gray;
 `
+
+export const TextRadioWrapper = styled.div`
+    height : 64px;
+    display : flex;
+    flex-direction : column;
+    justify-Content : space-between;
+    margin-bottom : 80px;
+`
+export const RadioButtonWrapper = styled.div`
+    width : 172px;
+    height : 100%;
+    display : flex;
+    justify-content: space-between;
+`
+export const BtnWrapper = styled.div`
+    width:100%;
+    height : 52px;
+    margin-bottom : 100px;
+    display: flex;
+    justify-content: center;
+`
+
 export const Name = styled.div`
     font-size : 16px;
     margin-bottom : 16px;
 `
-export const Name1 = styled.span`
+export const NameYellow = styled.span`
     font-size : 16px;
     color : #ffd600;
     margin-bottom : 16px;
 `
-export const Input = styled.input`
+export const NameRed = styled.div`
+    color : red;
+    font-size : 16px;
+`
+
+
+export const InputShort = styled.input`
     width : 486px;
     height : 52px;
 
 `
-export const Input1 = styled.input`
+export const Input = styled.input`
     width : 996px;
     height : 52px;
-    margin-bottom : 40px;
+
 `
-export const Input2 = styled.textarea`
+export const InputContent = styled.textarea`
     width : 996px;
     height : 480px;
 
 `
-export const Input3 = styled.input`
+export const InputZipCode = styled.input`
     width : 77px;
     height : 52px;
-    margin-bottom : 40px;
-    margin-right: 16px;
-`
-export const Input4 = styled.input`
-    margin-bottom : 80px;
+
 
 `
-export const Input5 = styled.input`
-    width : 0px;
-    height: 0px;
+export const Inputradio = styled.input`
 
 `
+
 export const Button = styled.button`
     width : 124px;
     height : 52px;
@@ -97,24 +181,10 @@ export const Button = styled.button`
     border : 0px;
 `
 
-export const Label = styled.label`
 
-
-`
-
-export const Button1 = styled.button`
+export const ButtonYellow = styled.button`
     width : 179px;
     height : 52px;
-    margin-bottom : 40px;
     background-color: yellow;
     border : 0px;
-`
-export const RedError = styled.div`
-    color : red;
-    font-size : 10px;
-`
-export const BtnWrapper = styled.div`
-    width:100%;
-    display: flex;
-    justify-content: center;
 `
