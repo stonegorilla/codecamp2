@@ -1,4 +1,6 @@
 
+import { gql, useMutation } from '@apollo/client'
+import { useRouter } from 'next/router'
 import { useState } from 'react' //useState 는 동적인 웹 만들때 많이 사용할 것 같으니 넣어주자. 그리고 이 페이지에선 쓰인다.
 import {Wrapper,
         HeadWrapper,
@@ -31,21 +33,33 @@ import {Wrapper,
         BtnWrapper} from '../../../styles/boards/new/Home.styles'   //Home.styles 를 가져와랴
 export default function Home() {
 
-  const [name, setName] = useState('')
+  const router = useRouter()
+
+  const [writer, setWriter] = useState('')
   const [password, setPassword] = useState('')
   const [title, setTitle] = useState('')
-  const [content, setContent] = useState('')
+  const [contents, setContents] = useState('')
   const [address, setAddress] = useState('')
   // 위 5개는 사용자가 input 안에 써넣은 결과값을 나타내는 것이다.
   // 실시간으로 값을 저장하기 위해
-  const [nameError, setNameError] = useState('')
+  const [writerError, setWriterError] = useState('')
   const [passwordError, setPasswordError] = useState('')
   const [titleError, setTitleError] = useState('')
-  const [contentError, setContentError] = useState('')
+  const [contentsError, setContentsError] = useState('')
   const [addressError, setAddressError] = useState('')
   // 위 5개는 빨간색으로 표시되는 글을 나타내기 위해 쓴것이다.
+
+  const [qqq] = useMutation(
+    gql`
+    mutation zzzzzz($aaa: CreateBoardInput!){
+      createBoard(createBoardInput: $aaa){
+        _id
+      }
+    }
+    `
+  )
   function aaa(event){
-    setName(event.target.value)
+    setWriter(event.target.value)
   }
   // aaa 함수 내에서 event 변수를 이용해 이름 결과값을 실시간으로 저장한다.
   function bbb(event){
@@ -57,35 +71,50 @@ export default function Home() {
   }
   // ccc 함수 내에서 event 변수를 이용해 타이틀 결과값을 실시간으로 저장한다.
   function ddd(event){
-    setContent(event.target.value)
+    setContents(event.target.value)
   }
   // ddd 함수 내에서 event 변수를 이용해 내용 결과값을 실시간으로 저장한다.
   function eee(event){
     setAddress(event.target.value)
   }
   // eee 함수 내에서 event 변수를 이용해 주소 결과값을 실시간으로 저장한다.
-  function RedTrigger(event){
-    if(name === ""){
-      setNameError("작성자 이름을 입력해 주세요")
+  async function RedTrigger(event){
+    if(writer === ""){
+      setWriterError("작성자 이름을 입력해 주세요")
     }else if(password === ""){
       setNameError("")
       setPasswordError("비밀번호를 입력해 주세요")
     }else if(title === ""){
       setPasswordError("")
       setTitleError("제목을 입력해 주세요")
-    }else if(content === ""){
+    }else if(contents === ""){
       setTitleError("")
-      setContentError("내용을 입력해 주세요")
+      setContentsError("내용을 입력해 주세요")
     }else if(address===""){
-      setContentError("")
+      setContentsError("")
       setAddressError("주소를 입력해 주세요")
     }else{
-      setNameError("")
+      setWriterError("")
       setPasswordError("")
       setTitleError("")
-      setContentError("")
+      setContentsError("")
       setAddressError("")
-      alert("성공")
+      try{
+          const result = await qqq({
+            variables: {
+              aaa: {
+                writer: writer,
+                password: password,
+                title: title,
+                contents: contents
+              }
+            }
+          })
+          alert("글이 등록 되었습니다. ")
+          router.push(`/boards/${result.data.createBoard._id}`)
+      }catch(error){
+        alert(error.message)
+      }
 
       // 이름, 비밀번호, 제목, 내용, 주소 결과값을 이용해 비어있는 값이 있으면 빨간 경고 글씨를 내보낸다.
     }
@@ -101,7 +130,7 @@ export default function Home() {
             <NameWrapper>
               <Name>작성자</Name>
               <NameYellow>*</NameYellow>
-              <NameRed>{nameError}</NameRed>
+              <NameRed>{writerError}</NameRed>
             </NameWrapper>
             <InputShort type="text" placeholder="이름을 적어 주세요" onChange={aaa}></InputShort>
         </TextInputWrapper>
@@ -130,7 +159,7 @@ export default function Home() {
         <TextAreaInputWrapper>
             <NameWrapper>
               <Name>내용</Name>
-              <NameRed>{contentError}</NameRed>
+              <NameRed>{contentsError}</NameRed>
             </NameWrapper>
             <InputContent placeholder="내용을 작성해 주세요" onChange={ddd}></InputContent>
         </TextAreaInputWrapper>
