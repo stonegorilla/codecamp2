@@ -60,11 +60,11 @@ export default function DetailPage(){
                 <LikeDislikeWrapper>
                     <LikeWrapper>
                         <Like></Like>
-                        <LikeNumber>1920</LikeNumber>
+                        <LikeNumber>1913</LikeNumber>
                     </LikeWrapper>
                     <DisLikeWrapper>
                         <Dislike></Dislike>
-                        <DislikeNumber>1920</DislikeNumber>
+                        <DislikeNumber>1913</DislikeNumber>
                     </DisLikeWrapper>
                 </LikeDislikeWrapper>
             </LikeDislikeCenterWrapper>
