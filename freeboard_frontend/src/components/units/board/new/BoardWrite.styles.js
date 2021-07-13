@@ -185,6 +185,6 @@ export const Button = styled.button`
 export const ButtonYellow = styled.button`
     width : 179px;
     height : 52px;
-    background-color: yellow;
+    background-color: ${props => props.active ? 'gray' : 'yellow'};
     border : 0px;
 `
