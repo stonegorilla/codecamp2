@@ -124,3 +124,21 @@ export const Dislike = styled.div`
 export const DislikeNumber = styled.div`
     font-size : 18px;
 `
+
+
+export const ButtonGrayWrapper = styled.div`
+    width : 585px;
+    height : 45px;
+    margin-top : 80px;
+    margin-left : 100px;
+    margin-bottom : 50px;
+    display : flex;
+    justify-content: space-between;
+    align-items : center;
+`
+export const ButtonGray = styled.button`
+    width : 179px;
+    height : 45px;
+    background-color: gray;
+    border: 1px solid #BDBDBD;
+`

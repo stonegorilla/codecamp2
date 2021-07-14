@@ -1,11 +1,13 @@
 function kimseobang(seoul) {
     var answer = '';
-    for (var i=0; i<seoul.length; i++){
+    const x =seoul.indexOf('Kim');
+//     for (var i=0; i<seoul.length; i++){
 
-        if(seoul[i] == "Kim"){
-            answer =  "김서방은"+i + "에 있다."
-        }else{}
-    }
+//         if(seoul[i] == "Kim"){
+//             answer =  "김서방은 "+i + "에 있다"
+//         }else{}
+//     }
+    answer = "김서방은 "+x + "에 있다"
 
     return answer;
 }
@@ -25,8 +27,9 @@ function solution(s) {
     return answer;
 }
 
-function solution(a, b) {
+function solution1(a, b) {
     var answer = 0;
+    // Math.min 과 Math.max 사용해도 됨
     if(a<b){
         for(var i=a; i<=b; i++){
         answer +=i;
@@ -42,3 +45,6 @@ function solution(a, b) {
 
     return answer;
 }
+
+
+console.log(solution1(3,12))
