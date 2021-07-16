@@ -1,6 +1,7 @@
 import styled from '@emotion/styled'
 
 export const Row = styled.div`
+    width : 1000px;
     height : 40px;
     line-height : 40px;
     border-bottom : 1px solid gray;
@@ -8,5 +9,5 @@ export const Row = styled.div`
     flex-direction: row;
 `
 export const Column = styled.div`
-    width : 20%;
+    width : 33%;
 `

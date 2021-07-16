@@ -43,7 +43,7 @@ import {Wrapper,
                     <NameYellow>*</NameYellow>
                     <NameRed>{props.writerError}</NameRed>
                 </NameWrapper>
-                <InputShort type="text" placeholder="이름을 적어 주세요" onChange={props.aaa}></InputShort>
+                <InputShort type="text" placeholder="이름을 적어 주세요" name="writer" onChange={props.onChangeInputs} defaultValue={props.data?.fetchBoard.writer} readOnly = {props.data?.fetchBoard.writer}></InputShort>
             </TextInputWrapper>
 
             <TextInputWrapper>
@@ -51,7 +51,7 @@ import {Wrapper,
                     <Name>비밀번호</Name>
                     <NameRed>{props.passwordError}</NameRed>
                 </NameWrapper>
-                <InputShort type="text" placeholder="비밀번호를 입력해 주세요" onChange={props.bbb}></InputShort>
+                <InputShort type="text" placeholder="비밀번호를 입력해 주세요" name="password" onChange={props.onChangeInputs}></InputShort>
             </TextInputWrapper>
             </WriterPasswordWrapper>
 
@@ -62,7 +62,7 @@ import {Wrapper,
                     <NameRed>{props.titleError}</NameRed>
                 </NameWrapper>
 
-                <Input type="text" placeholder="제목을 작성해 주세요" onChange={props.ccc}></Input>
+                <Input type="text" placeholder="제목을 작성해 주세요" name="title" onChange={props.onChangeInputs} defaultValue={props.data?.fetchBoard.title}></Input>
                 </TextInputWrapper>
 
 
@@ -70,19 +70,18 @@ import {Wrapper,
             <TextAreaInputWrapper>
                 <NameWrapper>
                     <Name>내용</Name>
-                    <NameRed>{props.contentsError}</NameRed>
+                    <NameRed>{props.contentsError} </NameRed>
                 </NameWrapper>
-                <InputContent placeholder="내용을 작성해 주세요" onChange={props.ddd}></InputContent>
+                <InputContent placeholder="내용을 작성해 주세요" name="contents" onChange={props.onChangeInputs} defaultValue={props.data?.fetchBoard.contents}></InputContent>
             </TextAreaInputWrapper>
 
             <TextZipCodeInputWrapper>
                 <NameWrapper>
                     <Name>주소</Name>
-                    <NameRed>{props.addressError}</NameRed>
                 </NameWrapper>
 
                 <ZipCodeWrapper>
-                    <InputZipCode type="text" onChange={props.eee}></InputZipCode>
+                    <InputZipCode type="text"></InputZipCode>
                     <Button>우편번호검색</Button>
                 </ZipCodeWrapper>
             </TextZipCodeInputWrapper>
@@ -134,7 +133,8 @@ import {Wrapper,
             </TextRadioWrapper>
 
             <BtnWrapper>
-            <ButtonYellow onClick = {props.RedTrigger} active={props.fff}>등록하기</ButtonYellow>
+            {!props.isEdit && <ButtonYellow onClick = {props.RedTrigger} active={props.fff}>등록하기</ButtonYellow>}
+            { props.isEdit && <ButtonYellow onClick = {props.onClickEdit} active={props.fff}>수정하기</ButtonYellow>}
             </BtnWrapper>
             </Wrapper>
         )

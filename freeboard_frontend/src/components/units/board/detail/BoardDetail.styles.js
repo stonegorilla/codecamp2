@@ -142,3 +142,49 @@ export const ButtonGray = styled.button`
     background-color: gray;
     border: 1px solid #BDBDBD;
 `
+
+export const BoardCommentWrapper = styled.div`
+    width : 1200px ;
+    margin-left : 100px;
+`
+
+export const BoardCommentWriter = styled.input`
+    width  : 200px;
+    font-size : 16px;
+`
+export const BoardCommentContents = styled.textarea`
+    width : 1200px;
+    color : red;
+    font-size : 16px;
+
+`
+
+export const BoardCommentUpdateWriter = styled.input`
+    width : 200px;
+    font-size : 16px;
+
+`
+export const BoardCommentUpdateContents = styled.textarea`
+    width : 1200px;
+    color : green;
+    font-size : 16px;
+`
+export const BoardCommentButton = styled.button`
+    margin-bottom : 100px; // 임시
+`
+export const BoardCommentList = styled.div`
+    width : 1200px;
+
+`
+
+export const Row = styled.div`
+    width : 1200px;
+    height : 40px;
+    line-height : 40px;
+    border-bottom : 1px solid gray;
+    display : flex;
+    flex-direction: row;
+`
+export const Column = styled.div`
+    width : 16.6%;
+`
