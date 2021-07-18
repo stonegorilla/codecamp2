@@ -28,3 +28,21 @@ facebook, github 같은 것은 graphhql api 같은 것을 사용한다.
 http://example.codebootcamp.co.kr/api-docs/#/Board/post_board
 https://koreanjson.com/
 ctrl+spacebar API 목록 불러오기 
+
+
+eslint  - 코드의 스타일을 하나로 통일시켜준다. 
+정상적이고 안정적인 코드 ㅠㅠ - 별거 아닌 것 같지만 나중에 서비스를 진행할 때 커다란 일이
+일어날 수 있다. 
+husky 
+
+
+npx eslint . 
+
+{
+	:editor
+
+
+
+yarn add lint-staged
+
+허스키 진짜 짜증나네 ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ...
