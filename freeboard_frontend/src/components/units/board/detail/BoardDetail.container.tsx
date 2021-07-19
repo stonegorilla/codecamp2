@@ -1,12 +1,8 @@
 import BoardDetailUI from './BoardDetail.presenter'
 import { useRouter } from 'next/router'
 import { useQuery, useMutation } from "@apollo/client"
-import { FETCH_BOARD } from "./BoardDetail.queries"
-import { DELETE_BOARD} from "./BoardDetail.queries"
-import { CREATE_BOARD_COMMENT } from "./BoardDetail.queries"
-import { UPDATE_BOARD_COMMENT} from "./BoardDetail.queries"
-import { DELETE_BOARD_COMMENT} from './BoardDetail.queries'
-import { FETCH_BOARD_COMMENTS } from './BoardDetail.queries'
+import { FETCH_BOARD, DELETE_BOARD, CREATE_BOARD_COMMENT,UPDATE_BOARD_COMMENT, DELETE_BOARD_COMMENT, FETCH_BOARD_COMMENTS } from "./BoardDetail.queries"
+
 
 
 import { useState } from 'react'
@@ -47,7 +43,7 @@ export default function BoardDetail(props){
 
 
 
-    //console.log(commentdata)
+    // console.log(commentdata)
     // console.log(router.query.aaa)
     const [deleteBoard] = useMutation(DELETE_BOARD)
     const [createBoardComment] = useMutation(CREATE_BOARD_COMMENT)

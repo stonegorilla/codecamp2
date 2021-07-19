@@ -1,4 +1,6 @@
-import styled from '@emotion/styled'  //styled 나오면 그냥 css 구나 생각하면 됨
+import styled from '@emotion/styled'
+
+// styled 나오면 그냥 css 구나 생각하면 됨
 
 // 왠만하면 태그는 의미가 있는 태그로 이름을 지을 것
 

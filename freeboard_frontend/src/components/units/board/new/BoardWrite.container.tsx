@@ -1,8 +1,8 @@
-import { CREATE_BOARD } from "./BoardWrite.queries"
-import { UPDATE_BOARD } from "./BoardWrite.queries"
+import { CREATE_BOARD , UPDATE_BOARD} from "./BoardWrite.queries"
+
 import { useMutation } from '@apollo/client'
 import { useRouter } from 'next/router'
-import { useState } from 'react' //useState 는 동적인 웹 만들때 많이 사용할 것 같으니 넣어주자. 그리고 이 페이지에선 쓰인다.
+import { useState } from 'react' // useState 는 동적인 웹 만들때 많이 사용할 것 같으니 넣어주자. 그리고 이 페이지에선 쓰인다.
 import BoardWriteUI from './BoardWrite.presenter'
 
 const inputsInit = {
@@ -11,8 +11,23 @@ const inputsInit = {
     title: "",
     contents: ""
 }
+interface newInputs {
 
-export default function BoardWrite(props){
+    title?: String
+    contents?: String
+}
+interface DataTypes {
+    writer : string,
+    title : string,
+    contents : string
+}
+
+interface IProps {
+    isEdit?: boolean
+    data?: DataTypes
+}
+
+export default function BoardWrite(props: IProps){
 
     const router = useRouter()
 
