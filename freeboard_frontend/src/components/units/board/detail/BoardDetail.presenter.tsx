@@ -28,12 +28,21 @@ import {
   Row,
   Column,
 } from "./BoardDetail.styles";
+import { Modal } from "antd";
 
 export default function BoardDetailUI(props) {
   //   const video = props.qqq ? props.qqq.fetchBoard.youtubeUrl : "333 ";
 
   return (
     <>
+      <Modal
+        title="게시글 삭제"
+        visible={props.isOpen}
+        onOk={props.onClose}
+        onCancel={props.onClose}
+      >
+        <div>게시물이 정상적으로 삭제되었습니다.</div>
+      </Modal>
       <Wrapper>
         <Writer>{props.qqq ? props.qqq.fetchBoard.writer : "111"}</Writer>
         <Date>12121</Date>
@@ -48,15 +57,15 @@ export default function BoardDetailUI(props) {
         <LikeDislikeCenterWrapper>
           <LikeDislikeWrapper>
             <LikeWrapper>
-              <Like></Like>
+              <Like onClick={props.LikeUp}></Like>
               <LikeNumber>
                 {props.qqq ? props.qqq.fetchBoard.likeCount : 400}
               </LikeNumber>
             </LikeWrapper>
             <DisLikeWrapper>
-              <Dislike></Dislike>
+              <Dislike onClick={props.DislikeUp}></Dislike>
               <DislikeNumber>
-                {props.qqq ? props.qqq.fetchBoard.likeCount : 500}
+                {props.qqq ? props.qqq.fetchBoard.dislikeCount : 500}
               </DislikeNumber>
             </DisLikeWrapper>
           </LikeDislikeWrapper>
@@ -67,10 +76,17 @@ export default function BoardDetailUI(props) {
         <ButtonGray onClick={props.gotoEdit}>수정하기</ButtonGray>
         <ButtonGray onClick={props.onClickDelete}>삭제하기</ButtonGray>
       </ButtonGrayWrapper>
+      <hr />
+
       <BoardCommentWrapper>
         <BoardCommentWriter
           name="writer"
           placeholder="작성자"
+          onChange={props.onChangeComments}
+        ></BoardCommentWriter>
+        <BoardCommentWriter
+          name="password"
+          placeholder="비번"
           onChange={props.onChangeComments}
         ></BoardCommentWriter>
         <BoardCommentContents

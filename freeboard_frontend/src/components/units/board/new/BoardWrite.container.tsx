@@ -29,8 +29,12 @@ interface IProps {
 
 export default function BoardWrite(props: IProps) {
   const router = useRouter();
-
+  const [isOpen, setIsOpen] = useState(false);
   const [inputs, setInputs] = useState(inputsInit);
+  const [isOpenAddress, setIsOpenAddress] = useState(false);
+
+  const [address, setAddress] = useState("");
+  const [zoneCode, setZoneCode] = useState("");
 
   // const [writer, setWriter] = useState('')
   // const [password, setPassword] = useState('')
@@ -46,6 +50,11 @@ export default function BoardWrite(props: IProps) {
 
   const [qqq] = useMutation(CREATE_BOARD);
   const [updateBoard] = useMutation(UPDATE_BOARD);
+
+  function onClose() {
+    setIsOpen(false);
+    router.push(`/boards/`);
+  }
 
   function onChangeInputs(event) {
     const newInputs = {
@@ -96,8 +105,9 @@ export default function BoardWrite(props: IProps) {
             },
           },
         });
-        alert("글이 등록 되었습니다. ");
-        router.push(`/boards/${result.data.createBoard._id}`);
+
+        setIsOpen(true);
+        // router.push(`/boards/${result.data.createBoard._id}`);
       } catch (error) {
         alert(error.message);
       }
@@ -120,14 +130,29 @@ export default function BoardWrite(props: IProps) {
           updateBoardInput: { ...newInputs },
         },
       });
-      alert(result.data.updateBoard._id);
-      router.push(`/boards/${result.data.updateBoard._id}`);
+      setIsOpen(true);
+      // alert(result.data.updateBoard._id);
+      // router.push(`/boards/${result.data.updateBoard._id}`);
     } catch (error) {
       alert(error.message);
     }
   }
+
+  function onComplete(data) {
+    setAddress(data.address);
+    setZoneCode(data.zonecode);
+    setIsOpenAddress(false);
+  }
+  function onClickCancel() {
+    setIsOpenAddress(false);
+  }
+  function onClickOpenModal() {
+    setIsOpenAddress(true);
+  }
   return (
     <BoardWriteUI
+      isOpen={isOpen}
+      onClose={onClose}
       onChangeInputs={onChangeInputs}
       writerError={writerError}
       passwordError={passwordError}
@@ -138,6 +163,12 @@ export default function BoardWrite(props: IProps) {
       fff={active}
       isEdit={props.isEdit}
       data={props.data}
+      isOpenAddress={isOpenAddress}
+      onClickCancel={onClickCancel}
+      onComplete={onComplete}
+      onClickOpenModal={onClickOpenModal}
+      address={address}
+      zoneCode={zoneCode}
     />
   );
 }

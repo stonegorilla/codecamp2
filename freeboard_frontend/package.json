@@ -19,12 +19,16 @@
     "graphql": "^15.5.1",
     "next": "11.0.1",
     "react": "17.0.2",
+    "react-daum-postcode": "^2.0.6",
     "react-dom": "17.0.2",
-    "react-player": "^2.9.0"
+    "react-player": "^2.9.0",
+    "react-slick": "^0.28.1",
+    "slick-carousel": "^1.8.1"
   },
   "devDependencies": {
     "@graphql-codegen/cli": "^1.21.7",
     "@graphql-codegen/typescript": "^1.23.0",
+    "@types/antd": "^1.0.0",
     "@typescript-eslint/eslint-plugin": "^4.28.3",
     "@typescript-eslint/parser": "^4.28.3",
     "eslint": "^7.31.0",

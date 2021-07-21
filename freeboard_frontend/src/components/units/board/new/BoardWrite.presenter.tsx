@@ -27,11 +27,50 @@ import {
   Box,
   BtnWrapper,
 } from "./BoardWrite.styles"; //Home.styles 를 가져와랴
+import { Modal } from "antd";
+import DaumPostcode from "react-daum-postcode";
 
 export default function BoardWriteUI(props) {
   return (
     // 반드시 무언가 하나로 감싸주어라 (보통 Wrapper 를 쓴다. )
     <Wrapper>
+      {!props.isEdit && (
+        <Modal
+          title="게시글 등록"
+          visible={props.isOpen}
+          onOk={props.onClose}
+          onCancel={props.onClose}
+        >
+          <div>게시물이 정상적으로 등록되었습니다.</div>
+        </Modal>
+      )}
+
+      {props.isEdit && (
+        <Modal
+          title="게시글 수정"
+          visible={props.isOpen}
+          onOk={props.onClose}
+          onCancel={props.onClose}
+        >
+          <div>게시물이 정상적으로 수정되었습니다.</div>
+        </Modal>
+      )}
+
+      {props.isOpenAddress && (
+        <Modal
+          title="주소검색하기"
+          visible={true}
+          onCancel={props.onClickCancel}
+        >
+          {/* <input type="text" />
+          <br />
+          <input type="password" /> */}
+          <DaumPostcode onComplete={props.onComplete} autoClose animation />
+          {/* autoClose = {true} */}
+          {/* 여기서 autoClose는 주소를 */}
+        </Modal>
+      )}
+
       <HeadWrapper>
         <Title>게시물 등록</Title>
       </HeadWrapper>
@@ -49,7 +88,7 @@ export default function BoardWriteUI(props) {
             name="writer"
             onChange={props.onChangeInputs}
             defaultValue={props.data?.fetchBoard.writer}
-            readOnly={props.data?.fetchBoard.writer}
+            // readOnly={props.data?.fetchBoard.writer}
           ></InputShort>
         </TextInputWrapper>
 
@@ -101,13 +140,13 @@ export default function BoardWriteUI(props) {
         </NameWrapper>
 
         <ZipCodeWrapper>
-          <InputZipCode type="text"></InputZipCode>
-          <Button>우편번호검색</Button>
+          <InputZipCode type="text" value={props.zoneCode}></InputZipCode>
+          <Button onClick={props.onClickOpenModal}>우편번호검색</Button>
         </ZipCodeWrapper>
       </TextZipCodeInputWrapper>
 
       <TextAddressInputWrapper>
-        <Input type="text"></Input>
+        <Input type="text" value={props.address}></Input>
       </TextAddressInputWrapper>
       <TextAddressBottomInputWrapper>
         <Input type="text"></Input>

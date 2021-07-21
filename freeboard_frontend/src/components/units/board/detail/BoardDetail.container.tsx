@@ -8,12 +8,15 @@ import {
   UPDATE_BOARD_COMMENT,
   DELETE_BOARD_COMMENT,
   FETCH_BOARD_COMMENTS,
+  LIKE_BOARD,
+  DISLIKE_BOARD,
 } from "./BoardDetail.queries";
 
 import { useState } from "react";
 
 const commentinputsInit = {
   writer: "",
+  password: "",
   contents: "",
 };
 
@@ -21,6 +24,7 @@ export default function BoardDetail(props) {
   const router = useRouter();
   const [commentid, setCommentId] = useState("");
   const [commentinputs, setCommentInputs] = useState(commentinputsInit);
+  const [isOpen, setIsOpen] = useState(false);
 
   const { data: aaaa } = useQuery(FETCH_BOARD_COMMENTS, {
     variables: {
@@ -40,17 +44,23 @@ export default function BoardDetail(props) {
   const [createBoardComment] = useMutation(CREATE_BOARD_COMMENT);
   const [updateBoardComment] = useMutation(UPDATE_BOARD_COMMENT);
   const [deleteBoardComment] = useMutation(DELETE_BOARD_COMMENT);
+  const [likeBoard] = useMutation(LIKE_BOARD);
+  const [dislikeBoard] = useMutation(DISLIKE_BOARD);
+  function onClose() {
+    setIsOpen(false);
+    router.push(`/boards/`);
+  }
 
   async function onClickDelete(event) {
-    alert("해당 글을 삭제합니다~");
+    // alert("해당 글을 삭제합니다~");
 
     try {
       await deleteBoard({
         variables: { boardId: router.query.aaa },
         // refetchQueries: [{query : FETCH_BOARDS}]
       });
-      alert("삭제가 완료되었습니다.");
-      router.push("/boards");
+      setIsOpen(true);
+      // router.push("/boards");
     } catch (error) {}
   }
 
@@ -77,12 +87,13 @@ export default function BoardDetail(props) {
   }
 
   async function onCommentSubmit() {
+    console.log(commentinputs.password);
     try {
       const result = await createBoardComment({
         variables: {
           cBC: {
             writer: commentinputs.writer,
-            password: "123",
+            password: commentinputs.password,
             contents: commentinputs.contents,
             rating: 0,
           },
@@ -129,12 +140,34 @@ export default function BoardDetail(props) {
       alert(error.message);
     }
   }
+
+  async function LikeUp(event) {
+    await likeBoard({
+      variables: {
+        boardId: router.query.aaa,
+      },
+    });
+    alert("게시글좋아요");
+    router.push(`/boards/${router.query.aaa}`);
+  }
+
+  async function DislikeUp(event) {
+    await dislikeBoard({
+      variables: {
+        boardId: router.query.aaa,
+      },
+    });
+    alert("게시글싫어요");
+    router.push(`/boards/${router.query.aaa}`);
+  }
   let video;
   if (data == null) video = "";
   else if (data.fetchBoard.youtubeUrl == null) video = "";
   else video = data.fetchBoard.youtubeUrl;
   return (
     <BoardDetailUI
+      onClose={onClose}
+      isOpen={isOpen}
       onClickDelete={onClickDelete}
       gotoList={gotoList}
       gotoEdit={gotoEdit}
@@ -145,6 +178,8 @@ export default function BoardDetail(props) {
       onCommentEdit={onCommentEdit}
       onCommentDelete={onCommentDelete}
       video={video}
+      LikeUp={LikeUp}
+      DislikeUp={DislikeUp}
     />
   );
 }

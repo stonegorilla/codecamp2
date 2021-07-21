@@ -123,7 +123,7 @@ export const ButtonGrayWrapper = styled.div`
   height: 45px;
   margin-top: 80px;
   margin-left: 100px;
-  margin-bottom: 50px;
+  margin-bottom: 87px;
   display: flex;
   justify-content: space-between;
   align-items: center;
