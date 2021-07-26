@@ -1,5 +1,28 @@
+import { useRouter } from "next/router";
 import LayoutNavigationUI from "./LayoutNavigation.presenter";
 
 export default function LayoutNavigation() {
-  return <LayoutNavigationUI />;
+  const router = useRouter();
+
+  function gotoBoard() {
+    router.push(`/boards`);
+  }
+  function gotoMarket() {
+    router.push(`/market`);
+  }
+  function gotoMyPage() {
+    router.push(`/mypage`);
+  }
+  function gotoRandomAlgorithm() {
+    router.push(`/randomalgorithm`);
+  }
+
+  return (
+    <LayoutNavigationUI
+      gotoBoard={gotoBoard}
+      gotoMarket={gotoMarket}
+      gotoMyPage={gotoMyPage}
+      gotoRandomAlgorithm={gotoRandomAlgorithm}
+    />
+  );
 }

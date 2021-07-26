@@ -48,7 +48,7 @@ export default function BoardDetailUI(props) {
         <Date>12121</Date>
         <Hr></Hr>
         <Title>{props.qqq ? props.qqq.fetchBoard.title : "222"}</Title>
-        <MainPicture></MainPicture>
+        <MainPicture src={props.imgUrl}></MainPicture>
         <Contents>{props.qqq ? props.qqq.fetchBoard.contents : "333"}</Contents>
         <VideoWrapper>
           <Video url={[props.video]}></Video>

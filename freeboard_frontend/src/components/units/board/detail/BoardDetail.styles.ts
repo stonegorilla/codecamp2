@@ -40,11 +40,11 @@ export const Title = styled.div`
   line-height: 53px;
 `;
 
-export const MainPicture = styled.div`
+export const MainPicture = styled.img`
   width: 996px;
   height: 480px;
   background-size: 100%;
-  background-image: url("/boardpage/mainpicture.png");
+  // background-image: url("/boardpage/mainpicture.png");
 `;
 
 export const Contents = styled.div`

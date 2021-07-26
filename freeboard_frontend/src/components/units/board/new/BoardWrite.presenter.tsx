@@ -30,11 +30,11 @@ import {
 import { Modal } from "antd";
 import DaumPostcode from "react-daum-postcode";
 
-export default function BoardWriteUI(props) {
+export default function BoardWriteUI(props: any) {
   return (
     // 반드시 무언가 하나로 감싸주어라 (보통 Wrapper 를 쓴다. )
     <Wrapper>
-      {!props.isEdit && (
+      {/* {!props.isEdit && (
         <Modal
           title="게시글 등록"
           visible={props.isOpen}
@@ -54,7 +54,7 @@ export default function BoardWriteUI(props) {
         >
           <div>게시물이 정상적으로 수정되었습니다.</div>
         </Modal>
-      )}
+      )} */}
 
       {props.isOpenAddress && (
         <Modal
@@ -72,7 +72,7 @@ export default function BoardWriteUI(props) {
       )}
 
       <HeadWrapper>
-        <Title>게시물 등록</Title>
+        <Title>{props.isEdit ? "게시물 수정" : "게시물 등록"}</Title>
       </HeadWrapper>
 
       <WriterPasswordWrapper>
@@ -87,8 +87,8 @@ export default function BoardWriteUI(props) {
             placeholder="이름을 적어 주세요"
             name="writer"
             onChange={props.onChangeInputs}
-            defaultValue={props.data?.fetchBoard.writer}
-            // readOnly={props.data?.fetchBoard.writer}
+            //defaultValue={props.data?.fetchBoard.writer}
+            //readOnly={props.data?.fetchBoard.writer}
           ></InputShort>
         </TextInputWrapper>
 

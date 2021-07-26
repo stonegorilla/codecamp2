@@ -22,22 +22,22 @@ export default function LayoutBannerUI() {
     <Wrapper>
       <Slider {...settings}>
         <SliderImage1>
-          <h3>Carrot MarketWSlide</h3>
+          <h1>FreeBoardPage</h1>
         </SliderImage1>
         <SliderImage2>
-          <h3>Carrot MarketWSlide</h3>
+          <h1>CarrotMarket</h1>
         </SliderImage2>
         <SliderImage3>
-          <h3>Carrot MarketWSlide</h3>
+          <h1>Carrot MarketWSlide</h1>
         </SliderImage3>
         <SliderImage1>
-          <h3>Carrot MarketWSlide</h3>
+          <h1>Carrot MarketWSlide</h1>
         </SliderImage1>
         <SliderImage2>
-          <h3>Carrot MarketWSlide</h3>
+          <h1>Carrot MarketWSlide</h1>
         </SliderImage2>
         <SliderImage3>
-          <h3>Carrot MarketWSlide</h3>
+          <h1>Carrot MarketWSlide</h1>
         </SliderImage3>
         {/* 예네들을 안쪽에 옮길 수 있는 방법은 없나  */}
         {/* https://react-slick.neostack.com/docs/example/custom-paging/ */}

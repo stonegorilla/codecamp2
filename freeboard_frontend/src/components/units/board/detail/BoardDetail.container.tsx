@@ -12,7 +12,8 @@ import {
   DISLIKE_BOARD,
 } from "./BoardDetail.queries";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 const commentinputsInit = {
   writer: "",
@@ -25,6 +26,7 @@ export default function BoardDetail(props) {
   const [commentid, setCommentId] = useState("");
   const [commentinputs, setCommentInputs] = useState(commentinputsInit);
   const [isOpen, setIsOpen] = useState(false);
+  const [imgUrl, setImgUrl] = useState("");
 
   const { data: aaaa } = useQuery(FETCH_BOARD_COMMENTS, {
     variables: {
@@ -164,6 +166,14 @@ export default function BoardDetail(props) {
   if (data == null) video = "";
   else if (data.fetchBoard.youtubeUrl == null) video = "";
   else video = data.fetchBoard.youtubeUrl;
+
+  useEffect(() => {
+    const getImg = async () => {
+      const result = await axios.get("https://dog.ceo/api/breeds/image/random");
+      setImgUrl(result.data.message);
+    };
+    getImg();
+  }, []);
   return (
     <BoardDetailUI
       onClose={onClose}
@@ -177,6 +187,7 @@ export default function BoardDetail(props) {
       onCommentSubmit={onCommentSubmit}
       onCommentEdit={onCommentEdit}
       onCommentDelete={onCommentDelete}
+      imgUrl={imgUrl}
       video={video}
       LikeUp={LikeUp}
       DislikeUp={DislikeUp}

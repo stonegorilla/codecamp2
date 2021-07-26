@@ -4,6 +4,7 @@ import { useMutation } from "@apollo/client";
 import { useRouter } from "next/router";
 import { useState } from "react"; // useState 는 동적인 웹 만들때 많이 사용할 것 같으니 넣어주자. 그리고 이 페이지에선 쓰인다.
 import BoardWriteUI from "./BoardWrite.presenter";
+import { Modal } from "antd";
 
 const inputsInit = {
   writer: "",
@@ -105,7 +106,10 @@ export default function BoardWrite(props: IProps) {
             },
           },
         });
-
+        Modal.confirm({
+          content: "게시물이 성공적으로 등록되었습니다.",
+          onOk: () => router.push(`/boards/${result.data.createBoard._id}`),
+        });
         setIsOpen(true);
         // router.push(`/boards/${result.data.createBoard._id}`);
       } catch (error) {
@@ -130,7 +134,10 @@ export default function BoardWrite(props: IProps) {
           updateBoardInput: { ...newInputs },
         },
       });
-      setIsOpen(true);
+      Modal.confirm({
+        content: "게시물이 성공적으로 수정되었습니다.",
+        onOk: () => router.push(`/boards/${result.data.updateBoard._id}`),
+      });
       // alert(result.data.updateBoard._id);
       // router.push(`/boards/${result.data.updateBoard._id}`);
     } catch (error) {
