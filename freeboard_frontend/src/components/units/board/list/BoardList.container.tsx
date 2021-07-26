@@ -3,10 +3,17 @@ import BoardListUI from './BoardList.presenter'
 import { useRouter } from 'next/router'
 import { FETCH_BOARDS } from './BoardList.queries'
 import { DELETE_BOARD } from "./BoardList.queries"
+import { FETCH_BOARDS_COUNT} from "./BoardList.queries"
+import { useState} from "react"
 
 export default function BoardList(){
     const router = useRouter()
-    const { data } = useQuery(FETCH_BOARDS)
+    const [startPage, setStartPage] = useState(1);
+    const { data, refetch } = useQuery(FETCH_BOARDS, {
+        variables: { page: startPage },
+      });
+      const { data: pageBoardCount } = useQuery(FETCH_BOARDS_COUNT);
+      const lastPage = Math.ceil(Number(pageBoardCount?.fetchBoardsCount) / 10);
     const [deleteBoard] = useMutation(DELETE_BOARD)
 
     async function onClickDelete(event){
@@ -28,11 +35,30 @@ export default function BoardList(){
         router.push(`/boards/${event.target.id}`)
         // 동적 라우팅
     }
+
+    function onClickPageNumber(event: MouseEvent<HTMLSpanElement>) {
+        refetch({ page: Number(event.target.id) });
+      }
+
+    function onClickPrevPage() {
+        if (startPage <= 1) return;
+        setStartPage((prev) => prev - 10);
+      }
+      function onClickNextPage() {
+        if (startPage + 10 > lastPage) return;
+        setStartPage((prev) => prev + 10);
+      }
     return (
         <BoardListUI
             Delete = {onClickDelete}
             qqq = {data}
-            aaa = {onClickPage}
+            onClickPage = {onClickPage}
+            onClickPageNumber = {onClickPageNumber}
+            startPage = {startPage}
+            lastPage = {lastPage}
+            onClickPrevPage = {onClickPrevPage}
+            onClickNextPage = {onClickNextPage}
+
         />
     )
 }

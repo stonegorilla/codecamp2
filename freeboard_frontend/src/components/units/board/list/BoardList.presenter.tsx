@@ -1,6 +1,10 @@
 import {
+    Wrapper,
+    Wrapper1,
     Row,
-    Column
+    Column,
+    Page,
+    PageWrapper
 } from './BoardList.styles'
 
 import {getDates} from '../../../../commons/libraries/utils'
@@ -8,7 +12,8 @@ import {getDates} from '../../../../commons/libraries/utils'
 
 export default function BoardListUI(props) {
     return (
-        <div>
+        <Wrapper>
+            <Wrapper1>
             <Row>
                     <Column><input type="checkbox" /></Column>
                     {/* <Column>번호</Column> */}
@@ -22,14 +27,34 @@ export default function BoardListUI(props) {
                     <Column><input type="checkbox"  /></Column>
                     {/* <Column>{index}</Column> */}
                     <Column>{data.writer}</Column>
-                    <Column onClick={props.aaa} id={data._id}>{data.title}</Column>
+                    <Column onClick={props.onClickPage} id={data._id}>{data.title}</Column>
                     {/* 이벤트 핸들러 함수 */}
                     {/* <span>{data.contents}</span> */}
                     <Column>{getDates(data.createdAt)}</Column>
                     <Column><button id={data._id} onClick={props.Delete}>삭제하기</button></Column>
                 </Row>
             ))}
+                  
+            </Wrapper1>
+            <PageWrapper>
+                    <Page onClick={props.onClickPrevPage}>이전</Page>
+                        {[1, 1, 1, 4, 5, 6, 7, 8, 9, 10].map((_, index) => {
+                            const currentPage = props.startPage + index;
+                            return (
+                            currentPage <= props.lastPage && (
+                                <Page
+                                key={props.startPage + index}
+                                onClick={props.onClickPageNumber}
+                                id={String(props.startPage + index)}
+                                >
+                                {props.startPage + index}
+                                </Page>
+                            )
+                            );
+                        })}
+                        <Page onClick={props.onClickNextPage}>다음</Page>
+                </PageWrapper>
 
-        </div>
+        </Wrapper>
     )
 }

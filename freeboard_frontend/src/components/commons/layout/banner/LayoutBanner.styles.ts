@@ -7,12 +7,43 @@ export const Wrapper = styled.div`
 `;
 
 export const SliderImage1 = styled.div`
-  width: 1920px;
+  width: 100%;
   height: 400px;
-  background-image: url("/slideimage/slide1.png");
+  background-image: url("/slideimage/banner1.png");
+  h3 {
+    margin-top : 102px;
+    font-weight : 700;
+    font-size = 48px;
+    line-height : 71px;
+    text-align : center;
+    color : white;
+  }
+  
 `;
 export const SliderImage2 = styled.div`
   width: 1920px;
   height: 400px;
-  background-image: url("/slideimage/slide2.png");
+  background-image: url("/slideimage/banner2.png");
+  h3 {
+    margin-top : 102px;
+    font-weight : 700;
+    font-size = 48px;
+    line-height : 71px;
+    text-align : center;
+    color : white;
+  }
+`;
+
+export const SliderImage3 = styled.div`
+  width: 1920px;
+  height: 400px;
+  background-image: url("/slideimage/banner3.png");
+  h3 {
+    margin-top : 102px;
+    font-weight : 700;
+    font-size = 48px;
+    line-height : 71px;
+    text-align : center;
+    color : white;
+  }
 `;
