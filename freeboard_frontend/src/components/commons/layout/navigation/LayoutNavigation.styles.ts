@@ -7,12 +7,13 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  transform: perspective(1000px) rotateX(150deg);
 `;
 
 export const Menu = styled.div`
   font-size: 20px;
   cursor: pointer;
-
+  
   :hover {
     color: orange;
   }
