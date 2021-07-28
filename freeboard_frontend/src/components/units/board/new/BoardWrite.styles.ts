@@ -174,3 +174,7 @@ export const ButtonYellow = styled.button`
   background-color: ${(props) => (props.active ? "gray" : "yellow")};
   border: 0px;
 `;
+
+export const Img = styled.img`
+
+`

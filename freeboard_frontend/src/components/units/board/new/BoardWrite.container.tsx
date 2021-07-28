@@ -1,10 +1,11 @@
-import { CREATE_BOARD, UPDATE_BOARD } from "./BoardWrite.queries";
+import { CREATE_BOARD, UPDATE_BOARD , UPLOAD_FILE} from "./BoardWrite.queries";
 
 import { useMutation } from "@apollo/client";
 import { useRouter } from "next/router";
-import { useState } from "react"; // useState 는 동적인 웹 만들때 많이 사용할 것 같으니 넣어주자. 그리고 이 페이지에선 쓰인다.
+import { ChangeEvent, useState } from "react"; // useState 는 동적인 웹 만들때 많이 사용할 것 같으니 넣어주자. 그리고 이 페이지에선 쓰인다.
 import BoardWriteUI from "./BoardWrite.presenter";
 import { Modal } from "antd";
+import { useRef } from "react";
 
 const inputsInit = {
   writer: "",
@@ -12,6 +13,7 @@ const inputsInit = {
   title: "",
   contents: "",
   youtubeUrl: "",
+  
 };
 interface newInputs {
   title?: String;
@@ -30,6 +32,8 @@ interface IProps {
 
 export default function BoardWrite(props: IProps) {
   const router = useRouter();
+  const fileRef = useRef<HTMLInputElement>(null);
+  const [imageUrl, setImageUrl] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const [inputs, setInputs] = useState(inputsInit);
   const [isOpenAddress, setIsOpenAddress] = useState(false);
@@ -51,6 +55,7 @@ export default function BoardWrite(props: IProps) {
 
   const [qqq] = useMutation(CREATE_BOARD);
   const [updateBoard] = useMutation(UPDATE_BOARD);
+  const [uploadFile] = useMutation(UPLOAD_FILE);
 
   function onClose() {
     setIsOpen(false);
@@ -66,6 +71,39 @@ export default function BoardWrite(props: IProps) {
     if (Object.values(newInputs).every((data) => data)) setActive(false);
   }
 
+  async function onChangeFile(event: ChangeEvent<HTMLInputElement>) {
+    const file = event.target.files?.[0];
+    if (!file?.size) {
+      alert("파일이 없다고");
+      return;
+    }
+    if (file?.size > 5 * 1024 * 1024) {
+      alert("파일 사이즈가 너무크니까 올리지마(제한 5MB)");
+      return;
+    }
+
+    if (!file.type.includes("png") && !file.type.includes("jpeg")) {
+      alert("png또는 jpeg만 전송가능");
+      return;
+    }
+
+    try {
+      const result = await uploadFile({
+        variables: {
+          bbb: file,
+        },
+      });
+      console.log(result.data.uploadFile.url);
+      setImageUrl(result.data.uploadFile.url);
+    } catch (error) {
+      alert(error.message);
+    }
+  }
+
+  function onClickGreyBox() {
+    fileRef.current?.click();
+  }
+  
   async function RedTrigger(event) {
     if (inputs.writer === "") {
       setWriterError("작성자 이름을 입력해 주세요");
@@ -103,6 +141,8 @@ export default function BoardWrite(props: IProps) {
               title: inputs.title,
               contents: inputs.contents,
               youtubeUrl: inputs.youtubeUrl,
+              images : [imageUrl],
+              
             },
           },
         });
@@ -176,6 +216,10 @@ export default function BoardWrite(props: IProps) {
       onClickOpenModal={onClickOpenModal}
       address={address}
       zoneCode={zoneCode}
+      fileRef = {fileRef}
+      onChangeFile = {onChangeFile}
+      imageUrl = {imageUrl}
+      onClickGreyBox = {onClickGreyBox}
     />
   );
 }

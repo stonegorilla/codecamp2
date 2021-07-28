@@ -23,3 +23,11 @@ export const UPDATE_BOARD = gql`
     }
   }
 `;
+
+export const UPLOAD_FILE = gql`
+  mutation uploadFile($bbb: Upload!) {
+    uploadFile(file: $bbb) {
+      url
+    }
+  }
+`;

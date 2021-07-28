@@ -26,6 +26,7 @@ import {
   ButtonYellow,
   Box,
   BtnWrapper,
+  Img,
 } from "./BoardWrite.styles"; //Home.styles 를 가져와랴
 import { Modal } from "antd";
 import DaumPostcode from "react-daum-postcode";
@@ -165,22 +166,24 @@ export default function BoardWriteUI(props: any) {
 
       <TextPictureWrapper>
         <Name>사진첨부</Name>
+        <Img src={`https://storage.googleapis.com/${props.imageUrl}`} />
         <UploadWrapper>
+          <Box  
+          onClick = {props.onClickGreyBox}
+          ></Box>
+          <input
+          ref = {props.fileRef}
+          type = "file"
+          onChange={props.onChangeFile} style={{ display: "none" }}/>
+          
           <Box>
-            {/* <Label for="Upload1">+</Label>
-                        <Label for="Upload1">Upload</Label> */}
+            
           </Box>
-          {/* <Input5 type="file" id="Upload1"></Input5> */}
+          
           <Box>
-            {/* <Label for="Upload2">+</Label>
-                        <Label for="Upload2">Upload</Label> */}
+            
           </Box>
-          {/* <Input5 type="file" id="Upload2"></Input5> */}
-          <Box>
-            {/* <Label for="Upload3">+</Label>
-                        <Label for="Upload3">Upload</Label> */}
-          </Box>
-          {/* <Input5 type="file" id="Upload3"></Input5> */}
+          
         </UploadWrapper>
       </TextPictureWrapper>
 
