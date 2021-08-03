@@ -43,8 +43,8 @@ export default function JoinPresenter(props) {
           name="repassword"
           onChange={props.onChangeInputs}
         ></Password>
+        <SubmitButton onClick={props.onClickSubmit}>회원가입</SubmitButton>
       </IdPasswordWrapper>
-      <SubmitButton onClick={props.onClickSubmit}>회원가입</SubmitButton>
     </Wrapper>
   );
 }

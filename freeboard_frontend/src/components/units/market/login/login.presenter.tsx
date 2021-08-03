@@ -1,27 +1,35 @@
+import { OmitProps } from "antd/lib/transfer/ListBody";
 import {
-  Id,
+  Wrapper,
+  Email,
   Password,
   Text,
   TextError,
   TextWrapper,
-  IdPasswordWrapper,
+  EmailPasswordWrapper,
+  SubmitButton,
 } from "./login.styles";
 
-export default function LoginPresenter() {
+export default function LoginPresenter(props) {
   return (
-    <>
-      <IdPasswordWrapper>
+    <Wrapper>
+      <EmailPasswordWrapper>
         <TextWrapper>
-          <Text>Id</Text>
-          <TextError>제대로된 아이디 써주세요</TextError>
+          <Text>Email</Text>
+          <TextError>{props.inputsErrors.email}</TextError>
         </TextWrapper>
-        <Id></Id>
+        <Email type="text" name="email" onChange={props.onChangeInputs}></Email>
         <TextWrapper>
           <Text>Password</Text>
-          <TextError>제대로된 패스워드 써주세요</TextError>
+          <TextError>{props.inputsErrors.password}</TextError>
         </TextWrapper>
-        <Password></Password>
-      </IdPasswordWrapper>
-    </>
+        <Password
+          type="text"
+          name="password"
+          onChange={props.onChangeInputs}
+        ></Password>
+        <SubmitButton onClick={props.onClickSubmit}>로그인</SubmitButton>
+      </EmailPasswordWrapper>
+    </Wrapper>
   );
 }

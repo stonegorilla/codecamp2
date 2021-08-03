@@ -1,16 +1,29 @@
-import { ApolloClient,ApolloLink, InMemoryCache, ApolloProvider } from "@apollo/client";
+import {
+  ApolloClient,
+  ApolloLink,
+  InMemoryCache,
+  ApolloProvider,
+} from "@apollo/client";
 
 import "../styles/globals.css";
 import "antd/dist/antd.css";
-import {createUploadLink } from "apollo-upload-client";
-
 import Layout from "../src/components/commons/layout";
+import { Global } from "@emotion/react";
+import { globalStyles } from "../src/commons/styles/globalStyles";
+import { createUploadLink } from "apollo-upload-client";
+import { createContext, useState } from "react";
+
 // import { Global } from "@emotion/react";
 // import { globalStyles } from "../src/commons/styles/globalStyles";
 // 원래 index.js 를 바로 실행하는 것이 아니라 이 app.js 라는 것을 지나간다.
+export const GlobalContext = createContext({});
 function MyApp({ Component, pageProps }) {
+  const [accessToken, setAccessToken] = useState();
   const uploadLink = createUploadLink({
-    uri : "http://backend02.codebootcamp.co.kr/graphql",
+    uri: "http://backend02.codebootcamp.co.kr/graphql",
+    headers: {
+      authorization: `bearer ${accessToken}`,
+    },
   });
 
   const client = new ApolloClient({
@@ -21,12 +34,14 @@ function MyApp({ Component, pageProps }) {
   // uri 는 백엔드 API가 있는 주소
 
   return (
-    <ApolloProvider client={client}>
-      <Layout>
-      {/* <Global styles={globalStyles} /> */}
-        <Component {...pageProps} />
-      </Layout>
-    </ApolloProvider>
+    <GlobalContext.Provider value={{ accessToken, setAccessToken }}>
+      <ApolloProvider client={client}>
+        <Layout>
+          <Global styles={globalStyles} />
+          <Component {...pageProps} />
+        </Layout>
+      </ApolloProvider>
+    </GlobalContext.Provider>
 
     // 여기서 Component 가 index.js
   );
