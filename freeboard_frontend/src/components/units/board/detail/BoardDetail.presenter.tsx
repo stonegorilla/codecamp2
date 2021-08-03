@@ -49,6 +49,16 @@ export default function BoardDetailUI(props) {
         <Hr></Hr>
         <Title>{props.qqq ? props.qqq.fetchBoard.title : "222"}</Title>
         <MainPicture src={props.imgUrl}></MainPicture>
+
+        <MainPicture
+          src={`https://storage.googleapis.com/${props.qqq?.fetchBoard.images[0]}`}
+        ></MainPicture>
+        <MainPicture
+          src={`https://storage.googleapis.com/${props.qqq?.fetchBoard.images[1]}`}
+        ></MainPicture>
+        <MainPicture
+          src={`https://storage.googleapis.com/${props.qqq?.fetchBoard.images[2]}`}
+        ></MainPicture>
         <Contents>{props.qqq ? props.qqq.fetchBoard.contents : "333"}</Contents>
         <VideoWrapper>
           <Video url={[props.video]}></Video>

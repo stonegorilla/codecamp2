@@ -1,4 +1,4 @@
-import { CREATE_BOARD, UPDATE_BOARD , UPLOAD_FILE} from "./BoardWrite.queries";
+import { CREATE_BOARD, UPDATE_BOARD, UPLOAD_FILE } from "./BoardWrite.queries";
 
 import { useMutation } from "@apollo/client";
 import { useRouter } from "next/router";
@@ -13,7 +13,6 @@ const inputsInit = {
   title: "",
   contents: "",
   youtubeUrl: "",
-  
 };
 interface newInputs {
   title?: String;
@@ -32,8 +31,13 @@ interface IProps {
 
 export default function BoardWrite(props: IProps) {
   const router = useRouter();
-  const fileRef = useRef<HTMLInputElement>(null);
+  const fileRef1 = useRef<HTMLInputElement>(null);
+  const fileRef2 = useRef<HTMLInputElement>(null);
+  const fileRef3 = useRef<HTMLInputElement>(null);
   const [imageUrl, setImageUrl] = useState("");
+  const [file1, setFile1] = useState();
+  const [file2, setFile2] = useState();
+  const [file3, setFile3] = useState();
   const [isOpen, setIsOpen] = useState(false);
   const [inputs, setInputs] = useState(inputsInit);
   const [isOpenAddress, setIsOpenAddress] = useState(false);
@@ -71,7 +75,7 @@ export default function BoardWrite(props: IProps) {
     if (Object.values(newInputs).every((data) => data)) setActive(false);
   }
 
-  async function onChangeFile(event: ChangeEvent<HTMLInputElement>) {
+  async function onChangeFile1(event: ChangeEvent<HTMLInputElement>) {
     const file = event.target.files?.[0];
     if (!file?.size) {
       alert("파일이 없다고");
@@ -87,23 +91,72 @@ export default function BoardWrite(props: IProps) {
       return;
     }
 
-    try {
-      const result = await uploadFile({
-        variables: {
-          bbb: file,
-        },
-      });
-      console.log(result.data.uploadFile.url);
-      setImageUrl(result.data.uploadFile.url);
-    } catch (error) {
-      alert(error.message);
-    }
+    const fileReader = new FileReader();
+    fileReader.readAsDataURL(file);
+    fileReader.onload = (data) => {
+      setImageUrl(data.target.result);
+      setFile1(file);
+    };
   }
 
-  function onClickGreyBox() {
-    fileRef.current?.click();
+  async function onChangeFile2(event: ChangeEvent<HTMLInputElement>) {
+    const file = event.target.files?.[0];
+    if (!file?.size) {
+      alert("파일이 없다고");
+      return;
+    }
+    if (file?.size > 5 * 1024 * 1024) {
+      alert("파일 사이즈가 너무크니까 올리지마(제한 5MB)");
+      return;
+    }
+
+    if (!file.type.includes("png") && !file.type.includes("jpeg")) {
+      alert("png또는 jpeg만 전송가능");
+      return;
+    }
+
+    const fileReader = new FileReader();
+    fileReader.readAsDataURL(file);
+    fileReader.onload = (data) => {
+      setImageUrl(data.target.result);
+      setFile2(file);
+    };
   }
-  
+
+  async function onChangeFile3(event: ChangeEvent<HTMLInputElement>) {
+    const file = event.target.files?.[0];
+    if (!file?.size) {
+      alert("파일이 없다고");
+      return;
+    }
+    if (file?.size > 5 * 1024 * 1024) {
+      alert("파일 사이즈가 너무크니까 올리지마(제한 5MB)");
+      return;
+    }
+
+    if (!file.type.includes("png") && !file.type.includes("jpeg")) {
+      alert("png또는 jpeg만 전송가능");
+      return;
+    }
+
+    const fileReader = new FileReader();
+    fileReader.readAsDataURL(file);
+    fileReader.onload = (data) => {
+      setImageUrl(data.target.result);
+      setFile3(file);
+    };
+  }
+
+  function onClickGreyBox1() {
+    fileRef1.current?.click();
+  }
+  function onClickGreyBox2() {
+    fileRef2.current?.click();
+  }
+  function onClickGreyBox3() {
+    fileRef3.current?.click();
+  }
+
   async function RedTrigger(event) {
     if (inputs.writer === "") {
       setWriterError("작성자 이름을 입력해 주세요");
@@ -133,6 +186,18 @@ export default function BoardWrite(props: IProps) {
       inputs.contents !== ""
     ) {
       try {
+        const resultFiles = await Promise.all([
+          uploadFile({ variables: { bbb: file1 } }),
+          uploadFile({ variables: { bbb: file2 } }),
+          uploadFile({ variables: { bbb: file3 } }),
+        ]);
+
+        const image1 = resultFiles[0].data.uploadFile.url;
+        const image2 = resultFiles[1].data.uploadFile.url;
+        const image3 = resultFiles[2].data.uploadFile.url;
+
+        const images = resultFiles.map((data) => data.data.uploadFile.url);
+
         const result = await qqq({
           variables: {
             aaa: {
@@ -141,8 +206,7 @@ export default function BoardWrite(props: IProps) {
               title: inputs.title,
               contents: inputs.contents,
               youtubeUrl: inputs.youtubeUrl,
-              images : [imageUrl],
-              
+              images: [image1, image2, image3],
             },
           },
         });
@@ -216,10 +280,16 @@ export default function BoardWrite(props: IProps) {
       onClickOpenModal={onClickOpenModal}
       address={address}
       zoneCode={zoneCode}
-      fileRef = {fileRef}
-      onChangeFile = {onChangeFile}
-      imageUrl = {imageUrl}
-      onClickGreyBox = {onClickGreyBox}
+      fileRef1={fileRef1}
+      fileRef2={fileRef2}
+      fileRef3={fileRef3}
+      onChangeFile1={onChangeFile1}
+      onChangeFile2={onChangeFile2}
+      onChangeFile3={onChangeFile3}
+      imageUrl={imageUrl}
+      onClickGreyBox1={onClickGreyBox1}
+      onClickGreyBox2={onClickGreyBox2}
+      onClickGreyBox3={onClickGreyBox3}
     />
   );
 }

@@ -175,6 +175,4 @@ export const ButtonYellow = styled.button`
   border: 0px;
 `;
 
-export const Img = styled.img`
-
-`
+export const Img = styled.img``;

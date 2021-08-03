@@ -62,6 +62,7 @@ export default function BoardListUI(props) {
             )
           );
         })}
+
         <Page onClick={props.onClickNextPage}>다음</Page>
       </PageWrapper>
     </Wrapper>

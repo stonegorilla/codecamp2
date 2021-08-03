@@ -166,24 +166,29 @@ export default function BoardWriteUI(props: any) {
 
       <TextPictureWrapper>
         <Name>사진첨부</Name>
-        <Img src={`https://storage.googleapis.com/${props.imageUrl}`} />
+        <Img src={props.imageUrl} />
         <UploadWrapper>
-          <Box  
-          onClick = {props.onClickGreyBox}
-          ></Box>
+          <Box onClick={props.onClickGreyBox1}></Box>
           <input
-          ref = {props.fileRef}
-          type = "file"
-          onChange={props.onChangeFile} style={{ display: "none" }}/>
-          
-          <Box>
-            
-          </Box>
-          
-          <Box>
-            
-          </Box>
-          
+            ref={props.fileRef1}
+            type="file"
+            onChange={props.onChangeFile1}
+            style={{ display: "none" }}
+          />
+          <Box onClick={props.onClickGreyBox2}></Box>
+          <input
+            ref={props.fileRef2}
+            type="file"
+            onChange={props.onChangeFile2}
+            style={{ display: "none" }}
+          />
+          <Box onClick={props.onClickGreyBox3}></Box>
+          <input
+            ref={props.fileRef3}
+            type="file"
+            onChange={props.onChangeFile3}
+            style={{ display: "none" }}
+          />
         </UploadWrapper>
       </TextPictureWrapper>
 
