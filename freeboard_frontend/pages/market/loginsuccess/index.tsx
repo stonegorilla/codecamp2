@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 import { useContext, useEffect } from "react";
 import { GlobalContext } from "../../_app";
 import { gql, useQuery } from "@apollo/client";
+import withAuth from "../../../src/components/commons/hocs/withAuth";
 
 const FETCH_USER_LOGGED_IN = gql`
   query fetchUserLoggedIn {
@@ -13,18 +14,18 @@ const FETCH_USER_LOGGED_IN = gql`
   }
 `;
 
-export default function LoginSuccessPage() {
-  const router = useRouter();
-  const { accessToken } = useContext(GlobalContext);
+function LoginSuccessPage() {
+  // const router = useRouter();
+  // const { accessToken } = useContext(GlobalContext);
   const { data } =
     useQuery<Pick<IQuery, "fetchUserLoggedIn">>(FETCH_USER_LOGGED_IN);
 
-  useEffect(() => {
-    if (!accessToken) {
-      alert("로그인 해주세요!");
-      router.push("/market/login");
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (!accessToken) {
+  //     alert("로그인 해주세요!");
+  //     router.push("/market/login");
+  //   }
+  // }, []);
 
   return (
     <>
@@ -34,3 +35,5 @@ export default function LoginSuccessPage() {
     </>
   );
 }
+
+export default withAuth(LoginSuccessPage);

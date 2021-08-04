@@ -2,6 +2,7 @@ import { useState } from "react";
 import JoinPresenter from "./join.presenter";
 import { useMutation } from "@apollo/client";
 import { CREATE_USER } from "./join.queries";
+import router, { useRouter } from "next/router";
 
 const inputsInit = {
   email: "",
@@ -11,6 +12,7 @@ const inputsInit = {
 };
 
 export default function JoinContainer() {
+  const router = useRouter();
   const [inputs, setInputs] = useState(inputsInit);
   const [inputsErrors, setInputsErrors] = useState(inputsInit);
   const [createuser] = useMutation(CREATE_USER);
@@ -33,39 +35,36 @@ export default function JoinContainer() {
       name: inputs.name ? "" : "이름은 있어야지요",
       password: /^[a-zA-Z0-9]{8,16}$/.test(inputs.password)
         ? ""
-        : "비밀번호는 8자리 이상 16자리 이하를 써주세요",
+        : "8자리 이상 16자리 이하를 써주세요",
       repassword:
         inputs.password === inputs.repassword
           ? ""
           : "비밀번호확인은 제대로 치세요",
     });
-
-    // if (inputsErrors !== { email: "", name: "", password: "", repassword: "" })
-    //   return;
-
-    // if (!/\w+@\w+\.\w+/.test(inputs.email)) {
-    //   alert("제대로된 이메일 적으세요");
-    // } else if (inputs.name === "") {
-    //   alert("이름은 있어야지요~");
-    // } else if (!/^[a-zA-Z0-9]{8,16}$/.test(inputs.password)) {
-    //   alert("비밀번호는 8자리 이상 16자리 이하를 써주세요");
-    // } else if (inputs.password !== inputs.repassword) {
-    //   alert("비밀번호확인은 제대로 치세요");
-    // } else {
-    try {
-      const result = await createuser({
-        variables: {
-          aaa: {
-            email: inputs.email,
-            name: inputs.name,
-            password: inputs.password,
+    if (
+      /\w+@\w+\.com$/.test(inputs.email) &&
+      inputs.name &&
+      /^[a-zA-Z0-9]{8,16}$/.test(inputs.password) &&
+      inputs.password === inputs.repassword
+    ) {
+      try {
+        const result = await createuser({
+          variables: {
+            aaa: {
+              email: inputs.email,
+              name: inputs.name,
+              password: inputs.password,
+            },
           },
-        },
-      });
-      alert("회원가입 축하드립니다.");
-      alert(result.data.createUser._id);
-    } catch (error) {
-      alert(error.message);
+        });
+        alert("회원가입 축하드립니다.");
+        alert(result.data.createUser._id);
+        router.push("/market/login");
+      } catch (error) {
+        alert(error.message);
+      }
+    } else {
+      return;
     }
   }
 

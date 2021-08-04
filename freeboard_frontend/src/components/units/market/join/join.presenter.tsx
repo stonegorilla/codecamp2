@@ -1,8 +1,9 @@
 import {
   Wrapper,
   Email,
-  Password,
   Name,
+  Password,
+  RePassword,
   Text,
   TextError,
   TextWrapper,
@@ -38,11 +39,11 @@ export default function JoinPresenter(props) {
           <Text>RePassword</Text>
           <TextError>{props.inputsErrors.repassword}</TextError>
         </TextWrapper>
-        <Password
+        <RePassword
           type="text"
           name="repassword"
           onChange={props.onChangeInputs}
-        ></Password>
+        ></RePassword>
         <SubmitButton onClick={props.onClickSubmit}>회원가입</SubmitButton>
       </IdPasswordWrapper>
     </Wrapper>

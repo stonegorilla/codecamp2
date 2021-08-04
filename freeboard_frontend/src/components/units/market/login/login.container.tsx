@@ -26,31 +26,35 @@ export default function LoginContainer() {
   }
 
   async function onClickSubmit(event) {
-    console.log(inputs);
     setInputsErrors({
       email: /\w+@\w+\.com$/.test(inputs.email)
         ? ""
         : "제대로된 이메일 적으세요",
       password: /^[a-zA-Z0-9]{8,16}$/.test(inputs.password)
         ? ""
-        : "비밀번호는 8자리 이상 16자리 이하를 써주세요",
+        : "8자리 이상 16자리 이하 써주세요",
     });
 
-    // if (inputsErrors.email !== "" || inputsErrors.password !== "") return;
-
-    try {
-      const result = await loginuser({
-        variables: {
-          email: inputs.email,
-          password: inputs.password,
-        },
-      });
-      setAccessToken(result.data?.loginUser.accessToken);
-      console.log(result.data?.loginUser.accessToken);
-      alert("로그인성공");
-      router.push("/market/loginsuccess");
-    } catch (error) {
-      alert(error.message);
+    if (
+      /\w+@\w+\.com$/.test(inputs.email) &&
+      /^[a-zA-Z0-9]{8,16}$/.test(inputs.password)
+    ) {
+      try {
+        const result = await loginuser({
+          variables: {
+            email: inputs.email,
+            password: inputs.password,
+          },
+        });
+        setAccessToken(result.data?.loginUser.accessToken);
+        console.log(result.data?.loginUser.accessToken);
+        alert("로그인성공");
+        router.push("/market/loginsuccess");
+      } catch (error) {
+        alert(error.message);
+      }
+    } else {
+      return;
     }
   }
 

@@ -7,88 +7,48 @@ import {
   SliderImage1,
   SliderImage2,
   SliderImage3,
+  SliderImage4,
+  SliderImage5,
+  SliderImage6,
 } from "./LayoutBanner.styles";
 
 export default function LayoutBannerUI() {
   const settings = {
-    dots: true,
+    dots: false,
     infinite: true,
-    speed: 500,
+
     slidesToShow: 1,
     slidesToScroll: 1,
+    autoplay: true,
+    speed: 1000,
+    autoplaySpeed: 100,
+    pauseOnHover: false,
   };
 
   return (
     <Wrapper>
       <Slider {...settings}>
         <SliderImage1>
-          <h1>FreeBoardPage</h1>
+          <h1>FREEBOARD</h1>
         </SliderImage1>
         <SliderImage2>
-          <h1>CarrotMarket</h1>
+          <h1>MARKET</h1>
         </SliderImage2>
         <SliderImage3>
-          <h1>Carrot MarketWSlide</h1>
+          <h1>MYPAGE</h1>
         </SliderImage3>
-        <SliderImage1>
-          <h1>Carrot MarketWSlide</h1>
-        </SliderImage1>
-        <SliderImage2>
-          <h1>Carrot MarketWSlide</h1>
-        </SliderImage2>
-        <SliderImage3>
-          <h1>Carrot MarketWSlide</h1>
-        </SliderImage3>
+        <SliderImage4>
+          <h1>RANDOMALGORITHM</h1>
+        </SliderImage4>
+        <SliderImage5>
+          <h1>DATABASE</h1>
+        </SliderImage5>
+        <SliderImage6>
+          <h1>CODECAMP</h1>
+        </SliderImage6>
         {/* 예네들을 안쪽에 옮길 수 있는 방법은 없나  */}
         {/* https://react-slick.neostack.com/docs/example/custom-paging/ */}
       </Slider>
     </Wrapper>
   );
 }
-
-// export default class LayoutBannerUI extends Component {
-//   render() {
-//     const settings = {
-//       dots: true,
-//       infinite: true,
-//       speed: 500,
-//       slidesToShow: 1,
-//       slidesToScroll: 1,
-//       appendDots: (dots) => (
-//         <div
-//           style={{
-//             backgroundColor: "#ddd",
-//             borderRadius: "10px",
-//             padding: "10px",
-//           }}
-//         >
-//           <ul style={{ margin: "0px" }}> {dots} </ul>
-//         </div>
-//       ),
-//       customPaging: (i) => (
-//         <div
-//           style={{
-//             width: "30px",
-//             color: "blue",
-//             border: "1px blue solid",
-//           }}
-//         >
-//           {i + 1}
-//         </div>
-//       ),
-//     };
-//     return (
-//       <div>
-//         <h2>Append Dots</h2>
-//         <Slider {...settings}>
-//           <SliderImage1></SliderImage1>
-//           <SliderImage2></SliderImage2>
-//           <SliderImage1></SliderImage1>
-//           <SliderImage2></SliderImage2>
-//           <SliderImage1></SliderImage1>
-//           <SliderImage2></SliderImage2>
-//         </Slider>
-//       </div>
-//     );
-//   }
-// }
