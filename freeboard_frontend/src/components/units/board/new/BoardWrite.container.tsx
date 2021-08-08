@@ -94,7 +94,7 @@ export default function BoardWrite(props: IProps) {
     const fileReader = new FileReader();
     fileReader.readAsDataURL(file);
     fileReader.onload = (data) => {
-      setImageUrl(data.target.result);
+      setImageUrl(data.target?.result);
       setFile1(file);
     };
   }

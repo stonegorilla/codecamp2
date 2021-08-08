@@ -27,6 +27,7 @@ import {
   Box,
   BtnWrapper,
   Img,
+  InputFile,
 } from "./BoardWrite.styles"; //Home.styles 를 가져와랴
 import { Modal } from "antd";
 import DaumPostcode from "react-daum-postcode";
@@ -66,7 +67,6 @@ export default function BoardWriteUI(props: any) {
           {/* <input type="text" />
           <br />
           <input type="password" /> */}
-          <DaumPostcode onComplete={props.onComplete} autoClose animation />
           {/* autoClose = {true} */}
           {/* 여기서 autoClose는 주소를 */}
         </Modal>
@@ -166,27 +166,34 @@ export default function BoardWriteUI(props: any) {
 
       <TextPictureWrapper>
         <Name>사진첨부</Name>
-        <Img src={props.imageUrl} />
+        {/* <Img src={props.imageUrl} /> */}
         <UploadWrapper>
-          <Box onClick={props.onClickGreyBox1}></Box>
+          {props.imageUrl ? (
+            <InputFile onClick={props.onClickGreyBox1} src={props.imageUrl} />
+          ) : (
+            <Box onClick={props.onClickGreyBox1}>
+              <>+</>
+              <>Upload</>
+            </Box>
+          )}
           <input
             ref={props.fileRef1}
             type="file"
             onChange={props.onChangeFile1}
             style={{ display: "none" }}
           />
-          <Box onClick={props.onClickGreyBox2}></Box>
+          {props.imageUrl ? (
+            <InputFile onClick={props.onClickGreyBox2} src={props.imageUrl} />
+          ) : (
+            <Box onClick={props.onClickGreyBox2}>
+              <>+</>
+              <>Upload</>
+            </Box>
+          )}
           <input
             ref={props.fileRef2}
             type="file"
             onChange={props.onChangeFile2}
-            style={{ display: "none" }}
-          />
-          <Box onClick={props.onClickGreyBox3}></Box>
-          <input
-            ref={props.fileRef3}
-            type="file"
-            onChange={props.onChangeFile3}
             style={{ display: "none" }}
           />
         </UploadWrapper>

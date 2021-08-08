@@ -95,14 +95,14 @@ export const UploadWrapper = styled.div`
   display: flex;
   justify-content: space-between;
 `;
-export const Box = styled.div`
+export const Box = styled.button`
   width: 78px;
   height: 78px;
   margin-bottom: 40px;
-  display: flex;
+  /* display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
   background-color: gray;
 `;
 
@@ -176,3 +176,9 @@ export const ButtonYellow = styled.button`
 `;
 
 export const Img = styled.img``;
+
+export const InputFile = styled.img`
+  width: 78px;
+  height: 78px;
+  margin-bottom: 40px;
+`;
