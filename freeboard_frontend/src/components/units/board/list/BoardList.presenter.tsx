@@ -7,6 +7,7 @@ import {
   Button,
   Page,
   PageWrapper,
+  BoardNewWrapper,
 } from "./BoardList.styles";
 
 import { getDates } from "../../../../commons/libraries/utils";
@@ -65,6 +66,9 @@ export default function BoardListUI(props) {
 
         <Page onClick={props.onClickNextPage}>다음</Page>
       </PageWrapper>
+      <BoardNewWrapper>
+        <Button onClick={props.gotoBoardNew}>게시물 등록</Button>
+      </BoardNewWrapper>
     </Wrapper>
   );
 }

@@ -6,8 +6,16 @@ export const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
 `;
+
 export const Wrapper1 = styled.div`
   width: 1000px;
+`;
+
+export const BoardNewWrapper = styled.div`
+  width: 1000px;
+  margin-top: 50px;
+  display: flex;
+  justify-content: flex-end;
 `;
 export const Row = styled.div`
   width: 1000px;

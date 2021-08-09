@@ -31,8 +31,11 @@ import {
 } from "./BoardWrite.styles"; //Home.styles 를 가져와랴
 import { Modal } from "antd";
 import DaumPostcode from "react-daum-postcode";
+import { useContext } from "react";
+import { BoardsEditPageContext } from "../../../../../pages/boards/[aaa]/edit";
 
 export default function BoardWriteUI(props: any) {
+  const { isEdit, data } = useContext(BoardsEditPageContext);
   return (
     // 반드시 무언가 하나로 감싸주어라 (보통 Wrapper 를 쓴다. )
     <Wrapper>
@@ -69,11 +72,12 @@ export default function BoardWriteUI(props: any) {
           <input type="password" /> */}
           {/* autoClose = {true} */}
           {/* 여기서 autoClose는 주소를 */}
+          <DaumPostcode onComplete={props.onComplete} autoClose />
         </Modal>
       )}
 
       <HeadWrapper>
-        <Title>{props.isEdit ? "게시물 수정" : "게시물 등록"}</Title>
+        <Title>{isEdit ? "게시물 수정" : "게시물 등록"}</Title>
       </HeadWrapper>
 
       <WriterPasswordWrapper>
@@ -168,8 +172,8 @@ export default function BoardWriteUI(props: any) {
         <Name>사진첨부</Name>
         {/* <Img src={props.imageUrl} /> */}
         <UploadWrapper>
-          {props.imageUrl ? (
-            <InputFile onClick={props.onClickGreyBox1} src={props.imageUrl} />
+          {props.imageUrl1 ? (
+            <InputFile onClick={props.onClickGreyBox1} src={props.imageUrl1} />
           ) : (
             <Box onClick={props.onClickGreyBox1}>
               <>+</>
@@ -182,8 +186,8 @@ export default function BoardWriteUI(props: any) {
             onChange={props.onChangeFile1}
             style={{ display: "none" }}
           />
-          {props.imageUrl ? (
-            <InputFile onClick={props.onClickGreyBox2} src={props.imageUrl} />
+          {props.imageUrl2 ? (
+            <InputFile onClick={props.onClickGreyBox2} src={props.imageUrl2} />
           ) : (
             <Box onClick={props.onClickGreyBox2}>
               <>+</>
@@ -194,6 +198,20 @@ export default function BoardWriteUI(props: any) {
             ref={props.fileRef2}
             type="file"
             onChange={props.onChangeFile2}
+            style={{ display: "none" }}
+          />
+          {props.imageUrl3 ? (
+            <InputFile onClick={props.onClickGreyBox3} src={props.imageUrl3} />
+          ) : (
+            <Box onClick={props.onClickGreyBox3}>
+              <>+</>
+              <>Upload</>
+            </Box>
+          )}
+          <input
+            ref={props.fileRef3}
+            type="file"
+            onChange={props.onChangeFile3}
             style={{ display: "none" }}
           />
         </UploadWrapper>
@@ -208,12 +226,12 @@ export default function BoardWriteUI(props: any) {
       </TextRadioWrapper>
 
       <BtnWrapper>
-        {!props.isEdit && (
+        {!isEdit && (
           <ButtonYellow onClick={props.RedTrigger} active={props.fff}>
             등록하기
           </ButtonYellow>
         )}
-        {props.isEdit && (
+        {isEdit && (
           <ButtonYellow onClick={props.onClickEdit} active={props.fff}>
             수정하기
           </ButtonYellow>

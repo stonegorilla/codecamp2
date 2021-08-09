@@ -8,8 +8,8 @@ export const globalStyles = css`
     font-family: "aaa";
   }
 
-  @font-face {
+  /* @font-face {
     font-family: "aaa";
     src: url("/fonts/scifibit.ttf");
-  }
+  } */
 `;

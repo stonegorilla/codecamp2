@@ -1,11 +1,13 @@
 import { useMutation, useQuery } from "@apollo/client";
+
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useState, MouseEvent, ChangeEvent } from "react";
+
+import { FETCH_BOARD_COMMENTS } from "../list/BoardCommentList.queries";
 
 import BoardCommentWriteUI from "./BoardCommentWrite.presenter";
 import {
   CREATE_BOARD_COMMENT,
-  DELETE_BOARD_COMMENT,
   UPDATE_BOARD_COMMENT,
   FETCH_BOARD,
 } from "./BoardCommentWrite.queries";
@@ -14,14 +16,15 @@ const commentinputsInit = {
   writer: "",
   password: "",
   contents: "",
+  rating: 0,
 };
-export default function BoardCommentWrite() {
+export default function BoardCommentWrite(props) {
   const router = useRouter();
   const [commentid, setCommentId] = useState("");
   const [commentinputs, setCommentInputs] = useState(commentinputsInit);
   const [createBoardComment] = useMutation(CREATE_BOARD_COMMENT);
   const [updateBoardComment] = useMutation(UPDATE_BOARD_COMMENT);
-  const [deleteBoardComment] = useMutation(DELETE_BOARD_COMMENT);
+
   const { data } = useQuery(FETCH_BOARD, {
     variables: {
       boardId: router.query.aaa,
@@ -41,28 +44,37 @@ export default function BoardCommentWrite() {
     console.log(event.target.value);
   }
 
+  function onChangeStar(value: number) {
+    setCommentInputs({ ...commentinputs, rating: value });
+  } // 얜 나중에 별만들면서 쓸 것
+
   async function onCommentSubmit() {
     console.log(commentinputs.password);
     try {
-      const result = await createBoardComment({
+      await createBoardComment({
         variables: {
           cBC: {
-            writer: commentinputs.writer,
-            password: commentinputs.password,
-            contents: commentinputs.contents,
-            rating: 0,
+            ...commentinputs,
           },
           boardId: router.query.aaa,
         },
+        refetchQueries: [
+          {
+            query: FETCH_BOARD_COMMENTS,
+            variables: { boardId: router.query.aaa },
+          },
+        ],
       });
-      alert("댓글등록되었습니다.");
-      router.push(`/boards/${router.query.aaa}`);
+      setCommentInputs(commentinputsInit);
+      // alert("댓글등록되었습니다.");
+      // router.push(`/boards/${router.query.aaa}`);
     } catch (error) {
       alert(error.message);
     }
   }
 
-  async function onCommentEdit() {
+  async function onCommentEdit(event: MouseEvent<HTMLButtonElement>) {
+    console.log(event.target.id);
     try {
       const result = await updateBoardComment({
         variables: {
@@ -71,25 +83,12 @@ export default function BoardCommentWrite() {
             rating: 3,
           },
           password: "123",
-          boardCommentId: commentid,
+          boardCommentId: props.data._id,
         },
       });
-      alert("수정되셨습니다. ");
-      router.push(`/boards/${router.query.aaa}`);
-    } catch (error) {
-      alert(error.message);
-    }
-  }
 
-  async function onCommentDelete(event) {
-    try {
-      const result = await deleteBoardComment({
-        variables: {
-          password: "123",
-          boardCommentId: event.target.value,
-        },
-      });
-      alert("삭제되셨습니다.");
+      alert("수정되셨습니다. ");
+      props.setIsEdit?.(false);
       router.push(`/boards/${router.query.aaa}`);
     } catch (error) {
       alert(error.message);
@@ -101,7 +100,8 @@ export default function BoardCommentWrite() {
       onChangeComments={onChangeComments}
       onCommentSubmit={onCommentSubmit}
       onCommentEdit={onCommentEdit}
-      onCommentDelete={onCommentDelete}
+      isEdit={props.isEdit}
+      data={props.data}
     />
   );
 }

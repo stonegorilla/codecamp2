@@ -30,14 +30,14 @@ export default function LoginContainer() {
       email: /\w+@\w+\.com$/.test(inputs.email)
         ? ""
         : "제대로된 이메일 적으세요",
-      password: /^[a-zA-Z0-9]{8,16}$/.test(inputs.password)
+      password: /^[a-zA-Z0-9]{1,16}$/.test(inputs.password)
         ? ""
-        : "8자리 이상 16자리 이하 써주세요",
+        : "1자리 이상 16자리 이하 써주세요",
     });
 
     if (
       /\w+@\w+\.com$/.test(inputs.email) &&
-      /^[a-zA-Z0-9]{8,16}$/.test(inputs.password)
+      /^[a-zA-Z0-9]{1,16}$/.test(inputs.password)
     ) {
       try {
         const result = await loginuser({

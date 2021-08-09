@@ -1,6 +1,7 @@
 import BoardWrite from "../../../../src/components/units/board/new/BoardWrite.container";
 import { useRouter } from "next/router";
 import { useQuery, gql } from "@apollo/client";
+import { createContext } from "react";
 
 const FETCH_BOARD = gql`
   query fetchBoard($aaa: ID!) {
@@ -13,6 +14,10 @@ const FETCH_BOARD = gql`
   }
 `;
 
+interface IContext {
+  isEdit?: boolean;
+}
+export const BoardsEditPageContext = createContext<IContext>({});
 export default function EditPage() {
   const isEdit = true;
   const router = useRouter();
@@ -22,6 +27,14 @@ export default function EditPage() {
       aaa: router.query.aaa,
     },
   });
+  const value = {
+    isEdit: true,
+    data,
+  };
 
-  return <BoardWrite isEdit={isEdit} data={data} />;
+  return (
+    <BoardsEditPageContext.Provider value={value}>
+      <BoardWrite />
+    </BoardsEditPageContext.Provider>
+  );
 }

@@ -46,6 +46,9 @@ export default function BoardList() {
     if (startPage + 10 > lastPage) return;
     setStartPage((prev) => prev + 10);
   }
+  function gotoBoardNew() {
+    router.push("/boards/new");
+  }
   return (
     <BoardListUI
       Delete={onClickDelete}
@@ -56,6 +59,7 @@ export default function BoardList() {
       lastPage={lastPage}
       onClickPrevPage={onClickPrevPage}
       onClickNextPage={onClickNextPage}
+      gotoBoardNew={gotoBoardNew}
     />
   );
 }

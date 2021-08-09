@@ -34,7 +34,9 @@ export default function BoardWrite(props: IProps) {
   const fileRef1 = useRef<HTMLInputElement>(null);
   const fileRef2 = useRef<HTMLInputElement>(null);
   const fileRef3 = useRef<HTMLInputElement>(null);
-  const [imageUrl, setImageUrl] = useState("");
+  const [imageUrl1, setImageUrl1] = useState("");
+  const [imageUrl2, setImageUrl2] = useState("");
+  const [imageUrl3, setImageUrl3] = useState("");
   const [file1, setFile1] = useState();
   const [file2, setFile2] = useState();
   const [file3, setFile3] = useState();
@@ -94,7 +96,7 @@ export default function BoardWrite(props: IProps) {
     const fileReader = new FileReader();
     fileReader.readAsDataURL(file);
     fileReader.onload = (data) => {
-      setImageUrl(data.target?.result);
+      setImageUrl1(data.target?.result);
       setFile1(file);
     };
   }
@@ -118,7 +120,7 @@ export default function BoardWrite(props: IProps) {
     const fileReader = new FileReader();
     fileReader.readAsDataURL(file);
     fileReader.onload = (data) => {
-      setImageUrl(data.target.result);
+      setImageUrl2(data.target.result);
       setFile2(file);
     };
   }
@@ -142,7 +144,7 @@ export default function BoardWrite(props: IProps) {
     const fileReader = new FileReader();
     fileReader.readAsDataURL(file);
     fileReader.onload = (data) => {
-      setImageUrl(data.target.result);
+      setImageUrl3(data.target.result);
       setFile3(file);
     };
   }
@@ -286,7 +288,9 @@ export default function BoardWrite(props: IProps) {
       onChangeFile1={onChangeFile1}
       onChangeFile2={onChangeFile2}
       onChangeFile3={onChangeFile3}
-      imageUrl={imageUrl}
+      imageUrl1={imageUrl1}
+      imageUrl2={imageUrl2}
+      imageUrl3={imageUrl3}
       onClickGreyBox1={onClickGreyBox1}
       onClickGreyBox2={onClickGreyBox2}
       onClickGreyBox3={onClickGreyBox3}

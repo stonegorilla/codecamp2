@@ -18,6 +18,9 @@ import {
   DislikeNumber,
   ButtonGrayWrapper,
   ButtonGray,
+  AvatarWrapper,
+  Avatar,
+  Info,
 } from "./BoardDetail.styles";
 import { Modal } from "antd";
 
@@ -35,21 +38,25 @@ export default function BoardDetailUI(props) {
         <div>게시물이 정상적으로 삭제되었습니다.</div>
       </Modal>
       <Wrapper>
-        <Writer>{props.qqq ? props.qqq.fetchBoard.writer : "111"}</Writer>
-        <Date>12121</Date>
+        <AvatarWrapper>
+          <Avatar src="/boardpage/avatar.png" />
+          <Info>
+            <Writer>{props.qqq ? props.qqq.fetchBoard.writer : "111"}</Writer>
+            <Date>{props.qqqq ? props.qqq.fetchBoard.createdAt : "12121"}</Date>
+          </Info>
+        </AvatarWrapper>
+
         <Hr></Hr>
         <Title>{props.qqq ? props.qqq.fetchBoard.title : "222"}</Title>
         <MainPicture src={props.imgUrl}></MainPicture>
 
-        <MainPicture
-          src={`https://storage.googleapis.com/${props.qqq?.fetchBoard.images[0]}`}
-        ></MainPicture>
-        <MainPicture
-          src={`https://storage.googleapis.com/${props.qqq?.fetchBoard.images[1]}`}
-        ></MainPicture>
-        <MainPicture
-          src={`https://storage.googleapis.com/${props.qqq?.fetchBoard.images[2]}`}
-        ></MainPicture>
+        {props.qqq?.fetchBoard.images?.map((data: string) => (
+          <MainPicture
+            key={data}
+            src={`https://storage.googleapis.com/${data}`}
+          ></MainPicture>
+        ))}
+
         <Contents>{props.qqq ? props.qqq.fetchBoard.contents : "333"}</Contents>
         <VideoWrapper>
           <Video url={[props.video]}></Video>

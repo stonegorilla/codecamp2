@@ -9,15 +9,31 @@ export const Wrapper = styled.div`
   margin-left: 100px;
   padding-left: 102px;
   padding-right: 102px;
+  padding-top: 80px;
   border: 1px solid;
   box-shadow: 2px 4px 13px rgba(0, 0, 0, 0.7);
 `;
 
 export const Writer = styled.div`
   height: 36px;
-  margin-top: 80px;
+  //margin-top: 80px;
   font-weight: 500;
   font-size: 24px;
+`;
+
+export const AvatarWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+`;
+export const Avatar = styled.img`
+  margin-right: 10px;
+`;
+
+export const Info = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 `;
 export const Date = styled.div`
   height: 24px;
