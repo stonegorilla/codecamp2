@@ -27,9 +27,7 @@ export default function LoginContainer() {
 
   async function onClickSubmit(event) {
     setInputsErrors({
-      email: /\w+@\w+\.com$/.test(inputs.email)
-        ? ""
-        : "제대로된 이메일 적으세요",
+      email: /\w+@\w+\./.test(inputs.email) ? "" : "제대로된 이메일 적으세요",
       password: /^[a-zA-Z0-9]{1,16}$/.test(inputs.password)
         ? ""
         : "1자리 이상 16자리 이하 써주세요",
@@ -42,12 +40,18 @@ export default function LoginContainer() {
       try {
         const result = await loginuser({
           variables: {
-            email: inputs.email,
             password: inputs.password,
+            email: inputs.email,
           },
         });
-        setAccessToken(result.data?.loginUser.accessToken);
-        console.log(result.data?.loginUser.accessToken);
+
+        setAccessToken(result.data?.loginUser.accessToken || "");
+        localStorage.setItem(
+          "accessToken",
+          result.data?.loginUser.accessToken || ""
+        );
+
+        // console.log(result.data?.loginUser.accessToken);
         alert("로그인성공");
         router.push("/market/loginsuccess");
       } catch (error) {

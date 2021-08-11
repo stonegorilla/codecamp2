@@ -5,6 +5,7 @@ import { gql, useQuery } from "@apollo/client";
 import withAuth from "../../../src/components/commons/hocs/withAuth";
 import styled from "@emotion/styled";
 import { LoginJoinWrapper } from "../../../src/components/commons/layout/header/LayoutHeader.styles";
+import { Button } from "../../../src/components/units/board/list/BoardList.styles";
 
 const FETCH_USER_LOGGED_IN = gql`
   query fetchUserLoggedIn {
@@ -41,8 +42,8 @@ const Column = styled.div`
   width: 25%;
 `;
 function LoginSuccessPage() {
-  // const router = useRouter();
-  // const { accessToken } = useContext(GlobalContext);
+  const router = useRouter();
+
   const { data } =
     useQuery<Pick<IQuery, "fetchUserLoggedIn">>(FETCH_USER_LOGGED_IN);
   const { data: item } = useQuery(FETCH_USED_ITEMS);
@@ -74,6 +75,9 @@ function LoginSuccessPage() {
     localStorage.setItem("baskets", JSON.stringify(baskets));
   };
 
+  const aaa = () => {
+    router.push("/market/new");
+  };
   console.log(item);
   return (
     <>
@@ -97,6 +101,7 @@ function LoginSuccessPage() {
         </div>
       ))}
       <span>{}</span>
+      <button onClick={aaa}>상품등록</button>
     </>
   );
 }
