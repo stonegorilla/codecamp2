@@ -1,18 +1,17 @@
-import { DELETE_USED_ITEM_QUESTION } from "./MarketCommentList.queries";
+import { DELETE_USED_ITEM_QUESTION_ANSWER } from "./MarketCommentAnswerList.queries";
 import { useState } from "react";
 import { useMutation } from "@apollo/client";
-import { Row, Column } from "./MarketCommentList.styles";
+import { Row, Column } from "./MarketCommentAnswerList.styles";
 import { useRouter } from "next/router";
-import MarketCommentWrite from "../write/MarketCommentWrite.container";
 import MarketCommentAnswerWrite from "../answerwrite/MarketCommentAnswerWrite.container";
-import MarketCommentAnswerList from "../answerlist/MarketCommentAnswerList.container";
-export default function MarketCommentListUIItem(props) {
+export default function MarketCommentAnswerListUIItem(props) {
   const router = useRouter();
   const [isEdit, setIsEdit] = useState(false);
   const [isAnswer, setIsAnswer] = useState(false);
-  const [recomment, setRecomment] = useState(false);
 
-  const [deleteUseditemQuestion] = useMutation(DELETE_USED_ITEM_QUESTION);
+  const [deleteUseditemQuestionAnswer] = useMutation(
+    DELETE_USED_ITEM_QUESTION_ANSWER
+  );
 
   function onClickUpdate() {
     setIsEdit(true);
@@ -20,9 +19,9 @@ export default function MarketCommentListUIItem(props) {
 
   async function onCommentDelete(event) {
     try {
-      const result = await deleteUseditemQuestion({
+      const result = await deleteUseditemQuestionAnswer({
         variables: {
-          useditemQuestionId: event.target.value,
+          useditemQuestionAnswerId: event.target.value,
         },
       });
       alert("삭제되셨습니다.");
@@ -34,11 +33,6 @@ export default function MarketCommentListUIItem(props) {
 
   async function onCommentAnswer(event) {
     setIsAnswer(true);
-  }
-
-  function onCommentAnswerHide(event) {
-    if (recomment) setRecomment(false);
-    else setRecomment(true);
   }
   return (
     <>
@@ -67,32 +61,12 @@ export default function MarketCommentListUIItem(props) {
                 딜리트
               </button>
             </Column>
-            <Column>
-              <button
-                name="commentid"
-                value={props.data._id}
-                onClick={onCommentAnswer}
-              >
-                리댓
-              </button>
-              <button value={props.data._id} onClick={onCommentAnswerHide}>
-                숨길까말까
-              </button>
-            </Column>
           </Row>
-          {isAnswer && (
-            <MarketCommentAnswerWrite
-              datgeul={props.data}
-              isAnswer={isAnswer}
-              setIsAnswer={setIsAnswer}
-            />
-          )}
-          {recomment && <MarketCommentAnswerList datgeul={props.data} />}
         </>
       )}
 
       {isEdit && (
-        <MarketCommentWrite
+        <MarketCommentAnswerWrite
           isEdit={isEdit}
           setIsEdit={setIsEdit}
           data={props.data}

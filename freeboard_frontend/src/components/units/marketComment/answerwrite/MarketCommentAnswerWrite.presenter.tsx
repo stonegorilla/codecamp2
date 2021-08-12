@@ -5,16 +5,16 @@ import {
   BoardCommentButton,
   BoardCommentUpdateWriter,
   BoardCommentUpdateContents,
-} from "./MarketCommentWrite.styles";
+} from "./MarketCommentAnswerWrite.styles";
 
-export default function MarketCommentWriteUI(props) {
+export default function MarketCommentAnswerWriteUI(props) {
   return (
     <BoardCommentWrapper>
       {!props.isEdit && (
         <>
           <BoardCommentContents
             name="contents"
-            placeholder="내용"
+            placeholder="내용22"
             onChange={props.onChangeComments}
           ></BoardCommentContents>
           <BoardCommentButton onClick={props.onCommentSubmit}>
@@ -26,7 +26,7 @@ export default function MarketCommentWriteUI(props) {
         <>
           <BoardCommentUpdateContents
             name="contents"
-            placeholder="이랴이랴"
+            placeholder="수정내용"
             onChange={props.onChangeComments}
           ></BoardCommentUpdateContents>
           <BoardCommentButton onClick={props.onCommentEdit}>
