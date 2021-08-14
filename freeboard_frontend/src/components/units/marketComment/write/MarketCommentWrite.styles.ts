@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 
 export const BoardCommentWrapper = styled.div`
   width: 1200px;
+  margin-top: 100px;
   margin-left: 100px;
 `;
 

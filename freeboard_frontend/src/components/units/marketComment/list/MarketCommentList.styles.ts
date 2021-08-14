@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 
 export const MarketCommentList = styled.div`
   width: 1200px;
+  margin-left: 100px;
 `;
 
 export const Row = styled.div`

@@ -6,6 +6,6 @@ export const schema = yup.object().shape({
   contents: yup
     .string()
     .required("내용은 필수 입력입니다.")
-    .min(50, "50자 이상 입력해주세요"),
+    .min(10, "10자 이상 입력해주세요"),
   price: yup.number().required("가격은 필수 입력입니다."),
 });
