@@ -25,7 +25,7 @@ import {
 } from "./ProductDetail.styles";
 import DOMPurify from "dompurify";
 import Button01 from "../../../commons/buttons/Button01";
-
+import KakaomapDetail from "../../../commons/kakaomapDetail";
 export default function ProductDetailUI(props) {
   return (
     <Wrapper>
@@ -72,7 +72,7 @@ export default function ProductDetailUI(props) {
 
       <Hr></Hr>
       <MapWrapper>
-        <Map></Map>
+        <KakaomapDetail />
       </MapWrapper>
       <Hr></Hr>
       <ButtonWrapper>

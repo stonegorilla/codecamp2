@@ -36,6 +36,7 @@ import dynamic from "next/dynamic";
 import "react-quill/dist/quill.snow.css";
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 import Uploads01 from "../../../commons/uploads/01/Uploads01.container";
+import KakaomapWrite from "../../../commons/kakaomapWrite";
 
 export default function ProductWriteUI(props: any) {
   return (
@@ -97,7 +98,7 @@ export default function ProductWriteUI(props: any) {
         <MapGPSAddressWrapper>
           <MapWrapper>
             <Name>거래위치</Name>
-            <Img src="/marketpage/map.png"></Img>
+            <KakaomapWrite />
           </MapWrapper>
 
           <GPSAddressWrapper>

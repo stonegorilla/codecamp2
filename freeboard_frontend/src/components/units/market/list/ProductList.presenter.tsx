@@ -73,7 +73,9 @@ export default function MarketListUI(props) {
             </ItemLeftWrapper>
 
             <ItemRightWrapper>
-              <button onClick={props.onClickBasket(data)}>오늘본 상품</button>
+              <button onClick={props.onClickBasket(data)} id={data._id}>
+                상품 상세보기
+              </button>
               <Price>{data.price}원</Price>
             </ItemRightWrapper>
           </ItemWrapper>

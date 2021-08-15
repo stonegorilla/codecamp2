@@ -22,7 +22,7 @@ export default function MarketList() {
     console.log(items);
   }, []);
 
-  const onClickBasket = (basketData) => () => {
+  const onClickBasket = (basketData) => (event) => {
     console.log(basketData);
 
     const baskets = JSON.parse(localStorage.getItem("baskets") || "[]");
@@ -31,10 +31,14 @@ export default function MarketList() {
     baskets.forEach((data) => {
       if (data._id === basketData._id) isExists = true;
     });
-    if (isExists) return;
+    if (isExists) {
+      router.push(`/market/detail/${event.target.id}`);
+      return;
+    }
 
     baskets.push(basketData);
     localStorage.setItem("baskets", JSON.stringify(baskets));
+    router.push(`/market/detail/${event.target.id}`);
   };
 
   const aaa = () => {
