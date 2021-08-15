@@ -47,12 +47,16 @@ export default function ProductDetailUI(props) {
       </NameRemarksPriceWrapper>
 
       <PictureAllWrapper>
-        <MainPicture></MainPicture>
+        <MainPicture
+          src={`https://storage.googleapis.com/${props.data?.fetchUseditem.images?.[0]}`}
+        />
         <PictureWrapper>
-          <Picture></Picture>
-          <Picture></Picture>
-          <Picture></Picture>
-          <Picture></Picture>
+          {props.data?.fetchUseditem.images?.map((data: string) => (
+            <Picture
+              key={data}
+              src={`https://storage.googleapis.com/${data}`}
+            />
+          ))}
         </PictureWrapper>
       </PictureAllWrapper>
 

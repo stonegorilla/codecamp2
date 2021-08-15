@@ -14,9 +14,10 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { schema } from "./ProductWrite.validations";
 import ProductWriteUI from "./ProductWrite.presenter";
 import { CREATE_USED_ITEM } from "./ProductWrite.queries";
-
+import { UPLOAD_FILE } from "./ProductWrite.queries";
 export default function ProductWrite(props: IProps) {
   const [files, setFiles] = useState<(File | null)[]>([null, null, null]);
+  const [uploadFile] = useMutation(UPLOAD_FILE);
   const { register, handleSubmit, setValue, formState, trigger } = useForm({
     mode: "onChange",
     resolver: yupResolver(schema),
@@ -26,8 +27,11 @@ export default function ProductWrite(props: IProps) {
 
   async function onSubmit(data) {
     try {
-      console.log(data.name);
-      console.log(data.remarks);
+      const uploadFiles = files
+        .filter((data) => data)
+        .map((data) => uploadFile({ variables: { file: data } }));
+      const results = await Promise.all(uploadFiles);
+      const images = results.map((data) => data.data.uploadFile.url);
       const result = await createUsedItem({
         variables: {
           createUseditemInput: {
@@ -35,6 +39,7 @@ export default function ProductWrite(props: IProps) {
             remarks: data.remarks,
             contents: data.contents,
             price: data.price,
+            images: images,
           },
         },
       });

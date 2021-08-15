@@ -84,12 +84,12 @@ export const Seller = styled.div`
   font-size: 24px;
 `;
 
-export const MainPicture = styled.div`
+export const MainPicture = styled.img`
   width: 384px;
   height: 384px;
   background-color: black;
 `;
-export const Picture = styled.div`
+export const Picture = styled.img`
   width: 78px;
   height: 78px;
   margin-left: 12px;
