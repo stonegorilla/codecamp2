@@ -35,6 +35,7 @@ import InputContent2 from "../../../commons/inputs/inputcontent2";
 import dynamic from "next/dynamic";
 import "react-quill/dist/quill.snow.css";
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
+import Uploads01 from "../../../commons/uploads/01/Uploads01.container";
 
 export default function ProductWriteUI(props: any) {
   return (
@@ -122,7 +123,13 @@ export default function ProductWriteUI(props: any) {
 
         <PictureWrapper>
           <Name>사진첨부</Name>
-          <Box></Box>
+          {new Array(3).fill(1).map((data, index) => (
+            <Uploads01
+              key={`${data}_${index}`}
+              index={index}
+              onChangeFiles={props.onChangeFiles}
+            />
+          ))}
         </PictureWrapper>
 
         <Name>메인사진설정</Name>

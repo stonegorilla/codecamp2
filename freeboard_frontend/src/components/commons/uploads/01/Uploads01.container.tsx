@@ -1,16 +1,17 @@
-import { useRef, useState } from "react";
+import { ChangeEvent, useRef, useState } from "react";
 import { checkValidationFile } from "../../../../commons/libraries/validations";
 import Uploads01UI from "./Uploads01.presenter";
+import { IUploads01Props } from "./Uploads01.types";
 
-export default function Uploads01(props) {
-  const fileRef = useRef(null);
+export default function Uploads01(props: IUploads01Props) {
+  const fileRef = useRef<HTMLInputElement>(null);
   const [fileUrl, setFileUrl] = useState("");
 
   function onClickUpload() {
     fileRef.current?.click();
   }
 
-  async function onChangeFile(event) {
+  async function onChangeFile(event: ChangeEvent<HTMLInputElement>) {
     const file: any = event.target.files?.[0];
     if (!checkValidationFile(file)) return;
 
@@ -21,8 +22,6 @@ export default function Uploads01(props) {
       props.onChangeFiles(file, props.index);
     };
   }
-  // 그러면 위의 file을 어떻게 뽑느냐
-  // 아래와 같이 뽑는다.
 
   return (
     <Uploads01UI

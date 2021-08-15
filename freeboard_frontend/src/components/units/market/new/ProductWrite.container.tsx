@@ -16,6 +16,7 @@ import ProductWriteUI from "./ProductWrite.presenter";
 import { CREATE_USED_ITEM } from "./ProductWrite.queries";
 
 export default function ProductWrite(props: IProps) {
+  const [files, setFiles] = useState<(File | null)[]>([null, null, null]);
   const { register, handleSubmit, setValue, formState, trigger } = useForm({
     mode: "onChange",
     resolver: yupResolver(schema),
@@ -51,6 +52,12 @@ export default function ProductWrite(props: IProps) {
     trigger("contents");
     console.log(formState.errors.remarks);
   };
+
+  function onChangeFiles(file: File, index: number) {
+    const newFiles = [...files];
+    newFiles[index] = file;
+    setFiles(newFiles);
+  }
   return (
     <ProductWriteUI
       register={register}
@@ -59,6 +66,7 @@ export default function ProductWrite(props: IProps) {
       onChangeContents={onChangeContents}
       isActive={formState.isValid}
       errors={formState.errors}
+      onChangeFiles={onChangeFiles}
     />
   );
 }
