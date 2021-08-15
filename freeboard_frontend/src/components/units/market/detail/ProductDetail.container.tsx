@@ -11,7 +11,7 @@ export default function ProductDetail() {
   });
 
   const gotoMain = () => {
-    router.push("/boards");
+    router.push("/market/list");
   };
   if (typeof window === "undefined") return <></>;
   console.log(router.query.bbb);

@@ -1,7 +1,9 @@
 import LayoutNavigation from "../../../commons/banner/LayoutBanner.container";
 
 import {
+  WrapperAll,
   Wrapper,
+  WrapperRight,
   HeadWrapper,
   Head,
   BannerWrapper,
@@ -27,47 +29,65 @@ import {
   HeartNumber,
 } from "./ProductList.styles";
 
-export default function MarketListUI() {
+export default function MarketListUI(props) {
   return (
-    <Wrapper>
-      <HeadWrapper>
-        <Head>베스트 상품</Head>
-      </HeadWrapper>
-      <BannerWrapper>
-        <LayoutNavigation />
-      </BannerWrapper>
-      <MenuWrapper>
-        <TradingItemWrapper>
-          <TradingMenu>판매중 상품</TradingMenu>
-          <TradingMenu>판매된 상품</TradingMenu>
-        </TradingItemWrapper>
-        <SearchWrapper>도와주십시오</SearchWrapper>
-      </MenuWrapper>
-      <ItemWrapper>
-        <ItemLeftWrapper>
-          <Picture></Picture>
-          <ItemInfoWrapper>
-            <Name>삼성전자 갤럭시탭A 10.1</Name>
-            <Remarks>2019 LTE 32GB</Remarks>
-            <Tag>#삼성전자 # 갤럭시탭</Tag>
+    <WrapperAll>
+      <Wrapper>
+        <HeadWrapper>
+          <Head>베스트 상품</Head>
+        </HeadWrapper>
+        <BannerWrapper>
+          <LayoutNavigation />
+        </BannerWrapper>
+        <MenuWrapper>
+          <TradingItemWrapper>
+            <TradingMenu>판매중 상품</TradingMenu>
+            <TradingMenu>판매된 상품</TradingMenu>
+          </TradingItemWrapper>
+          <SearchWrapper>도와주십시오</SearchWrapper>
+        </MenuWrapper>
+        {props.item?.fetchUseditems.map((data) => (
+          <ItemWrapper key={data._id}>
+            <ItemLeftWrapper>
+              <Picture
+                src={`https://storage.googleapis.com/${data.images[0]}`}
+                onClick={props.detail}
+                id={data._id}
+              />
+              <ItemInfoWrapper>
+                <Name>{data.name}</Name>
+                <Remarks>{data.remarks}</Remarks>
+                <Tag>{data.tag}</Tag>
 
-            <SellerHeartWrapper>
-              <SellerWrapper>
-                <Avatar></Avatar>
-                <Seller>판매자</Seller>
-              </SellerWrapper>
-              <HeartWrapper>
-                <Heart></Heart>
-                <HeartNumber>20000</HeartNumber>
-              </HeartWrapper>
-            </SellerHeartWrapper>
-          </ItemInfoWrapper>
-        </ItemLeftWrapper>
+                <SellerHeartWrapper>
+                  <SellerWrapper>
+                    <Avatar></Avatar>
+                    <Seller>{data.seller.name}</Seller>
+                  </SellerWrapper>
+                  <HeartWrapper>
+                    <Heart></Heart>
+                    <HeartNumber>{data.pickedCount}</HeartNumber>
+                  </HeartWrapper>
+                </SellerHeartWrapper>
+              </ItemInfoWrapper>
+            </ItemLeftWrapper>
 
-        <ItemRightWrapper>
-          <Price>240120원</Price>
-        </ItemRightWrapper>
-      </ItemWrapper>
-    </Wrapper>
+            <ItemRightWrapper>
+              <button onClick={props.onClickBasket(data)}>오늘본 상품</button>
+              <Price>{data.price}원</Price>
+            </ItemRightWrapper>
+          </ItemWrapper>
+        ))}
+      </Wrapper>
+      <WrapperRight>
+        <div>오늘본 상품</div>
+        {props.baskets.map((data) => (
+          <div key={data._id}>
+            <span>{data.name}</span>
+            <span>{data.remarks}</span>
+          </div>
+        ))}
+      </WrapperRight>
+    </WrapperAll>
   );
 }

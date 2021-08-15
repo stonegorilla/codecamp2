@@ -1,11 +1,16 @@
 import styled from "@emotion/styled";
-
+export const WrapperAll = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
 export const Wrapper = styled.div`
   width: 1560px;
   padding-top: 80px;
   padding-left: 360px;
+  margin-right: 200px;
 `;
 
+export const WrapperRight = styled.div``;
 export const HeadWrapper = styled.div`
   width: 1300px;
   display: flex;
@@ -61,9 +66,10 @@ export const ItemLeftWrapper = styled.div`
   justify-content: space-between;
 `;
 
-export const Picture = styled.div`
+export const Picture = styled.img`
   width: 160px;
   height: 160px;
+  cursor: pointer;
   background-color: yellow;
 `;
 
