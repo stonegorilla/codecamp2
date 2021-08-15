@@ -11,7 +11,6 @@ import {
   TextAreaInputWrapper,
   Img,
   InputGPS,
-  InputAddress,
   Box,
   RadioButton,
   RadioLabel,
@@ -29,7 +28,7 @@ import {
 import { Modal } from "antd";
 import DaumPostcode from "react-daum-postcode";
 import Inputmain from "../../../commons/inputs/Inputmain";
-import InputContent from "../../../commons/inputs/inputcontext";
+import InputContent from "../../../commons/inputs/inputAddress";
 import Button01 from "../../../commons/buttons/Button01";
 import InputContent2 from "../../../commons/inputs/inputcontent2";
 import dynamic from "next/dynamic";
@@ -37,7 +36,7 @@ import "react-quill/dist/quill.snow.css";
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 import Uploads01 from "../../../commons/uploads/01/Uploads01.container";
 import KakaomapWrite from "../../../commons/kakaomapWrite";
-
+import InputAddress from "../../../commons/inputs/inputAddress";
 export default function ProductWriteUI(props: any) {
   return (
     <Wrapper>
@@ -98,26 +97,35 @@ export default function ProductWriteUI(props: any) {
         <MapGPSAddressWrapper>
           <MapWrapper>
             <Name>거래위치</Name>
-            <KakaomapWrite />
+            <KakaomapWrite setLatLag={props.setLatLag} />
           </MapWrapper>
 
           <GPSAddressWrapper>
             <GPSWrapper>
               <Name>GPS</Name>
               <LatLngWrapper>
-                <InputGPS placeholder="위도LAT" />
+                <InputGPS placeholder="경도LNG" value={props.latLag.lat} />
                 <LogoWrapper>
                   <Logo></Logo>
                 </LogoWrapper>
 
-                <InputGPS placeholder="위도LNG" />
+                <InputGPS placeholder="위도LAT" value={props.latLag.lag} />
               </LatLngWrapper>
             </GPSWrapper>
 
             <AddressWrapper>
-              <Name>주소</Name>
-              <InputAddress />
-              <InputAddress />
+              <InputAddress
+                inputName="주소"
+                type="text"
+                register={{ ...props.register("address") }}
+                errorMessage={props.errors.address?.message}
+              />
+              <InputAddress
+                inputName="상세주소"
+                type="text"
+                register={{ ...props.register("addressdetail") }}
+                errorMessage={props.errors.addressdetail?.message}
+              />
             </AddressWrapper>
           </GPSAddressWrapper>
         </MapGPSAddressWrapper>

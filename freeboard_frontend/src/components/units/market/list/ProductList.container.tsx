@@ -1,14 +1,19 @@
 import MarketListUI from "./ProductList.presenter";
 import { useRouter } from "next/router";
-import { useQuery } from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
 import { useState, useEffect } from "react";
-import { FETCH_USER_LOGGED_IN, FETCH_USED_ITEMS } from "./ProductList.queries";
+import {
+  FETCH_USER_LOGGED_IN,
+  FETCH_USED_ITEMS,
+  TOGGLE_USED_ITEM_PICK,
+} from "./ProductList.queries";
 export default function MarketList() {
   const router = useRouter();
 
   const { data } =
     useQuery<Pick<IQuery, "fetchUserLoggedIn">>(FETCH_USER_LOGGED_IN);
-  const { data: item } = useQuery(FETCH_USED_ITEMS);
+  const { data: item, refetch } = useQuery(FETCH_USED_ITEMS);
+  const [toggleitem] = useMutation(TOGGLE_USED_ITEM_PICK);
   const [baskets, setBaskets] = useState([]);
   // useEffect(() => {
   //   if (!accessToken) {
@@ -48,6 +53,17 @@ export default function MarketList() {
   const detail = (event) => {
     router.push(`/market/detail/${event.target.id}`);
   };
+
+  const toggle = async (event) => {
+    await toggleitem({
+      variables: { useditemId: event.target.id },
+      refetchQueries: [
+        {
+          query: FETCH_USED_ITEMS,
+        },
+      ],
+    });
+  };
   return (
     <MarketListUI
       data={data}
@@ -56,6 +72,7 @@ export default function MarketList() {
       onClickBasket={onClickBasket}
       aaa={aaa}
       detail={detail}
+      toggle={toggle}
     />
   );
 }

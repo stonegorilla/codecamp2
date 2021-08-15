@@ -9,6 +9,23 @@ export const FETCH_USED_ITEM = gql`
       contents
       price
       images
+      seller {
+        name
+      }
+      useditemAddress {
+        address
+        addressDetail
+        lat
+        lng
+      }
+    }
+  }
+`;
+
+export const CREATE_POINT_TRANSACTION_OF_BUYING_AND_SELLING = gql`
+  mutation cP($useritemId: ID!) {
+    createPointTransactionOfBuyingAndSelling(useritemId: $useritemId) {
+      name
     }
   }
 `;

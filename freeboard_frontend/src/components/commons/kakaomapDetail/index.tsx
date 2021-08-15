@@ -5,7 +5,7 @@ declare const window: typeof globalThis & {
   kakao: any;
 };
 
-export default function KakaomapDetail() {
+export default function KakaomapDetail(props) {
   useEffect(() => {
     const script = document.createElement("script");
     script.src =
@@ -17,8 +17,8 @@ export default function KakaomapDetail() {
         const options = {
           // 지도를 생성할 때 필요한 기본 옵션
           center: new window.kakao.maps.LatLng(
-            37.48535119467572,
-            126.90157254106144
+            props.data.fetchUseditem.useditemAddress.lng,
+            props.data.fetchUseditem.useditemAddress.lat
           ), // 지도의 중심좌표.
           level: 3, // 지도의 레벨(확대, 축소 정도)
         };
@@ -27,8 +27,8 @@ export default function KakaomapDetail() {
 
         // 마커가 표시될 위치입니다
         const markerPosition = new window.kakao.maps.LatLng(
-          37.48535119467572,
-          126.90157254106144
+          props.data.fetchUseditem.useditemAddress.lng,
+          props.data.fetchUseditem.useditemAddress.lat
         );
 
         // 마커를 생성합니다

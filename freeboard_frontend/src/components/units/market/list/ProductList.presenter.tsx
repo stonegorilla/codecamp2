@@ -65,7 +65,7 @@ export default function MarketListUI(props) {
                     <Seller>{data.seller.name}</Seller>
                   </SellerWrapper>
                   <HeartWrapper>
-                    <Heart></Heart>
+                    <Heart onClick={props.toggle} id={data._id}></Heart>
                     <HeartNumber>{data.pickedCount}</HeartNumber>
                   </HeartWrapper>
                 </SellerHeartWrapper>
@@ -77,6 +77,7 @@ export default function MarketListUI(props) {
                 상품 상세보기
               </button>
               <Price>{data.price}원</Price>
+              <Price>{data.buyer?.name}</Price>
             </ItemRightWrapper>
           </ItemWrapper>
         ))}

@@ -33,7 +33,7 @@ export default function JoinContainer() {
         ? ""
         : "제대로된 이메일 적으세요",
       name: inputs.name ? "" : "이름은 있어야지요",
-      password: /^[a-zA-Z0-9]{8,16}$/.test(inputs.password)
+      password: /^[a-zA-Z0-9]{1,16}$/.test(inputs.password)
         ? ""
         : "8자리 이상 16자리 이하를 써주세요",
       repassword:

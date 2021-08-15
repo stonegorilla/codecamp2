@@ -4,9 +4,9 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: row;
 `;
-export const Input = styled.textarea`
-  width: 996px;
-  height: 480px;
+export const Input = styled.input`
+  width: 588px;
+  height: 52px;
 `;
 
 export const Name = styled.div`
@@ -17,7 +17,7 @@ export const NameRed = styled.div`
   font-size: 16px;
 `;
 
-export default function InputContent(props) {
+export default function InputAddress(props) {
   return (
     <>
       <Wrapper>

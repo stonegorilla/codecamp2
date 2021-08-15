@@ -30,3 +30,9 @@ export const FETCH_USER_LOGGED_IN = gql`
     }
   }
 `;
+
+export const TOGGLE_USED_ITEM_PICK = gql`
+  mutation tU($useditemId: ID!) {
+    toggleUseditemPick(useditemId: $useditemId)
+  }
+`;

@@ -18,6 +18,7 @@ import { UPLOAD_FILE } from "./ProductWrite.queries";
 export default function ProductWrite(props: IProps) {
   const [files, setFiles] = useState<(File | null)[]>([null, null, null]);
   const [uploadFile] = useMutation(UPLOAD_FILE);
+  const [latLag, setLatLag] = useState({ lat: 0, lag: 0 });
   const { register, handleSubmit, setValue, formState, trigger } = useForm({
     mode: "onChange",
     resolver: yupResolver(schema),
@@ -39,6 +40,12 @@ export default function ProductWrite(props: IProps) {
             remarks: data.remarks,
             contents: data.contents,
             price: data.price,
+            useditemAddress: {
+              address: data.address,
+              addressDetail: data.addressdetail,
+              lat: latLag.lat,
+              lng: latLag.lag,
+            },
             images: images,
           },
         },
@@ -72,6 +79,8 @@ export default function ProductWrite(props: IProps) {
       isActive={formState.isValid}
       errors={formState.errors}
       onChangeFiles={onChangeFiles}
+      latLag={latLag}
+      setLatLag={setLatLag}
     />
   );
 }

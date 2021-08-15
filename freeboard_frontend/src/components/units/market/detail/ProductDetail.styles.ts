@@ -15,7 +15,7 @@ export const Wrapper = styled.div`
 export const AvatarWrapper = styled.div`
   display: flex;
   flex-direction: row;
-  align-items: center;
+  justify-content: space-between;
 `;
 export const NameRemarksWrapper = styled.div`
   height: 67px;
@@ -34,6 +34,15 @@ export const NameRemarksPriceWrapper = styled.div`
 
 export const Avatar = styled.img`
   margin-right: 10px;
+`;
+
+export const AvatarLeft = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+export const AvatarRight = styled.div`
+  display: flex;
+  flex-direction: row;
 `;
 
 export const Info = styled.div`
@@ -83,7 +92,11 @@ export const Seller = styled.div`
   font-weight: 500;
   font-size: 24px;
 `;
-
+export const Buyer = styled.div`
+  height: 36px;
+  font-weight: 500;
+  font-size: 24px;
+`;
 export const MainPicture = styled.img`
   width: 384px;
   height: 384px;

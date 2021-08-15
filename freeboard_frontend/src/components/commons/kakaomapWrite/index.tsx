@@ -1,13 +1,16 @@
 import Head from "next/head";
+import { useState } from "react";
+
 import { useEffect } from "react";
 
 declare const window: typeof globalThis & {
   kakao: any;
 };
 
-export default function KakaomapWrite() {
+export default function KakaomapWrite(props) {
   useEffect(() => {
     const script = document.createElement("script");
+
     script.src =
       "//dapi.kakao.com/v2/maps/sdk.js?appkey=75ce13618a2a3161330793fa9b482a47&autoload=false";
     document.head.appendChild(script);
@@ -41,25 +44,28 @@ export default function KakaomapWrite() {
 
         // 지도에 클릭 이벤트를 등록합니다
         // 지도를 클릭하면 마지막 파라미터로 넘어온 함수를 호출합니다
+
         window.kakao.maps.event.addListener(
           map,
           "click",
           function (mouseEvent: { latLng: any }) {
             // 클릭한 위도, 경도 정보를 가져옵니다
             const latlng = mouseEvent.latLng;
-            console.log(latlng);
+
             // 마커 위치를 클릭한 위치로 옮깁니다
             marker.setPosition(latlng);
+            console.log(latlng);
+            props.setLatLag({ lat: latlng.La, lag: latlng.Ma });
+            // var message = "클릭한 위치의 위도는 " + latlng.getLat() + " 이고, ";
+            // message += "경도는 " + latlng.getLng() + " 입니다";
 
-            //   var message = "클릭한 위치의 위도는 " + latlng.getLat() + " 이고, ";
-            //   message += "경도는 " + latlng.getLng() + " 입니다";
-
-            //   var resultDiv = document.getElementById("clickLatlng");
-            //   resultDiv.innerHTML = message;
+            // var resultDiv = document.getElementById("clickLatlng");
+            // resultDiv.innerHTML = message;
           }
         );
       });
     };
+    console.log(script.onload);
   }, []);
 
   return (
@@ -71,6 +77,7 @@ export default function KakaomapWrite() {
         ></script>
       </Head>
       <div id="map" style={{ width: "384px", height: "292px" }}></div>
+      <div>뭐하세요</div>
     </>
   );
 }

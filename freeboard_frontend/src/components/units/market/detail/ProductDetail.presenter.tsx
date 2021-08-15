@@ -2,8 +2,11 @@ import {
   Wrapper,
   AvatarWrapper,
   Avatar,
+  AvatarLeft,
+  AvatarRight,
   Info,
   Seller,
+  Buyer,
   Date,
   Hr,
   NameRemarksWrapper,
@@ -30,11 +33,27 @@ export default function ProductDetailUI(props) {
   return (
     <Wrapper>
       <AvatarWrapper>
-        <Avatar src="/boardpage/avatar.png" />
-        <Info>
-          <Seller>{props.data ? props.data.fetchUseditem.name : "111"}</Seller>
-          <Date>{props.data ? props.data.fetchUseditem.remarks : "12121"}</Date>
-        </Info>
+        <AvatarLeft>
+          <Avatar src="/boardpage/avatar.png" />
+          <Info>
+            <Seller>
+              {props.data ? props.data.fetchUseditem.seller.name : "111"}
+            </Seller>
+            <Date>
+              {props.data ? props.data.fetchUseditem.remarks : "12121"}
+            </Date>
+          </Info>
+        </AvatarLeft>
+        <AvatarRight>
+          <Buyer>
+            구입자:
+            {props.data
+              ? props.data.fetchUseditem.buyer
+                ? props.data.fetchUseditem.buyer.name
+                : "244"
+              : "343"}
+          </Buyer>
+        </AvatarRight>
       </AvatarWrapper>
 
       <Hr></Hr>
@@ -72,13 +91,13 @@ export default function ProductDetailUI(props) {
 
       <Hr></Hr>
       <MapWrapper>
-        <KakaomapDetail />
+        <KakaomapDetail data={props.data} />
       </MapWrapper>
       <Hr></Hr>
       <ButtonWrapper>
         <ButtonRow>
           <Button01 buttonName="목록으로" gotowhere={props.gotoMain} />
-          <Button01 buttonName="구매하기" />
+          <Button01 buttonName="구매하기" gotowhere={props.purchase} />
         </ButtonRow>
       </ButtonWrapper>
     </Wrapper>
