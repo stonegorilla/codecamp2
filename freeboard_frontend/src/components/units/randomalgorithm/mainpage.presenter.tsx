@@ -9,6 +9,7 @@ export default function RandomAlgorithmPresenter(props) {
       <List>yacht</List>
       <List>계산기</List>
       <List onClick={props.Dices}>주사위 n 개 던지기</List>
+      <List onClick={props.Automation}>자동화</List>
     </Wrapper>
   );
 }

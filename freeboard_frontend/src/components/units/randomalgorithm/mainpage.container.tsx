@@ -11,5 +11,14 @@ export default function RandomAlgorithmContainer() {
   function Dices() {
     router.push(`/randomalgorithm/dices`);
   }
-  return <RandomAlgorithmPresenter Lotto={Lotto} Dices={Dices} />;
+  function Automation() {
+    router.push("/randomalgorithm/automation");
+  }
+  return (
+    <RandomAlgorithmPresenter
+      Lotto={Lotto}
+      Dices={Dices}
+      Automation={Automation}
+    />
+  );
 }

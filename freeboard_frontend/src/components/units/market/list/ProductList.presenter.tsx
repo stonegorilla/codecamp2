@@ -50,11 +50,21 @@ export default function MarketListUI(props) {
         {props.item?.fetchUseditems.map((data) => (
           <ItemWrapper key={data._id}>
             <ItemLeftWrapper>
-              <Picture
-                src={`https://storage.googleapis.com/${data.images[0]}`}
-                onClick={props.detail}
-                id={data._id}
-              />
+              {data.images[0] && (
+                <Picture
+                  src={`https://storage.googleapis.com/${data.images[0]}`}
+                  onClick={props.detail}
+                  id={data._id}
+                />
+              )}
+              {!data.images[0] && (
+                <Picture
+                  src={`/marketpage/noimage.png`}
+                  onClick={props.detail}
+                  id={data._id}
+                />
+              )}
+
               <ItemInfoWrapper>
                 <Name>{data.name}</Name>
                 <Remarks>{data.remarks}</Remarks>
