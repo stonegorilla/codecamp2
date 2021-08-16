@@ -6,6 +6,7 @@ import {
   FETCH_USER_LOGGED_IN,
   FETCH_USED_ITEMS,
   TOGGLE_USED_ITEM_PICK,
+  FETCH_USED_ITEM_OF_THE_BEST,
 } from "./ProductList.queries";
 export default function MarketList() {
   const router = useRouter();
@@ -13,6 +14,7 @@ export default function MarketList() {
   const { data } =
     useQuery<Pick<IQuery, "fetchUserLoggedIn">>(FETCH_USER_LOGGED_IN);
   const { data: item, refetch } = useQuery(FETCH_USED_ITEMS);
+  const { data: best } = useQuery(FETCH_USED_ITEM_OF_THE_BEST);
   const [toggleitem] = useMutation(TOGGLE_USED_ITEM_PICK);
   const [baskets, setBaskets] = useState([]);
   // useEffect(() => {
@@ -64,10 +66,13 @@ export default function MarketList() {
       ],
     });
   };
+  console.log(best);
+  console.log(best?.fetchUseditemsOfTheBest[0].images[0]);
   return (
     <MarketListUI
       data={data}
       item={item}
+      best={best}
       baskets={baskets}
       onClickBasket={onClickBasket}
       aaa={aaa}

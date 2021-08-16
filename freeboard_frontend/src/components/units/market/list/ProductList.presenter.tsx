@@ -1,3 +1,4 @@
+import BuildManifestPlugin from "next/dist/build/webpack/plugins/build-manifest-plugin";
 import LayoutNavigation from "../../../commons/banner/LayoutBanner.container";
 
 import {
@@ -37,7 +38,7 @@ export default function MarketListUI(props) {
           <Head>베스트 상품</Head>
         </HeadWrapper>
         <BannerWrapper>
-          <LayoutNavigation />
+          <LayoutNavigation best={props.best} />
         </BannerWrapper>
         <MenuWrapper>
           <TradingItemWrapper>

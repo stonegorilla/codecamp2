@@ -12,7 +12,7 @@ import {
   SliderImage6,
 } from "./LayoutBanner.styles";
 
-export default function LayoutBannerUI() {
+export default function LayoutBannerUI(props) {
   const settings = {
     dots: false,
     infinite: true,
@@ -29,23 +29,26 @@ export default function LayoutBannerUI() {
     <Wrapper>
       <Slider {...settings}>
         <SliderImage1>
-          <h1>FREEBOARD</h1>
+          <img
+            src={`https://storage.googleapis.com/${props.best?.fetchUseditemsOfTheBest[0].images[0]}`}
+          />
         </SliderImage1>
         <SliderImage2>
-          <h1>MARKET</h1>
+          <img
+            src={`https://storage.googleapis.com/${props.best?.fetchUseditemsOfTheBest[1].images[0]}`}
+          />
         </SliderImage2>
         <SliderImage3>
-          <h1>MYPAGE</h1>
+          <img
+            src={`https://storage.googleapis.com/${props.best?.fetchUseditemsOfTheBest[2].images[0]}`}
+          />
         </SliderImage3>
         <SliderImage4>
-          <h1>RANDOMALGORITHM</h1>
+          <img
+            src={`https://storage.googleapis.com/${props.best?.fetchUseditemsOfTheBest[3].images[0]}`}
+          />
         </SliderImage4>
-        <SliderImage5>
-          <h1>DATABASE</h1>
-        </SliderImage5>
-        <SliderImage6>
-          <h1>CODECAMP</h1>
-        </SliderImage6>
+
         {/* 예네들을 안쪽에 옮길 수 있는 방법은 없나  */}
         {/* https://react-slick.neostack.com/docs/example/custom-paging/ */}
       </Slider>

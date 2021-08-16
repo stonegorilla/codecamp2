@@ -36,3 +36,12 @@ export const TOGGLE_USED_ITEM_PICK = gql`
     toggleUseditemPick(useditemId: $useditemId)
   }
 `;
+
+export const FETCH_USED_ITEM_OF_THE_BEST = gql`
+  query fuiotb {
+    fetchUseditemsOfTheBest {
+      name
+      images
+    }
+  }
+`;
