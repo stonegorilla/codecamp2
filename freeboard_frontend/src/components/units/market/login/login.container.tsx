@@ -53,7 +53,7 @@ export default function LoginContainer() {
 
         // console.log(result.data?.loginUser.accessToken);
         alert("로그인성공");
-        router.push("/market/loginsuccess");
+        router.push("/market/list");
       } catch (error) {
         alert(error.message);
       }
