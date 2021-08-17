@@ -46,12 +46,13 @@ export default function LoginContainer() {
         });
 
         setAccessToken(result.data?.loginUser.accessToken || "");
-        localStorage.setItem(
-          "accessToken",
-          result.data?.loginUser.accessToken || ""
-        );
+        // localStorage.setItem(
+        //   "accessToken",
+        //   result.data?.loginUser.accessToken || ""
+        // );
 
-        // console.log(result.data?.loginUser.accessToken);
+        localStorage.setItem("refreshToken", "true");
+
         alert("로그인성공");
         router.push("/market/list");
       } catch (error) {

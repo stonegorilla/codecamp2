@@ -25,23 +25,45 @@ export const Row = styled.div`
 
 export const ColumnIndex = styled.div`
   width: 10%;
+  border: 1px solid;
 `;
 
 export const ColumnTitle = styled.div`
   width: 30%;
+  border: 1px solid;
 `;
 export const ColumnIsSold = styled.div`
   width: 15%;
   color: green;
+  border: 1px solid black;
 `;
 export const ColumnPrice = styled.div`
   width: 15%;
+  border: 1px solid;
 `;
 
 export const ColumnSeller = styled.div`
   width: 15%;
+  border: 1px solid;
 `;
-
 export const ColumnDate = styled.div`
   width: 15%;
+  border: 1px solid;
+`;
+export const ColumnPointDate = styled.div`
+  width: 25%;
+  border: 1px solid;
+`;
+export const ColumnPointIdOrItem = styled.div`
+  width: 25%;
+  border: 1px solid;
+`;
+export const ColumnPointAmount = styled.div`
+  width: 25%;
+  border: 1px solid;
+`;
+
+export const ColumnPointBalance = styled.div`
+  width: 25%;
+  border: 1px solid;
 `;
