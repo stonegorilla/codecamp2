@@ -8,13 +8,20 @@ import {
   Page,
   PageWrapper,
   BoardNewWrapper,
+  TextToken,
 } from "./BoardList.styles";
-
+import Paginations01 from "../../../commons/paginations/01/Paginations01.container";
+import Searchbars01 from "../../../commons/searchbars/Searchbars01.container";
 import { getDates } from "../../../../commons/libraries/utils";
+import { v4 as uuidv4 } from "uuid";
 
 export default function BoardListUI(props) {
   return (
     <Wrapper>
+      <Searchbars01
+        refetch={props.refetch}
+        onChangeKeyword={props.onChangeKeyword}
+      />
       <Wrapper1>
         <Row>
           <Column>
@@ -33,8 +40,18 @@ export default function BoardListUI(props) {
             </Column>
             {/* <Column>{index}</Column> */}
             <Column>{data.writer}</Column>
-            <ColumnTitle onClick={props.onClickPage} id={data._id}>
+            {/* <ColumnTitle onClick={props.onClickPage} id={data._id}>
               {data.title}
+            </ColumnTitle> */}
+            <ColumnTitle id={data._id} onClick={props.onClickMoveToBoardDetail}>
+              {data.title
+                .replaceAll(props.keyword, `@#$%${props.keyword}@#$%`)
+                .split("@#$%")
+                .map((data) => (
+                  <TextToken key={uuidv4()} isMatched={props.keyword === data}>
+                    {data}
+                  </TextToken>
+                ))}
             </ColumnTitle>
             {/* 이벤트 핸들러 함수 */}
             {/* <span>{data.contents}</span> */}

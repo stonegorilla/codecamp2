@@ -56,3 +56,7 @@ export const PageWrapper = styled.div`
   display: flex;
   justify-content: space-between;
 `;
+
+export const TextToken = styled.span`
+  color: ${(props: ITextTokenProps) => (props.isMatched ? "red" : "black")};
+`;

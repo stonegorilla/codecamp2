@@ -9,6 +9,7 @@ import { useState } from "react";
 export default function BoardList() {
   const router = useRouter();
   const [startPage, setStartPage] = useState(1);
+  const [keyword, setKeyword] = useState("");
   const { data, refetch } = useQuery(FETCH_BOARDS, {
     variables: { page: startPage },
   });
@@ -49,9 +50,15 @@ export default function BoardList() {
   function gotoBoardNew() {
     router.push("/boards/new");
   }
+
+  function onChangeKeyword(value) {
+    setKeyword(value);
+  }
   return (
     <BoardListUI
       Delete={onClickDelete}
+      refetch={refetch}
+      keyword={keyword}
       qqq={data}
       onClickPage={onClickPage}
       onClickPageNumber={onClickPageNumber}
@@ -60,6 +67,7 @@ export default function BoardList() {
       onClickPrevPage={onClickPrevPage}
       onClickNextPage={onClickNextPage}
       gotoBoardNew={gotoBoardNew}
+      onChangeKeyword={onChangeKeyword}
     />
   );
 }
