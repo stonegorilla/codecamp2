@@ -76,7 +76,11 @@ export default function MarketListUI(props) {
                     <Seller>{data.seller.name}</Seller>
                   </SellerWrapper>
                   <HeartWrapper>
-                    <Heart onClick={props.toggle} id={data._id}></Heart>
+                    <Heart
+                      istoggled={props.istoggled}
+                      onClick={props.toggle}
+                      id={data._id}
+                    ></Heart>
                     <HeartNumber>{data.pickedCount}</HeartNumber>
                   </HeartWrapper>
                 </SellerHeartWrapper>

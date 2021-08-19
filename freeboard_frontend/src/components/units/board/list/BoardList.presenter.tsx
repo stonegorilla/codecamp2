@@ -2,6 +2,7 @@ import {
   Wrapper,
   Wrapper1,
   Row,
+  RowBold,
   Column,
   ColumnTitle,
   Button,
@@ -9,63 +10,63 @@ import {
   PageWrapper,
   BoardNewWrapper,
   TextToken,
+  SearchWrapper,
 } from "./BoardList.styles";
 import Paginations01 from "../../../commons/paginations/01/Paginations01.container";
 import Searchbars01 from "../../../commons/searchbars/Searchbars01.container";
 import { getDates } from "../../../../commons/libraries/utils";
 import { v4 as uuidv4 } from "uuid";
 
+export interface ITextTokenProps {
+  isMatched: boolean;
+}
+
 export default function BoardListUI(props) {
   return (
     <Wrapper>
-      <Searchbars01
-        refetch={props.refetch}
-        onChangeKeyword={props.onChangeKeyword}
-      />
+      <SearchWrapper>
+        <Searchbars01
+          refetch={props.refetch}
+          onChangeKeyword={props.onChangeKeyword}
+        />
+      </SearchWrapper>
+
       <Wrapper1>
-        <Row>
+        <RowBold>
           <Column>
-            <input type="checkbox" />
+            <b>번호</b>
           </Column>
           {/* <Column>번호</Column> */}
-          <Column>작성자</Column>
-          <Column>제목</Column>
+          <Column>
+            <b>작성자</b>
+          </Column>
+          <ColumnTitle>
+            <b>제목</b>
+          </ColumnTitle>
           {/* <span>{data.contents}</span> */}
-          <Column>작성일</Column>
-        </Row>
-        {props.qqq?.fetchBoards.map((data, index) => (
-          <Row key={data._id}>
-            <Column>
-              <input type="checkbox" />
-            </Column>
-            {/* <Column>{index}</Column> */}
-            <Column>{data.writer}</Column>
-            {/* <ColumnTitle onClick={props.onClickPage} id={data._id}>
-              {data.title}
-            </ColumnTitle> */}
-            <ColumnTitle id={data._id} onClick={props.onClickMoveToBoardDetail}>
-              {data.title
-                .replaceAll(props.keyword, `@#$%${props.keyword}@#$%`)
-                .split("@#$%")
-                .map((data) => (
-                  <TextToken key={uuidv4()} isMatched={props.keyword === data}>
-                    {data}
-                  </TextToken>
-                ))}
-            </ColumnTitle>
-            {/* 이벤트 핸들러 함수 */}
-            {/* <span>{data.contents}</span> */}
-            <Column>{getDates(data.createdAt)}</Column>
-            <Column>
-              <Button id={data._id} onClick={props.Delete}>
-                삭제하기
-              </Button>
-            </Column>
-          </Row>
-        ))}
+          <Column>
+            <b>작성일</b>
+          </Column>
+        </RowBold>
+        {props.qqq?.fetchBoards
+          .filter((data) => data.title.includes(props.keyword))
+          .map((data, index) => (
+            <Row key={data._id}>
+              <Column>{index + 1}</Column>
+
+              <Column>{data.writer}</Column>
+              <ColumnTitle onClick={props.onClickPage} id={data._id}>
+                {data.title}
+              </ColumnTitle>
+
+              {/* 이벤트 핸들러 함수 */}
+              {/* <span>{data.contents}</span> */}
+              <Column>{getDates(data.createdAt)}</Column>
+            </Row>
+          ))}
       </Wrapper1>
       <PageWrapper>
-        <Page onClick={props.onClickPrevPage}>이전</Page>
+        {/* <Page onClick={props.onClickPrevPage}>이전</Page>
         {[1, 1, 1, 4, 5, 6, 7, 8, 9, 10].map((_, index) => {
           const currentPage = props.startPage + index;
           return (
@@ -81,8 +82,15 @@ export default function BoardListUI(props) {
           );
         })}
 
-        <Page onClick={props.onClickNextPage}>다음</Page>
+        <Page onClick={props.onClickNextPage}>다음</Page> */}
+        <Paginations01
+          refetch={props.refetch}
+          count={props.pageBoardCount?.fetchBoardsCount}
+          startPage={props.startPage}
+          setStartPage={props.setStartPage}
+        />
       </PageWrapper>
+
       <BoardNewWrapper>
         <Button onClick={props.gotoBoardNew}>게시물 등록</Button>
       </BoardNewWrapper>

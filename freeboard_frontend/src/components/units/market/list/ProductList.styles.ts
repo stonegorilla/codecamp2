@@ -140,7 +140,10 @@ export const HeartWrapper = styled.div`
 export const Heart = styled.div`
   width: 20px;
   height: 18.35px;
-  background-image: url("/marketpage/heart.png");
+  background-image: ${(props) =>
+    props.istoggled
+      ? "url(/marketpage/heart.png)"
+      : "url(/marketpage/heartbroken.png)"};
   background-size: 100%;
 `;
 export const HeartNumber = styled.div`

@@ -25,8 +25,6 @@
 
 // console.log(classmates5)
 
-
-
 // const classmates6 = [
 //     {name: "철수", age : 13},
 //     {name: "영희", age : 10},
@@ -62,7 +60,6 @@
 
 // console.log(classmates12)
 
-
 // const classmates13 = [
 //     {age:10},
 //     {age:13},
@@ -85,7 +82,6 @@
 // console.log(classmates16)
 // console.log(classmates17)
 // console.log(classmates18)
-
 
 // const classmates19 = [
 //     { name : "철수", age : 10, school:"토끼초등학교"},
@@ -112,52 +108,49 @@
 // const classmates24 = classmates23.filter(data=>data.school === "토끼초등학교")
 // const classmates25 = classmates24.map(data=>({...data, candy: 10}))
 
-
 // const classmates26 = classmates23.filter(data=>data.school === "다람쥐초등학교").map(data=>({...data, name :data.name+"어린이"}))
 // // ...data 되게 유용하네 정말 작은 것 하나 바꿔야 할때, 다른것은 그대로 둬야 하는데 , 이때 ...data가 많이 쓰인다.
 // console.log(classmates25)
 // console.log(classmates26)
 
 const fruits = [
-    { number: 1, title: "레드향" },
-    { number: 2, title: "샤인머스켓" },
-    { number: 3, title: "산청딸기" },
-    { number: 4, title: "한라봉" },
-    { number: 5, title: "사과" },
-    { number: 6, title: "애플망고" },
-    { number: 7, title: "딸기" },
-    { number: 8, title: "천혜향" },
-    { number: 9, title: "과일선물세트" },
-    { number: 10, title: "귤" },
-  ]
+  { number: 1, title: "레드향" },
+  { number: 2, title: "샤인머스켓" },
+  { number: 3, title: "산청딸기" },
+  { number: 4, title: "한라봉" },
+  { number: 5, title: "사과" },
+  { number: 6, title: "애플망고" },
+  { number: 7, title: "딸기" },
+  { number: 8, title: "천혜향" },
+  { number: 9, title: "과일선물세트" },
+  { number: 10, title: "귤" },
+];
 
-fruits1 = []
-fruits2 = []
+fruits1 = [];
+fruits2 = [];
 
-for(var i=0; i<10; i++){
-  if( i%2 === 1){
-    fruits1.push({number: fruits[i].number, title : fruits[i].title })
+for (var i = 0; i < 10; i++) {
+  if (i % 2 === 1) {
+    fruits1.push({ number: fruits[i].number, title: fruits[i].title });
   }
 }
-console.log(fruits1)
+console.log(fruits1);
 // 겁나게 복잡하다.
 
-
-for(var i=0; i<10; i++){
-  if(i<5){
-    fruits2.push({number: fruits[i].number, title : fruits[i].title})
+for (var i = 0; i < 10; i++) {
+  if (i < 5) {
+    fruits2.push({ number: fruits[i].number, title: fruits[i].title });
   }
 }
-console.log(fruits2)
-  fruits3 = fruits.filter(data => data.number% 2 ===0)
-  console.log(fruits3)
+console.log(fruits2);
+fruits3 = fruits.filter((data) => data.number % 2 === 0);
+console.log(fruits3);
 
-  fruits4 = fruits.filter(data => data.number<= 5)
-  console.log(fruits4)
+fruits4 = fruits.filter((data) => data.number <= 5);
+console.log(fruits4);
 
+// fruits1 = fruits.filter(data=>false)
+// console.log(fruits1)
 
-  // fruits1 = fruits.filter(data=>false)
-  // console.log(fruits1)
-
-  // fruits2 = fruits.filter(data=>true)
-  // console.log(fruits2)
+// fruits2 = fruits.filter(data=>true)
+// console.log(fruits2)

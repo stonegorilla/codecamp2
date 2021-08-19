@@ -12,6 +12,10 @@ export const FETCH_USED_ITEM = gql`
       seller {
         name
       }
+      buyer {
+        name
+      }
+
       useditemAddress {
         address
         addressDetail
@@ -26,6 +30,21 @@ export const CREATE_POINT_TRANSACTION_OF_BUYING_AND_SELLING = gql`
   mutation cP($useritemId: ID!) {
     createPointTransactionOfBuyingAndSelling(useritemId: $useritemId) {
       name
+    }
+  }
+`;
+
+export const FETCH_USED_ITEMS_I_PICKED = gql`
+  query fetchUseditemsIPicked {
+    fetchUseditemsIPicked {
+      _id
+      name
+      soldAt
+      createdAt
+      seller {
+        name
+      }
+      price
     }
   }
 `;

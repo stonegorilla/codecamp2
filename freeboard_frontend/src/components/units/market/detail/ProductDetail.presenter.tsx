@@ -25,6 +25,7 @@ import {
   MapWrapper,
   ButtonWrapper,
   ButtonRow,
+  Heart,
 } from "./ProductDetail.styles";
 import DOMPurify from "dompurify";
 import Button01 from "../../../commons/buttons/Button01";
@@ -45,6 +46,7 @@ export default function ProductDetailUI(props) {
           </Info>
         </AvatarLeft>
         <AvatarRight>
+          <Heart istoggled={props.istoggled}></Heart>
           <Buyer>
             구입자:
             {props.data
@@ -90,9 +92,7 @@ export default function ProductDetailUI(props) {
       </TagsWrapper>
 
       <Hr></Hr>
-      <MapWrapper>
-        <KakaomapDetail data={props.data} />
-      </MapWrapper>
+      <MapWrapper>{/* <KakaomapDetail data={props.data} /> */}</MapWrapper>
       <Hr></Hr>
       <ButtonWrapper>
         <ButtonRow>

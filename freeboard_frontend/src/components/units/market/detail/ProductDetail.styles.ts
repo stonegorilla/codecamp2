@@ -162,3 +162,13 @@ export const ButtonRow = styled.div`
   display: flex;
   justify-content: space-between;
 `;
+
+export const Heart = styled.div`
+  width: 20px;
+  height: 18.35px;
+  background-image: ${(props) =>
+    props.istoggled
+      ? "url(/marketpage/heartbroken.png)"
+      : "url(/marketpage/heart.png)"};
+  background-size: 100%;
+`;

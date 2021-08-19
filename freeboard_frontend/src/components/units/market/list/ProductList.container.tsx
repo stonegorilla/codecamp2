@@ -7,15 +7,17 @@ import {
   FETCH_USED_ITEMS,
   TOGGLE_USED_ITEM_PICK,
   FETCH_USED_ITEM_OF_THE_BEST,
+  FETCH_USED_ITEMS_I_PICKED,
 } from "./ProductList.queries";
 export default function MarketList() {
   const router = useRouter();
-
+  const [istoggled, setIstoggled] = useState(false);
   const { data } =
     useQuery<Pick<IQuery, "fetchUserLoggedIn">>(FETCH_USER_LOGGED_IN);
   const { data: item, refetch } = useQuery(FETCH_USED_ITEMS);
   const { data: best } = useQuery(FETCH_USED_ITEM_OF_THE_BEST);
   const [toggleitem] = useMutation(TOGGLE_USED_ITEM_PICK);
+  const { data: isToggled } = useQuery(FETCH_USED_ITEMS_I_PICKED);
   const [baskets, setBaskets] = useState([]);
   // useEffect(() => {
   //   if (!accessToken) {
@@ -74,6 +76,7 @@ export default function MarketList() {
       item={item}
       best={best}
       baskets={baskets}
+      istoggled={istoggled}
       onClickBasket={onClickBasket}
       aaa={aaa}
       detail={detail}

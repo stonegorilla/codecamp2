@@ -63,7 +63,9 @@ export default function BoardList() {
       onClickPage={onClickPage}
       onClickPageNumber={onClickPageNumber}
       startPage={startPage}
+      setStartPage={setStartPage}
       lastPage={lastPage}
+      pageBoardCount={pageBoardCount}
       onClickPrevPage={onClickPrevPage}
       onClickNextPage={onClickNextPage}
       gotoBoardNew={gotoBoardNew}
