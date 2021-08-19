@@ -44,7 +44,7 @@ export default function JoinContainer() {
     if (
       /\w+@\w+\.com$/.test(inputs.email) &&
       inputs.name &&
-      /^[a-zA-Z0-9]{8,16}$/.test(inputs.password) &&
+      /^[a-zA-Z0-9]{1,16}$/.test(inputs.password) &&
       inputs.password === inputs.repassword
     ) {
       try {

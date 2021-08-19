@@ -14,22 +14,22 @@ export default function Automation() {
   const [toggleuseditempick] = useMutation(TOGGLE_USED_ITEM_PICK);
   const { setAccessToken } = useContext(GlobalContext);
   async function onClickSubmit() {
-    for (var i = 0; i < 10789; i++) {
+    for (var i = 0; i < 16384; i++) {
       try {
         const result1 = await createuser({
           variables: {
             aaa: {
-              email: "tasdfeeedtrrrkfyrrs" + i,
-              name: "나나나" + i,
-              password: "12355",
+              email: "hodujadu" + i,
+              name: "호두자두" + i,
+              password: "1234",
             },
           },
         });
         console.log(result1);
         const result2 = await loginuser({
           variables: {
-            email: "tasdfeeedtrrrkfyrrs" + i,
-            password: "12355",
+            email: "hodujadu" + i,
+            password: "1234",
           },
         });
         setAccessToken(result2.data?.loginUser.accessToken || "");
@@ -40,7 +40,7 @@ export default function Automation() {
         console.log(result2);
 
         await toggleuseditempick({
-          variables: { useditemId: "6119123673b26e0029d9a3fe" },
+          variables: { useditemId: "611c6aa022b2fb00290e3dee" },
         });
       } catch (error) {
         alert(error.message);

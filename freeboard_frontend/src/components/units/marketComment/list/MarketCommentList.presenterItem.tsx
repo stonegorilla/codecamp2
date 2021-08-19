@@ -45,7 +45,6 @@ export default function MarketCommentListUIItem(props) {
       {!isEdit && (
         <>
           <Row key={props.data._id}>
-            <Column>{props.data._id}</Column>
             <Column>{props.data.user.name}</Column>
             <Column>{props.data.contents}</Column>
 
@@ -57,8 +56,7 @@ export default function MarketCommentListUIItem(props) {
               >
                 에디트
               </button>
-            </Column>
-            <Column>
+
               <button
                 name="commentid"
                 value={props.data._id}
@@ -66,8 +64,7 @@ export default function MarketCommentListUIItem(props) {
               >
                 딜리트
               </button>
-            </Column>
-            <Column>
+
               <button
                 name="commentid"
                 value={props.data._id}

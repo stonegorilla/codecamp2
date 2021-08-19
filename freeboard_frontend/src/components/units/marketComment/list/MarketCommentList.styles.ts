@@ -14,5 +14,5 @@ export const Row = styled.div`
   flex-direction: row;
 `;
 export const Column = styled.div`
-  width: 16.6%;
+  width: 33.3%;
 `;

@@ -99,9 +99,9 @@ export const RePassword = styled.input`
   box-sizing: border-box;
   border-radius: 16px;
   outline: none;
-  transition: 5s;
+  transition: 15s;
   :hover {
-    transition: 2s;
+    transition: 15s;
     background-color: #1ddb16;
     color: #000;
     outline: none;

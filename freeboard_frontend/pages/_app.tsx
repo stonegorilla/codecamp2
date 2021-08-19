@@ -59,9 +59,10 @@ function MyApp({ Component, pageProps }) {
   });
   const uploadLink = createUploadLink({
     uri: "https://backend02.codebootcamp.co.kr/graphql",
+    // 수십개의 함수를 가지고 있다.
     // secure 문제로 https 여야함
     headers: {
-      authorization: `Bearer ${accessToken || null}`,
+      authorization: `Bearer ${accessToken}`,
     },
     credentials: "include", // refreshToken 쿠키에 저장 허가 ..
   });
