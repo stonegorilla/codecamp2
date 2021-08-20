@@ -5,13 +5,16 @@ import { useRouter } from "next/router";
 import {
   CREATE_POINT_TRANSACTION_OF_BUYING_AND_SELLING,
   FETCH_USED_ITEMS_I_PICKED,
+  TOGGLE_USED_ITEM_PICK,
 } from "./ProductDetail.queries";
 import { useState } from "react";
+import { useEffect } from "react";
 
 export default function ProductDetail() {
   const router = useRouter();
-
   const [istoggled, setIstoggled] = useState(false);
+  const [toggleitem] = useMutation(TOGGLE_USED_ITEM_PICK);
+
   const [createpointtransactionofbuyingandselling] = useMutation(
     CREATE_POINT_TRANSACTION_OF_BUYING_AND_SELLING
   );
@@ -23,20 +26,52 @@ export default function ProductDetail() {
   const { data: isToggled } = useQuery(FETCH_USED_ITEMS_I_PICKED);
 
   // console.log(isToggled?.fetchUseditemsIPicked[3]._id);
-  if (istoggled === false) {
-    for (var i = 0; i < isToggled?.fetchUseditemsIPicked.length; i++) {
-      if (isToggled?.fetchUseditemsIPicked[i]._id === router.query.bbb) {
-        setIstoggled(true);
-      }
+  useEffect(() => {
+    async function aaa() {
+      const result = await toggleitem({
+        variables: { useditemId: router.query.bbb },
+      });
+      const result2 = await toggleitem({
+        variables: { useditemId: router.query.bbb },
+      });
+      setIstoggled(result2.data.toggleUseditemPick);
     }
-  }
-  console.log(istoggled);
+    aaa();
+    // if (istoggled === false) {
+
+    // isToggled?.fetchUseditemsIPicked.forEach((picked) => {
+    //   return picked._id === router.query.bbb && setIstoggled(true);
+    // });
+
+    //   for (var i = 0; i < isToggled?.fetchUseditemsIPicked.length; i++) {
+    //     if (isToggled?.fetchUseditemsIPicked[i]._id === router.query.bbb) {
+    //       setIstoggled(true);
+
+    //     } else {
+
+    //     }
+    //   }
+    // } else {
+    // }
+    // }
+  }, []);
+
   // console.log(istoggled);
 
   const gotoMain = () => {
     router.push("/market/list");
   };
 
+  const toggle = async () => {
+    const result = await toggleitem({
+      variables: { useditemId: router.query.bbb },
+    });
+    console.log(result.data.toggleUseditemPick);
+    if (istoggled) setIstoggled(false);
+    if (!istoggled) setIstoggled(true);
+    // console.log(isToggled);
+  };
+  console.log(isToggled);
   const purchase = async () => {
     try {
       await createpointtransactionofbuyingandselling({
@@ -50,14 +85,15 @@ export default function ProductDetail() {
     }
   };
   if (typeof window === "undefined") return <></>;
-  console.log(router.query.bbb);
-  console.log(data);
+  // console.log(router.query.bbb);
+  // console.log(data);
   return (
     <ProductDetailUI
       data={data}
       gotoMain={gotoMain}
       purchase={purchase}
       istoggled={istoggled}
+      toggle={toggle}
     />
   );
 }

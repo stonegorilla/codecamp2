@@ -46,7 +46,7 @@ export default function ProductDetailUI(props) {
           </Info>
         </AvatarLeft>
         <AvatarRight>
-          <Heart istoggled={props.istoggled}></Heart>
+          <Heart istoggled={props.istoggled} onClick={props.toggle}></Heart>
           <Buyer>
             구입자:
             {props.data

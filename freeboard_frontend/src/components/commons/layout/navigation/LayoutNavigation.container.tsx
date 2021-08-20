@@ -8,7 +8,7 @@ export default function LayoutNavigation() {
     router.push(`/boards`);
   }
   function gotoMarket() {
-    router.push(`/market`);
+    router.push(`/market/list`);
   }
   function gotoMyPage() {
     router.push(`/mypage`);

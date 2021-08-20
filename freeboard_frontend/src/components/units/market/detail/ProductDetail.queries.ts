@@ -48,3 +48,9 @@ export const FETCH_USED_ITEMS_I_PICKED = gql`
     }
   }
 `;
+
+export const TOGGLE_USED_ITEM_PICK = gql`
+  mutation tU($useditemId: ID!) {
+    toggleUseditemPick(useditemId: $useditemId)
+  }
+`;
