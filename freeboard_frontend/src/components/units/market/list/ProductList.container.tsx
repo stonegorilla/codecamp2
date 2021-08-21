@@ -19,6 +19,7 @@ export default function MarketList() {
   const [toggleitem] = useMutation(TOGGLE_USED_ITEM_PICK);
   const { data: isToggled } = useQuery(FETCH_USED_ITEMS_I_PICKED);
   const [baskets, setBaskets] = useState([]);
+  // 징바구니는 처음에 배열로 선언해 놓을 것
   // useEffect(() => {
   //   if (!accessToken) {
   //     alert("로그인 해주세요!");
@@ -30,7 +31,11 @@ export default function MarketList() {
     setBaskets(items);
     console.log(items);
   }, []);
+  // 참고로 useEffct 안은 처음 페이지가 렌더링이 될때 실행이 된다.
+  // localStorage에 있는 것들을 json 객체로 변환시켜 items에 담아둔다. 없으면 빈 배열을 담아둔다.
 
+  // 아래는 화살표 함수의 장점이 드러나는 방식이다. 이것도 HOF 방식이다.
+  // presenter에서 onClick = onClickBasket(basketData) 라고 선언된 부분이 있을 것이다.
   const onClickBasket = (basketData) => (event) => {
     console.log(basketData);
 

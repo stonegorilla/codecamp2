@@ -98,11 +98,14 @@ export default function MarketListUI(props) {
         ))}
       </Wrapper>
       <WrapperRight>
-        <div>오늘본 상품</div>
+        <div>
+          <b>오늘본 상품</b>
+        </div>
         {props.baskets.map((data) => (
           <div key={data._id}>
-            <span>{data.name}</span>
-            <span>{data.remarks}</span>
+            <div>{data.name}</div>
+            <div>{data.remarks}</div>
+            <Picture src={`https://storage.googleapis.com/${data.images[0]}`} />
           </div>
         ))}
       </WrapperRight>

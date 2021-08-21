@@ -10,7 +10,11 @@ export const Wrapper = styled.div`
   margin-right: 200px;
 `;
 
-export const WrapperRight = styled.div``;
+export const WrapperRight = styled.div`
+  margin-top: 700px;
+  position: sticky;
+  top: 64px;
+`;
 export const HeadWrapper = styled.div`
   width: 1300px;
   display: flex;
@@ -19,7 +23,7 @@ export const HeadWrapper = styled.div`
 export const Head = styled.h1``;
 
 export const BannerWrapper = styled.div`
-  width: 1300px;
+  width: 1200px;
   display: flex;
   justify-content: center;
 `;
