@@ -1,6 +1,6 @@
 import BuildManifestPlugin from "next/dist/build/webpack/plugins/build-manifest-plugin";
 import LayoutNavigation from "../../../commons/banner/LayoutBanner.container";
-
+import InfiniteScroll from "react-infinite-scroller";
 import {
   WrapperAll,
   Wrapper,
@@ -47,55 +47,61 @@ export default function MarketListUI(props) {
           </TradingItemWrapper>
           <SearchWrapper>도와주십시오</SearchWrapper>
         </MenuWrapper>
-        {props.item?.fetchUseditems.map((data) => (
-          <ItemWrapper key={data._id}>
-            <ItemLeftWrapper>
-              {data.images[0] && (
-                <Picture
-                  src={`https://storage.googleapis.com/${data.images[0]}`}
-                  onClick={props.detail}
-                  id={data._id}
-                />
-              )}
-              {!data.images[0] && (
-                <Picture
-                  src={`/marketpage/noimage.png`}
-                  onClick={props.detail}
-                  id={data._id}
-                />
-              )}
+        <InfiniteScroll
+          pageStart={0}
+          loadMore={props.onLoadMore}
+          hasMore={props.hasMore}
+        >
+          {props.item?.fetchUseditems.map((data) => (
+            <ItemWrapper key={data._id}>
+              <ItemLeftWrapper>
+                {data.images[0] && (
+                  <Picture
+                    src={`https://storage.googleapis.com/${data.images[0]}`}
+                    onClick={props.detail}
+                    id={data._id}
+                  />
+                )}
+                {!data.images[0] && (
+                  <Picture
+                    src={`/marketpage/noimage.png`}
+                    onClick={props.detail}
+                    id={data._id}
+                  />
+                )}
 
-              <ItemInfoWrapper>
-                <Name>{data.name}</Name>
-                <Remarks>{data.remarks}</Remarks>
-                <Tag>{data.tag}</Tag>
+                <ItemInfoWrapper>
+                  <Name>{data.name}</Name>
+                  <Remarks>{data.remarks}</Remarks>
+                  <Tag>{data.tag}</Tag>
 
-                <SellerHeartWrapper>
-                  <SellerWrapper>
-                    <Avatar></Avatar>
-                    <Seller>{data.seller.name}</Seller>
-                  </SellerWrapper>
-                  <HeartWrapper>
-                    <Heart
-                      istoggled={props.istoggled}
-                      onClick={props.toggle}
-                      id={data._id}
-                    ></Heart>
-                    <HeartNumber>{data.pickedCount}</HeartNumber>
-                  </HeartWrapper>
-                </SellerHeartWrapper>
-              </ItemInfoWrapper>
-            </ItemLeftWrapper>
+                  <SellerHeartWrapper>
+                    <SellerWrapper>
+                      <Avatar></Avatar>
+                      <Seller>{data.seller.name}</Seller>
+                    </SellerWrapper>
+                    <HeartWrapper>
+                      <Heart
+                        istoggled={props.istoggled}
+                        onClick={props.toggle}
+                        id={data._id}
+                      ></Heart>
+                      <HeartNumber>{data.pickedCount}</HeartNumber>
+                    </HeartWrapper>
+                  </SellerHeartWrapper>
+                </ItemInfoWrapper>
+              </ItemLeftWrapper>
 
-            <ItemRightWrapper>
-              <button onClick={props.onClickBasket(data)} id={data._id}>
-                상품 상세보기
-              </button>
-              <Price>{data.price}원</Price>
-              <Price>{data.buyer?.name}</Price>
-            </ItemRightWrapper>
-          </ItemWrapper>
-        ))}
+              <ItemRightWrapper>
+                <button onClick={props.onClickBasket(data)} id={data._id}>
+                  상품 상세보기
+                </button>
+                <Price>{data.price}원</Price>
+                <Price>{data.buyer?.name}</Price>
+              </ItemRightWrapper>
+            </ItemWrapper>
+          ))}
+        </InfiniteScroll>
       </Wrapper>
       <WrapperRight>
         <div>
