@@ -6,6 +6,7 @@ import {
   CREATE_POINT_TRANSACTION_OF_BUYING_AND_SELLING,
   FETCH_USED_ITEMS_I_PICKED,
   TOGGLE_USED_ITEM_PICK,
+  DELETE_USED_ITEM,
 } from "./ProductDetail.queries";
 import { useState } from "react";
 import { useEffect } from "react";
@@ -14,7 +15,7 @@ export default function ProductDetail() {
   const router = useRouter();
   const [istoggled, setIstoggled] = useState(false);
   const [toggleitem] = useMutation(TOGGLE_USED_ITEM_PICK);
-
+  const [deleteuseditem] = useMutation(DELETE_USED_ITEM);
   const [createpointtransactionofbuyingandselling] = useMutation(
     CREATE_POINT_TRANSACTION_OF_BUYING_AND_SELLING
   );
@@ -23,38 +24,56 @@ export default function ProductDetail() {
       useditemId: router.query.bbb,
     },
   });
-  const { data: isToggled } = useQuery(FETCH_USED_ITEMS_I_PICKED);
+  const { data: isToggled, loading } = useQuery(FETCH_USED_ITEMS_I_PICKED);
+
+  console.log(isToggled, loading);
+
+  useEffect(() => {
+    for (var i = 0; i < isToggled?.fetchUseditemsIPicked.length; i++) {
+      if (isToggled?.fetchUseditemsIPicked[i]._id === router.query.bbb) {
+        setIstoggled(true);
+      } else {
+      }
+    }
+    // if (isToggled?.fetchUseditemsIPicked && data?.fetchUseditem) {
+    //   isToggled?.fetchUseditemsIPicked.forEach((el) => {
+    //     if (data?.fetchUseditem._id === el._id) {
+    //       setIstoggled(true);
+    //     }
+    //   });
+    // }
+  }, [loading]);
 
   // console.log(isToggled?.fetchUseditemsIPicked[3]._id);
-  useEffect(() => {
-    async function aaa() {
-      const result = await toggleitem({
-        variables: { useditemId: router.query.bbb },
-      });
-      const result2 = await toggleitem({
-        variables: { useditemId: router.query.bbb },
-      });
-      setIstoggled(result2.data.toggleUseditemPick);
-    }
-    aaa();
-    // if (istoggled === false) {
+  // useEffect(() => {
+  //   async function aaa() {
+  //     const result = await toggleitem({
+  //       variables: { useditemId: router.query.bbb },
+  //     });
+  //     const result2 = await toggleitem({
+  //       variables: { useditemId: router.query.bbb },
+  //     });
+  //     setIstoggled(result2.data.toggleUseditemPick);
+  //   }
+  // aaa();
+  // if (istoggled === false) {
 
-    // isToggled?.fetchUseditemsIPicked.forEach((picked) => {
-    //   return picked._id === router.query.bbb && setIstoggled(true);
-    // });
+  // isToggled?.fetchUseditemsIPicked.forEach((picked) => {
+  //   return picked._id === router.query.bbb && setIstoggled(true);
+  // });
 
-    //   for (var i = 0; i < isToggled?.fetchUseditemsIPicked.length; i++) {
-    //     if (isToggled?.fetchUseditemsIPicked[i]._id === router.query.bbb) {
-    //       setIstoggled(true);
+  //   for (var i = 0; i < isToggled?.fetchUseditemsIPicked.length; i++) {
+  //     if (isToggled?.fetchUseditemsIPicked[i]._id === router.query.bbb) {
+  //       setIstoggled(true);
 
-    //     } else {
+  //     } else {
 
-    //     }
-    //   }
-    // } else {
-    // }
-    // }
-  }, []);
+  //     }
+  //   }
+  // } else {
+  // }
+  // }
+  // }, []);
 
   // console.log(istoggled);
 
@@ -71,7 +90,22 @@ export default function ProductDetail() {
     if (!istoggled) setIstoggled(true);
     // console.log(isToggled);
   };
-  console.log(isToggled);
+
+  const gotodelete = async () => {
+    try {
+      await deleteuseditem({
+        variables: { useditemId: router.query.bbb },
+      });
+      alert("삭제잘하셨어요");
+      router.push("/market/list");
+    } catch (error) {
+      alert(error.message);
+    }
+  };
+
+  const gotoupdate = async () => {
+    router.push(`/market/detail/${router.query.bbb}/edit`);
+  };
   const purchase = async () => {
     try {
       await createpointtransactionofbuyingandselling({
@@ -94,6 +128,8 @@ export default function ProductDetail() {
       purchase={purchase}
       istoggled={istoggled}
       toggle={toggle}
+      gotodelete={gotodelete}
+      gotoupdate={gotoupdate}
     />
   );
 }

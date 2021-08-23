@@ -46,7 +46,8 @@ export default function ProductDetailUI(props) {
           </Info>
         </AvatarLeft>
         <AvatarRight>
-          <Heart istoggled={props.istoggled} onClick={props.toggle}></Heart>
+          {/* @ts-ignore */}
+          <Heart istoggled={props.istoggled} onClick={props.toggle} />
           <Buyer>
             구입자:
             {props.data
@@ -92,12 +93,19 @@ export default function ProductDetailUI(props) {
       </TagsWrapper>
 
       <Hr></Hr>
-      <MapWrapper>{/* <KakaomapDetail data={props.data} /> */}</MapWrapper>
+      <MapWrapper>
+        <KakaomapDetail
+          lng={props.data?.fetchUseditem?.useditemAddress?.lng}
+          lat={props.data?.fetchUseditem?.useditemAddress?.lat}
+        />
+      </MapWrapper>
       <Hr></Hr>
       <ButtonWrapper>
         <ButtonRow>
           <Button01 buttonName="목록으로" gotowhere={props.gotoMain} />
           <Button01 buttonName="구매하기" gotowhere={props.purchase} />
+          <Button01 buttonName="삭제하기" gotowhere={props.gotodelete} />
+          <Button01 buttonName="수정하기" gotowhere={props.gotoupdate} />
         </ButtonRow>
       </ButtonWrapper>
     </Wrapper>

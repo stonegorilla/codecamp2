@@ -1,4 +1,5 @@
 import Head from "next/head";
+import { useState } from "react";
 import { useEffect } from "react";
 
 declare const window: typeof globalThis & {
@@ -6,6 +7,7 @@ declare const window: typeof globalThis & {
 };
 
 export default function KakaomapDetail(props) {
+  if (!props.lng || !props.lat) return <></>;
   useEffect(() => {
     const script = document.createElement("script");
     script.src =
@@ -16,10 +18,7 @@ export default function KakaomapDetail(props) {
         const container = document.getElementById("map"); // 지도를 담을 영역의 DOM 레퍼런스
         const options = {
           // 지도를 생성할 때 필요한 기본 옵션
-          center: new window.kakao.maps.LatLng(
-            props.data.fetchUseditem.useditemAddress.lng,
-            props.data.fetchUseditem.useditemAddress.lat
-          ), // 지도의 중심좌표.
+          center: new window.kakao.maps.LatLng(props.lat, props.lng), // 지도의 중심좌표.
           level: 3, // 지도의 레벨(확대, 축소 정도)
         };
 
@@ -27,8 +26,8 @@ export default function KakaomapDetail(props) {
 
         // 마커가 표시될 위치입니다
         const markerPosition = new window.kakao.maps.LatLng(
-          props.data.fetchUseditem.useditemAddress.lng,
-          props.data.fetchUseditem.useditemAddress.lat
+          props.lat,
+          props.lng
         );
 
         // 마커를 생성합니다
@@ -60,7 +59,7 @@ export default function KakaomapDetail(props) {
         );
       });
     };
-  }, []);
+  }, [props.lat, props.lng]);
 
   return (
     <>

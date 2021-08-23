@@ -37,12 +37,25 @@ const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 import Uploads01 from "../../../commons/uploads/01/Uploads01.container";
 import KakaomapWrite from "../../../commons/kakaomapWrite";
 import InputAddress from "../../../commons/inputs/inputAddress";
+import { useContext } from "react";
+import { MarketEditPageContext } from "../../../../../pages/market/detail/[bbb]/edit";
 export default function ProductWriteUI(props: any) {
+  const { isEdit, data } = useContext(MarketEditPageContext);
+
   return (
     <Wrapper>
-      <form onSubmit={props.handleSubmit(props.onSubmit)}>
+      {/* {!isEdit && (
+        <form onSubmit={props.handleSubmit(props.onSubmit)}>
+      )}
+      {isEdit && (
+        <form onSubmit={props.handleSubmit(props.onEdit)}>
+      )} */}
+
+      <form
+        onSubmit={props.handleSubmit(isEdit ? props.onEdit : props.onSubmit)}
+      >
         <HeadWrapper>
-          <Title>상품 등록</Title>
+          <Title>{isEdit ? "상품 수정" : "상품 등록"}</Title>
         </HeadWrapper>
 
         <TextInputWrapper>
@@ -104,12 +117,12 @@ export default function ProductWriteUI(props: any) {
             <GPSWrapper>
               <Name>GPS</Name>
               <LatLngWrapper>
-                <InputGPS placeholder="경도LNG" value={props.latLag.lat} />
+                <InputGPS placeholder="경도LNG" value={props.latLag.lag} />
                 <LogoWrapper>
                   <Logo></Logo>
                 </LogoWrapper>
 
-                <InputGPS placeholder="위도LAT" value={props.latLag.lag} />
+                <InputGPS placeholder="위도LAT" value={props.latLag.lat} />
               </LatLngWrapper>
             </GPSWrapper>
 
@@ -147,11 +160,20 @@ export default function ProductWriteUI(props: any) {
         <RadioButton type="radio" id="image" name="radio-button" />
         <RadioLabel htmlFor="image">사진</RadioLabel>
         <ButtonWrapper>
-          <Button01
-            buttonName="상품 등록"
-            type="submit"
-            isActive={props.isActive}
-          />
+          {!isEdit && (
+            <Button01
+              buttonName="상품 등록"
+              type="submit"
+              isActive={props.isActive}
+            />
+          )}
+          {isEdit && (
+            <Button01
+              buttonName="상품 수정"
+              type="submit"
+              isActive={props.isActive}
+            />
+          )}
         </ButtonWrapper>
       </form>
     </Wrapper>

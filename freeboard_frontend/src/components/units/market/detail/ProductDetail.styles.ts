@@ -167,6 +167,7 @@ export const Heart = styled.div`
   width: 20px;
   height: 18.35px;
   background-image: ${(props) =>
+    //@ts-ignore
     props.istoggled
       ? "url(/marketpage/heartbroken.png)"
       : "url(/marketpage/heart.png)"};

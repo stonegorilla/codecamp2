@@ -13,7 +13,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { schema } from "./ProductWrite.validations";
 import ProductWriteUI from "./ProductWrite.presenter";
-import { CREATE_USED_ITEM } from "./ProductWrite.queries";
+import { CREATE_USED_ITEM, UPDATE_USED_ITEM } from "./ProductWrite.queries";
 import { UPLOAD_FILE } from "./ProductWrite.queries";
 export default function ProductWrite(props: IProps) {
   const [files, setFiles] = useState<(File | null)[]>([null, null, null]);
@@ -25,6 +25,7 @@ export default function ProductWrite(props: IProps) {
   });
 
   const [createUsedItem] = useMutation(CREATE_USED_ITEM);
+  const [updateUsedItem] = useMutation(UPDATE_USED_ITEM);
 
   async function onSubmit(data) {
     try {
@@ -58,6 +59,39 @@ export default function ProductWrite(props: IProps) {
     }
   }
 
+  async function onEdit(data) {
+    try {
+      const uploadFiles = files
+        .filter((data) => data)
+        .map((data) => uploadFile({ variables: { file: data } }));
+      const results = await Promise.all(uploadFiles);
+      const images = results.map((data) => data.data.uploadFile.url);
+      const result = await updateUsedItem({
+        variables: {
+          updateUseditemInput: {
+            name: data.name,
+            remarks: data.remarks,
+            contents: data.contents,
+            price: data.price,
+            useditemAddress: {
+              address: data.address,
+              addressDetail: data.addressdetail,
+              lat: latLag.lat,
+              lng: latLag.lag,
+            },
+            images: images,
+          },
+          useditemId: router.query.bbb,
+        },
+      });
+      alert("수정성공");
+      console.log(result.data);
+      router.push(`/market/detail/${result.data.updateUseditem._id}`);
+    } catch (error) {
+      alert(error.message);
+    }
+  }
+
   const onChangeContents = (value) => {
     const isBlank = "<p><br></p>";
     setValue("contents", value === isBlank ? "" : value);
@@ -75,6 +109,7 @@ export default function ProductWrite(props: IProps) {
       register={register}
       handleSubmit={handleSubmit}
       onSubmit={onSubmit}
+      onEdit={onEdit}
       onChangeContents={onChangeContents}
       isActive={formState.isValid}
       errors={formState.errors}

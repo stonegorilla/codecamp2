@@ -55,7 +55,7 @@ export default function KakaomapWrite(props) {
             // 마커 위치를 클릭한 위치로 옮깁니다
             marker.setPosition(latlng);
             console.log(latlng);
-            props.setLatLag({ lat: latlng.La, lag: latlng.Ma });
+            props.setLatLag({ lat: latlng.Ma, lag: latlng.La });
             // var message = "클릭한 위치의 위도는 " + latlng.getLat() + " 이고, ";
             // message += "경도는 " + latlng.getLng() + " 입니다";
 
