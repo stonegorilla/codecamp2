@@ -7,7 +7,7 @@ import MarketCommentAnswerWrite from "../answerwrite/MarketCommentAnswerWrite.co
 export default function MarketCommentAnswerListUIItem(props) {
   const router = useRouter();
   const [isEdit, setIsEdit] = useState(false);
-  const [isAnswer, setIsAnswer] = useState(false);
+  // const [isAnswer, setIsAnswer] = useState(false);
 
   const [deleteUseditemQuestionAnswer] = useMutation(
     DELETE_USED_ITEM_QUESTION_ANSWER
@@ -19,7 +19,7 @@ export default function MarketCommentAnswerListUIItem(props) {
 
   async function onCommentDelete(event) {
     try {
-      const result = await deleteUseditemQuestionAnswer({
+      await deleteUseditemQuestionAnswer({
         variables: {
           useditemQuestionAnswerId: event.target.value,
         },
@@ -31,9 +31,9 @@ export default function MarketCommentAnswerListUIItem(props) {
     }
   }
 
-  async function onCommentAnswer(event) {
-    setIsAnswer(true);
-  }
+  // async function onCommentAnswer(event) {
+  //   setIsAnswer(true);
+  // }
   return (
     <>
       {!isEdit && (

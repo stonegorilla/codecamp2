@@ -19,7 +19,7 @@ interface IContext {
 }
 export const BoardsEditPageContext = createContext<IContext>({});
 export default function EditPage() {
-  const isEdit = true;
+  // const isEdit = true;
   const router = useRouter();
 
   const { data } = useQuery(FETCH_BOARD, {

@@ -1,4 +1,4 @@
-import { useMutation, useQuery } from "@apollo/client";
+import { useMutation } from "@apollo/client";
 import { useContext } from "react";
 import { GlobalContext } from "../../../../../pages/_app";
 
@@ -14,7 +14,7 @@ export default function Automation() {
   const [toggleuseditempick] = useMutation(TOGGLE_USED_ITEM_PICK);
   const { setAccessToken } = useContext(GlobalContext);
   async function onClickSubmit() {
-    for (var i = 0; i < 16384; i++) {
+    for (let i = 0; i < 16384; i++) {
       try {
         const result1 = await createuser({
           variables: {

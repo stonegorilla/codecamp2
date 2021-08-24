@@ -21,7 +21,6 @@ import {
   PictureWrapper,
   TagsWrapper,
   Tags,
-  Map,
   MapWrapper,
   ButtonWrapper,
   ButtonRow,

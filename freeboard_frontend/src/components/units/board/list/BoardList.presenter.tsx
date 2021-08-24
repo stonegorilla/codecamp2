@@ -6,16 +6,14 @@ import {
   Column,
   ColumnTitle,
   Button,
-  Page,
   PageWrapper,
   BoardNewWrapper,
-  TextToken,
   SearchWrapper,
 } from "./BoardList.styles";
 import Paginations01 from "../../../commons/paginations/01/Paginations01.container";
 import Searchbars01 from "../../../commons/searchbars/Searchbars01.container";
 import { getDates } from "../../../../commons/libraries/utils";
-import { v4 as uuidv4 } from "uuid";
+// import { v4 as uuidv4 } from "uuid";
 
 export interface ITextTokenProps {
   isMatched: boolean;

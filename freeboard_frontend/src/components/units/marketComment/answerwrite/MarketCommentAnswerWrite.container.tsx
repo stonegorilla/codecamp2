@@ -1,7 +1,6 @@
-import { useMutation, useQuery } from "@apollo/client";
+import { useMutation } from "@apollo/client";
 
-import { useRouter } from "next/router";
-import { useState, MouseEvent, ChangeEvent } from "react";
+import { useState, MouseEvent } from "react";
 import { FETCH_USED_ITEM_QUESTION_ANSWERS } from "../answerlist/MarketCommentAnswerList.queries";
 
 import BoardCommentAnswerWriteUI from "./MarketCommentAnswerWrite.presenter";
@@ -16,7 +15,6 @@ const commentinputsInit = {
 export default function MarketCommentAnswerWrite(props) {
   console.log(props.data);
 
-  const router = useRouter();
   const [commentid, setCommentId] = useState("");
   const [commentinputs, setCommentInputs] = useState(commentinputsInit);
   const [createUseditemQuestionAnswer] = useMutation(
@@ -32,6 +30,7 @@ export default function MarketCommentAnswerWrite(props) {
   //   },
   // });
   console.log(commentinputs.contents);
+  console.log(commentid);
   function onChangeComments(event) {
     if (event.target.name === "commentid") setCommentId(event.target.value);
     else {
@@ -70,7 +69,7 @@ export default function MarketCommentAnswerWrite(props) {
 
   async function onCommentEdit(event: MouseEvent<HTMLButtonElement>) {
     try {
-      const result = await updateUseditemQuestionAnswer({
+      await updateUseditemQuestionAnswer({
         variables: {
           uBC: {
             contents: commentinputs.contents,

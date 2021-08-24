@@ -1,7 +1,7 @@
 import { DELETE_BOARD_COMMENT } from "./BoardCommentList.queries";
 import { useState } from "react";
 import { useMutation } from "@apollo/client";
-import { Row, Column, BoardCommentList } from "./BoardCommentList.styles";
+import { Row, Column } from "./BoardCommentList.styles";
 import { useRouter } from "next/router";
 import BoardCommentWrite from "../write/BoardCommentWrite.container";
 export default function BoardCommentListUIItem(props) {
@@ -16,7 +16,7 @@ export default function BoardCommentListUIItem(props) {
 
   async function onCommentDelete(event) {
     try {
-      const result = await deleteBoardComment({
+      await deleteBoardComment({
         variables: {
           password: "123",
           boardCommentId: event.target.value,

@@ -9,9 +9,7 @@ import {
   NameRed,
   Input,
   TextAreaInputWrapper,
-  Img,
   InputGPS,
-  Box,
   RadioButton,
   RadioLabel,
   AddressWrapper,
@@ -20,27 +18,26 @@ import {
   GPSAddressWrapper,
   MapGPSAddressWrapper,
   PictureWrapper,
-  SubmitButton,
   ButtonWrapper,
   Logo,
   LogoWrapper,
-} from "./ProductWrite.styles"; //Home.styles 를 가져와랴
-import { Modal } from "antd";
-import DaumPostcode from "react-daum-postcode";
+} from "./ProductWrite.styles"; // Home.styles 를 가져와랴
+// import { Modal } from "antd";
+// import DaumPostcode from "react-daum-postcode";
 import Inputmain from "../../../commons/inputs/Inputmain";
-import InputContent from "../../../commons/inputs/inputAddress";
+// import InputContent from "../../../commons/inputs/inputAddress";
 import Button01 from "../../../commons/buttons/Button01";
 import InputContent2 from "../../../commons/inputs/inputcontent2";
-import dynamic from "next/dynamic";
+// import dynamic from "next/dynamic";
 import "react-quill/dist/quill.snow.css";
-const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
+// const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 import Uploads01 from "../../../commons/uploads/01/Uploads01.container";
 import KakaomapWrite from "../../../commons/kakaomapWrite";
 import InputAddress from "../../../commons/inputs/inputAddress";
 import { useContext } from "react";
 import { MarketEditPageContext } from "../../../../../pages/market/detail/[bbb]/edit";
 export default function ProductWriteUI(props: any) {
-  const { isEdit, data } = useContext(MarketEditPageContext);
+  const { isEdit } = useContext(MarketEditPageContext);
 
   return (
     <Wrapper>

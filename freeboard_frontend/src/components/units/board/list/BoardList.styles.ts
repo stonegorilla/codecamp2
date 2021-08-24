@@ -1,3 +1,4 @@
+// @ts-nocheck
 import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
@@ -76,5 +77,6 @@ export const PageWrapper = styled.div`
 `;
 
 export const TextToken = styled.span`
-  color: ${(props: ITextTokenProps) => (props.isMatched ? "red" : "black")};
+  /* props : ITextTokenProps */
+  color: ${(props) => (props.isMatched ? "red" : "black")};
 `;

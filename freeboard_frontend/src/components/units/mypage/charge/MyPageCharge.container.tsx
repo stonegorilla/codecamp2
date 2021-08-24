@@ -1,11 +1,14 @@
-import { useRouter } from "next/router";
+// @ts-nocheck
+
 import { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { CREATE_POINT_TRANSACTION_OF_LOADING } from "./MyPageCharge.queries";
 import ChargeUI from "./MyPageCharge.presenter";
 
+declare const window: typeof globalThis & {
+  IMP: any;
+};
 export default function Charge() {
-  const router = useRouter();
   const [amount, setAmount] = useState(0);
   const [createPointTransactionOfLoading] = useMutation(
     CREATE_POINT_TRANSACTION_OF_LOADING
@@ -14,6 +17,7 @@ export default function Charge() {
     setAmount(event.target.value);
   }
   function onClickPayment() {
+    const IMP = window.IMP;
     IMP.init("imp49910675");
     IMP.request_pay(
       {

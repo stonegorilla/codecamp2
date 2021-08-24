@@ -2,7 +2,7 @@ import { useState } from "react";
 import JoinPresenter from "./join.presenter";
 import { useMutation } from "@apollo/client";
 import { CREATE_USER } from "./join.queries";
-import router, { useRouter } from "next/router";
+import { useRouter } from "next/router";
 
 const inputsInit = {
   email: "",
@@ -63,8 +63,6 @@ export default function JoinContainer() {
       } catch (error) {
         alert(error.message);
       }
-    } else {
-      return;
     }
   }
 

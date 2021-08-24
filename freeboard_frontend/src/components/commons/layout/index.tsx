@@ -1,4 +1,3 @@
-import LayoutFooter from "./footer/LayoutFooter.container";
 import LayoutHeader from "./header/LayoutHeader.container";
 import LayoutBanner from "./banner/LayoutBanner.container";
 import LayoutNavigation from "./navigation/LayoutNavigation.container";
@@ -21,7 +20,6 @@ export default function Layout(props: any) {
       <LayoutBanner />
       <LayoutNavigation />
       <Wrapper>
-        
         <Body>{props.children} </Body>
       </Wrapper>
 

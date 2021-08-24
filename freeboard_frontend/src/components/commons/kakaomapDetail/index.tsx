@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { useState } from "react";
+
 import { useEffect } from "react";
 
 declare const window: typeof globalThis & {

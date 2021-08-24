@@ -1,4 +1,5 @@
-import BuildManifestPlugin from "next/dist/build/webpack/plugins/build-manifest-plugin";
+// @ts-nocheck
+
 import LayoutNavigation from "../../../commons/banner/LayoutBanner.container";
 import InfiniteScroll from "react-infinite-scroller";
 import {

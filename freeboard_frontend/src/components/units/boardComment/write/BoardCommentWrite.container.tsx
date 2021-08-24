@@ -1,7 +1,8 @@
-import { useMutation, useQuery } from "@apollo/client";
+// @ts-nocheck
+import { useMutation } from "@apollo/client";
 
 import { useRouter } from "next/router";
-import { useState, MouseEvent, ChangeEvent } from "react";
+import { useState, MouseEvent } from "react";
 
 import { FETCH_BOARD_COMMENTS } from "../list/BoardCommentList.queries";
 
@@ -9,7 +10,6 @@ import BoardCommentWriteUI from "./BoardCommentWrite.presenter";
 import {
   CREATE_BOARD_COMMENT,
   UPDATE_BOARD_COMMENT,
-  FETCH_BOARD,
 } from "./BoardCommentWrite.queries";
 
 const commentinputsInit = {
@@ -25,11 +25,11 @@ export default function BoardCommentWrite(props) {
   const [createBoardComment] = useMutation(CREATE_BOARD_COMMENT);
   const [updateBoardComment] = useMutation(UPDATE_BOARD_COMMENT);
 
-  const { data } = useQuery(FETCH_BOARD, {
-    variables: {
-      boardId: router.query.aaa,
-    },
-  });
+  // const { data } = useQuery(FETCH_BOARD, {
+  //   variables: {
+  //     boardId: router.query.aaa,
+  //   },
+  // });
 
   function onChangeComments(event) {
     if (event.target.name === "commentid") setCommentId(event.target.value);
@@ -42,11 +42,13 @@ export default function BoardCommentWrite(props) {
     }
     console.log(event.target.name);
     console.log(event.target.value);
+    console.log(commentid);
   }
 
-  function onChangeStar(value: number) {
-    setCommentInputs({ ...commentinputs, rating: value });
-  } // 얜 나중에 별만들면서 쓸 것
+  // function onChangeStar(value: number) {
+  //   setCommentInputs({ ...commentinputs, rating: value });
+  // }
+  // 얜 나중에 별만들면서 쓸 것
 
   async function onCommentSubmit() {
     console.log(commentinputs.password);
@@ -76,7 +78,7 @@ export default function BoardCommentWrite(props) {
   async function onCommentEdit(event: MouseEvent<HTMLButtonElement>) {
     console.log(event.target.id);
     try {
-      const result = await updateBoardComment({
+      await updateBoardComment({
         variables: {
           uBC: {
             contents: commentinputs.contents,

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import styled from "@emotion/styled";
 export const WrapperAll = styled.div`
   display: flex;

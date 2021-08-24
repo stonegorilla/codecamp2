@@ -1,5 +1,5 @@
 import ProductDetailUI from "./ProductDetail.presenter";
-import { FETCH_USED_ITEM } from "./ProductDetail.queries";
+
 import { useQuery, useMutation } from "@apollo/client";
 import { useRouter } from "next/router";
 import {
@@ -7,9 +7,9 @@ import {
   FETCH_USED_ITEMS_I_PICKED,
   TOGGLE_USED_ITEM_PICK,
   DELETE_USED_ITEM,
+  FETCH_USED_ITEM,
 } from "./ProductDetail.queries";
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 
 export default function ProductDetail() {
   const router = useRouter();
@@ -29,10 +29,9 @@ export default function ProductDetail() {
   console.log(isToggled, loading);
 
   useEffect(() => {
-    for (var i = 0; i < isToggled?.fetchUseditemsIPicked.length; i++) {
+    for (let i = 0; i < isToggled?.fetchUseditemsIPicked.length; i++) {
       if (isToggled?.fetchUseditemsIPicked[i]._id === router.query.bbb) {
         setIstoggled(true);
-      } else {
       }
     }
     // if (isToggled?.fetchUseditemsIPicked && data?.fetchUseditem) {

@@ -1,5 +1,6 @@
+// @ ts-nocheck
 import Slider from "react-slick";
-import { Component } from "react";
+// import { Component } from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import {
@@ -16,7 +17,6 @@ export default function LayoutBannerUI() {
   const settings = {
     dots: false,
     infinite: true,
-
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,

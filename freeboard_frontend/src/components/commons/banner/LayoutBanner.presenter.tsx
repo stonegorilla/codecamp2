@@ -1,5 +1,5 @@
 import Slider from "react-slick";
-import { Component } from "react";
+// import { Component } from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import {
@@ -8,8 +8,6 @@ import {
   SliderImage2,
   SliderImage3,
   SliderImage4,
-  SliderImage5,
-  SliderImage6,
 } from "./LayoutBanner.styles";
 
 export default function LayoutBannerUI(props) {

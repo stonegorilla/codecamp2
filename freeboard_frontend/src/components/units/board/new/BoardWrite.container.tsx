@@ -1,11 +1,11 @@
+// @ts-nocheck
 import { CREATE_BOARD, UPDATE_BOARD, UPLOAD_FILE } from "./BoardWrite.queries";
 
 import { useMutation } from "@apollo/client";
 import { useRouter } from "next/router";
-import { ChangeEvent, useState } from "react"; // useState 는 동적인 웹 만들때 많이 사용할 것 같으니 넣어주자. 그리고 이 페이지에선 쓰인다.
+import { ChangeEvent, useState, useRef } from "react"; // useState 는 동적인 웹 만들때 많이 사용할 것 같으니 넣어주자. 그리고 이 페이지에선 쓰인다.
 import BoardWriteUI from "./BoardWrite.presenter";
 import { Modal } from "antd";
-import { useRef } from "react";
 
 const inputsInit = {
   writer: "",
@@ -14,10 +14,10 @@ const inputsInit = {
   contents: "",
   youtubeUrl: "",
 };
-interface newInputs {
-  title?: String;
-  contents?: String;
-}
+// interface newInputs {
+//   title?: String;
+//   contents?: String;
+// }
 interface DataTypes {
   writer: string;
   title: string;
@@ -198,7 +198,7 @@ export default function BoardWrite(props: IProps) {
         const image2 = resultFiles[1].data.uploadFile.url;
         const image3 = resultFiles[2].data.uploadFile.url;
 
-        const images = resultFiles.map((data) => data.data.uploadFile.url);
+        // const images = resultFiles.map((data) => data.data.uploadFile.url);
 
         const result = await qqq({
           variables: {

@@ -58,8 +58,6 @@ export default function LoginContainer() {
       } catch (error) {
         alert(error.message);
       }
-    } else {
-      return;
     }
   }
 

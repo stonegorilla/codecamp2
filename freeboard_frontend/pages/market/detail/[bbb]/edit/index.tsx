@@ -35,7 +35,7 @@ interface IContext {
 }
 export const MarketEditPageContext = createContext<IContext>({});
 export default function MarketEditPage() {
-  const isEdit = true;
+  // const isEdit = true;
   const router = useRouter();
 
   const { data } = useQuery(FETCH_USED_ITEM, {

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import MarketListUI from "./ProductList.presenter";
 import { useRouter } from "next/router";
 import { useMutation, useQuery } from "@apollo/client";
@@ -7,18 +8,18 @@ import {
   FETCH_USED_ITEMS,
   TOGGLE_USED_ITEM_PICK,
   FETCH_USED_ITEM_OF_THE_BEST,
-  FETCH_USED_ITEMS_I_PICKED,
 } from "./ProductList.queries";
 export default function MarketList() {
   const router = useRouter();
-  const [hasMore, setHasMore] = useState(true);
-  const [istoggled, setIstoggled] = useState(false);
-  const { data } =
-    useQuery<Pick<IQuery, "fetchUserLoggedIn">>(FETCH_USER_LOGGED_IN);
+  const hasMore = true;
+  const istoggled = false;
+  // const { data } =
+  //   useQuery<Pick<IQuery, "fetchUserLoggedIn">>(FETCH_USER_LOGGED_IN);
+  const { data } = useQuery(FETCH_USER_LOGGED_IN);
   const { data: item, fetchMore } = useQuery(FETCH_USED_ITEMS);
   const { data: best } = useQuery(FETCH_USED_ITEM_OF_THE_BEST);
   const [toggleitem] = useMutation(TOGGLE_USED_ITEM_PICK);
-  const { data: isToggled } = useQuery(FETCH_USED_ITEMS_I_PICKED);
+  // const { data: isToggled } = useQuery(FETCH_USED_ITEMS_I_PICKED);
   const [baskets, setBaskets] = useState([]);
   // 징바구니는 처음에 배열로 선언해 놓을 것
   // useEffect(() => {

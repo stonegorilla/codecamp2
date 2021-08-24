@@ -1,9 +1,13 @@
+// @ts-nocheck
 import { useQuery, useMutation } from "@apollo/client";
 import BoardListUI from "./BoardList.presenter";
 import { useRouter } from "next/router";
-import { FETCH_BOARDS } from "./BoardList.queries";
-import { DELETE_BOARD } from "./BoardList.queries";
-import { FETCH_BOARDS_COUNT } from "./BoardList.queries";
+import {
+  FETCH_BOARDS,
+  DELETE_BOARD,
+  FETCH_BOARDS_COUNT,
+} from "./BoardList.queries";
+
 import { useState } from "react";
 
 export default function BoardList() {

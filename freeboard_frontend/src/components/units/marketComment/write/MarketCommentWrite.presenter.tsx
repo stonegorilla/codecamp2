@@ -1,9 +1,7 @@
 import {
   BoardCommentWrapper,
-  BoardCommentWriter,
   BoardCommentContents,
   BoardCommentButton,
-  BoardCommentUpdateWriter,
   BoardCommentUpdateContents,
 } from "./MarketCommentWrite.styles";
 

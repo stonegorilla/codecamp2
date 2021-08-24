@@ -20,7 +20,7 @@ export default function MarketCommentListUIItem(props) {
 
   async function onCommentDelete(event) {
     try {
-      const result = await deleteUseditemQuestion({
+      await deleteUseditemQuestion({
         variables: {
           useditemQuestionId: event.target.value,
         },

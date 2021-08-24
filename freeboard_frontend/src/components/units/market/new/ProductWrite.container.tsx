@@ -1,23 +1,28 @@
-import {} from "./ProductWrite.queries";
+// @ts-nocheck
 
 import { useMutation } from "@apollo/client";
-import router, { useRouter } from "next/router";
-import { ChangeEvent, useContext, useState } from "react"; // useState 는 동적인 웹 만들때 많이 사용할 것 같으니 넣어주자. 그리고 이 페이지에선 쓰인다.
+import { useRouter } from "next/router";
+import { useState } from "react"; // useState 는 동적인 웹 만들때 많이 사용할 것 같으니 넣어주자. 그리고 이 페이지에선 쓰인다.
 
-import { Modal } from "antd";
-import { useRef } from "react";
+// import { Modal } from "antd";
+// import { useRef } from "react";
 
-import withAuth from "../../../commons/hocs/withAuth";
-import { GlobalContext } from "../../../../../pages/_app";
+// import withAuth from "../../../commons/hocs/withAuth";
+// import { GlobalContext } from "../../../../../pages/_app";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { schema } from "./ProductWrite.validations";
 import ProductWriteUI from "./ProductWrite.presenter";
-import { CREATE_USED_ITEM, UPDATE_USED_ITEM } from "./ProductWrite.queries";
-import { UPLOAD_FILE } from "./ProductWrite.queries";
-export default function ProductWrite(props: IProps) {
+import {
+  CREATE_USED_ITEM,
+  UPDATE_USED_ITEM,
+  UPLOAD_FILE,
+} from "./ProductWrite.queries";
+
+export default function ProductWrite() {
   const [files, setFiles] = useState<(File | null)[]>([null, null, null]);
   const [uploadFile] = useMutation(UPLOAD_FILE);
+  const router = useRouter();
   const [latLag, setLatLag] = useState({ lat: 0, lag: 0 });
   const { register, handleSubmit, setValue, formState, trigger } = useForm({
     mode: "onChange",

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import {
   Wrapper,
   HeadWrapper,
@@ -26,16 +27,15 @@ import {
   ButtonYellow,
   Box,
   BtnWrapper,
-  Img,
   InputFile,
-} from "./BoardWrite.styles"; //Home.styles 를 가져와랴
+} from "./BoardWrite.styles"; // Home.styles 를 가져와랴
 import { Modal } from "antd";
 import DaumPostcode from "react-daum-postcode";
 import { useContext } from "react";
 import { BoardsEditPageContext } from "../../../../../pages/boards/[aaa]/edit";
 
 export default function BoardWriteUI(props: any) {
-  const { isEdit, data } = useContext(BoardsEditPageContext);
+  const { isEdit } = useContext(BoardsEditPageContext);
   return (
     // 반드시 무언가 하나로 감싸주어라 (보통 Wrapper 를 쓴다. )
     <Wrapper>
@@ -92,8 +92,8 @@ export default function BoardWriteUI(props: any) {
             placeholder="이름을 적어 주세요"
             name="writer"
             onChange={props.onChangeInputs}
-            //defaultValue={props.data?.fetchBoard.writer}
-            //readOnly={props.data?.fetchBoard.writer}
+            // defaultValue={props.data?.fetchBoard.writer}
+            // readOnly={props.data?.fetchBoard.writer}
           ></InputShort>
         </TextInputWrapper>
 

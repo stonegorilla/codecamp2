@@ -1,3 +1,4 @@
+// @ts-nocheck
 import styled from "@emotion/styled";
 
 // styled 나오면 그냥 css 구나 생각하면 됨
