@@ -45,4 +45,10 @@ npx eslint .
 
 yarn add lint-staged
 
-허스키 진짜 짜증나네 ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ...
+허스키 진짜 짜증나네 ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ.
+
+
+docker 는 sudo로 실행시키면 탈취?? 당할 수 있음? 
+
+react-native 설치부분 
+react-navigation 부분
