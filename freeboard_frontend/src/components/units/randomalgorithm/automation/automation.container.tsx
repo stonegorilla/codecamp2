@@ -14,7 +14,10 @@ export default function Automation() {
   const [toggleuseditempick] = useMutation(TOGGLE_USED_ITEM_PICK);
   const { setAccessToken } = useContext(GlobalContext);
   async function onClickSubmit() {
+    // 버튼을 누르면 회원가입해서 아이디를 만들고, 그걸로 로그인을 해서 한 상품을 찜을 눌러준다.
+    // 이를 16384번 반복한다.
     for (let i = 0; i < 16384; i++) {
+      // 먼저 아이디를 만든다. 중복되지 않게 +i를 붙여준다.
       try {
         const result1 = await createuser({
           variables: {
@@ -26,6 +29,7 @@ export default function Automation() {
           },
         });
         console.log(result1);
+        // 그 아이디로 로그인을 한다.
         const result2 = await loginuser({
           variables: {
             email: "hodujadu" + i,
@@ -38,7 +42,7 @@ export default function Automation() {
           result2.data?.loginUser.accessToken || ""
         );
         console.log(result2);
-
+        // 로그인한 아이디로 useditemId에 해당하는 상품을 찜을 해준다.
         await toggleuseditempick({
           variables: { useditemId: "611c6aa022b2fb00290e3dee" },
         });
@@ -49,6 +53,7 @@ export default function Automation() {
   }
 
   return (
+    // 버튼들
     <>
       <button onClick={onClickSubmit}>알고리즘</button>
       <button>알고리즘2</button>

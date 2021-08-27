@@ -52,3 +52,12 @@ docker 는 sudo로 실행시키면 탈취?? 당할 수 있음?
 
 react-native 설치부분 
 react-navigation 부분
+
+느린 이유 , native bridge 때문에.... 
+
+java 사용하면 main thread를 직접 다룰 수 있따.... 
+
+https://github.com/Bu-Du-Dak?tab=repositories
+https://github.com/moogieon
+https://github.com/kimsoonhong?tab=repositories
+

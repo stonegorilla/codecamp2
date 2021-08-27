@@ -2,15 +2,15 @@ import { Wrapper, List } from "./lotto.styles.";
 
 export default function LottoPresenter(props) {
   return (
+    // Map 을 이용해 배열의 값들을 세로로 보여준다.
     <Wrapper>
-      <List>{props.numbers[0]}</List>
-      <List>{props.numbers[1]}</List>
-      <List>{props.numbers[2]}</List>
-      <List>{props.numbers[3]}</List>
-      <List>{props.numbers[4]}</List>
-      <List>{props.numbers[5]}</List>
+      {props.numbers.map((data, index) => (
+        <List key={index}>{data}</List>
+      ))}
+
       <button onClick={props.Wave}>로또번호흔들기</button>
     </Wrapper>
   );
 }
+// 버튼 만드는 강좌
 // https://www.youtube.com/watch?v=_nJl75kn3yY
