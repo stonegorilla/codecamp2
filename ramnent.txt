@@ -61,3 +61,4 @@ https://github.com/Bu-Du-Dak?tab=repositories
 https://github.com/moogieon
 https://github.com/kimsoonhong?tab=repositories
 
+npx graphql-codegen
