@@ -74,17 +74,6 @@ function MyApp({ Component, pageProps }) {
     credentials: "include", // refreshToken 쿠키에 저장 허가 ..
   });
 
-  // const uploadLink = createUploadLink({
-  //   uri: "http://backend02.codebootcamp.co.kr/graphql",
-  //   headers: {
-  //     authorization: `Bearer ${
-  //       (typeof window !== "undefined" &&
-  //         localStorage.getItem("accessToken")) ||
-  //       ""
-  //     }`,
-  //   },
-  // });
-
   const client = new ApolloClient({
     // uri: "http://backend02.codebootcamp.co.kr/graphql",
     link: ApolloLink.from([errorLink, uploadLink as unknown as ApolloLink]),
