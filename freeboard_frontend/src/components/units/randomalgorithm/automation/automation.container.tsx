@@ -22,7 +22,7 @@ export default function Automation() {
         const result1 = await createuser({
           variables: {
             aaa: {
-              email: "hodujadu" + i,
+              email: "호두자두" + i,
               name: "호두자두" + i,
               password: "1234",
             },
@@ -32,7 +32,7 @@ export default function Automation() {
         // 그 아이디로 로그인을 한다.
         const result2 = await loginuser({
           variables: {
-            email: "hodujadu" + i,
+            email: "호두자두" + i,
             password: "1234",
           },
         });
@@ -44,7 +44,7 @@ export default function Automation() {
         console.log(result2);
         // 로그인한 아이디로 useditemId에 해당하는 상품을 찜을 해준다.
         await toggleuseditempick({
-          variables: { useditemId: "611c6aa022b2fb00290e3dee" },
+          variables: { useditemId: "6152935af58545002b8fdb2e" },
         });
       } catch (error) {
         alert(error.message);
