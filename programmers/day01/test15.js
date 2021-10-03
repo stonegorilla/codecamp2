@@ -8,7 +8,7 @@ function solution(x) {
     x = parseInt(x / 10);
   }
 
-  console.log(answer);
+  return answer;
 }
 
 function solution1(arr, divisor) {
@@ -27,4 +27,5 @@ function solution1(arr, divisor) {
   return answer;
 }
 
+console.log(solution(123));
 console.log(solution1([5, 9, 7, 10], 5));
