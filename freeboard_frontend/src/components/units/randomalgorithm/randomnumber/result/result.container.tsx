@@ -1,4 +1,4 @@
-import LottoPresenter from "./lotto.presenter";
+import ResultPresenter from "./result.presenter";
 import { useState } from "react";
 export default function LottoContainer() {
   const [numbers, setNumbers] = useState([0, 0, 0, 0, 0, 0]);
@@ -18,5 +18,5 @@ export default function LottoContainer() {
     setNumbers(arr);
   }
 
-  return <LottoPresenter numbers={numbers} Wave={Wave} />;
+  return <ResultPresenter numbers={numbers} Wave={Wave} />;
 }

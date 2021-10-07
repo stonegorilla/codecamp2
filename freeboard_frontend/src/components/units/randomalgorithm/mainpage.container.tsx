@@ -4,8 +4,8 @@ import RandomAlgorithmPresenter from "./mainpage.presenter";
 export default function RandomAlgorithmContainer() {
   const router = useRouter();
 
-  function Lotto() {
-    router.push(`/randomalgorithm/lotto`);
+  function Randomnumber() {
+    router.push(`/randomalgorithm/randomnumber`);
   }
 
   function Dices() {
@@ -16,7 +16,7 @@ export default function RandomAlgorithmContainer() {
   }
   return (
     <RandomAlgorithmPresenter
-      Lotto={Lotto}
+      Randomnumber={Randomnumber}
       Dices={Dices}
       Automation={Automation}
     />

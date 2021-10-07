@@ -79,7 +79,7 @@ export default function MarketListUI(props) {
                   <SellerHeartWrapper>
                     <SellerWrapper>
                       <Avatar></Avatar>
-                      <Seller>{data.seller.name}</Seller>
+                      <Seller>{data.seller?.name}</Seller>
                     </SellerWrapper>
                     <HeartWrapper>
                       <Heart

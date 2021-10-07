@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
-import RandomAlgorithmPresenter from "./dices.presenter";
+import CalculatorPresenter from "./calculator.presenter";
 
-export default function RandomAlgorithmContainer() {
+export default function CalculatorContainer() {
   const router = useRouter();
 
   function Lotto() {
@@ -11,5 +11,5 @@ export default function RandomAlgorithmContainer() {
   function Dices() {
     router.push(`/randomalgorithm/dices`);
   }
-  return <RandomAlgorithmPresenter Lotto={Lotto} Dices={Dices} />;
+  return <CalculatorPresenter Lotto={Lotto} Dices={Dices} />;
 }

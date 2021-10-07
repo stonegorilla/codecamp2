@@ -17,6 +17,10 @@ export const Wrapper = styled.div`
   }
 `;
 export const Img = styled.img``;
+export const Title = styled.div`
+  font-size: 100px;
+  font-weight: 500;
+`;
 export const LoginJoinWrapper = styled.div`
   width: 250px;
   display: flex;

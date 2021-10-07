@@ -4,7 +4,8 @@ import LayoutNavigation from "./navigation/LayoutNavigation.container";
 import styled from "@emotion/styled";
 
 const Body = styled.div`
-  height: 500px;
+  width: 100%;
+  height: 100%;
 `;
 
 const Wrapper = styled.div`

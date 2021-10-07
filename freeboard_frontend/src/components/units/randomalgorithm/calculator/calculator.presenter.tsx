@@ -1,9 +1,9 @@
-import { Wrapper, List } from "./dices.styles";
+import { Wrapper, List } from "./calculator.styles";
 
-export default function RandomAlgorithmPresenter(props) {
+export default function CalculatorPresenter(props) {
   return (
     <Wrapper>
-      <List onClick={props.Lotto}>로또번호</List>
+      <List onClick={props.Lotto}>랜덤숫자뽑기</List>
       <List>과일썰기</List>
       <List>체스</List>
       <List>yacht</List>
