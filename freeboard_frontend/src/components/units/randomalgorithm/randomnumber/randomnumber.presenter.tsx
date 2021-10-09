@@ -11,7 +11,11 @@ export default function RandomnumberPresenter() {
     <>
       <Wrapper>
         <NumberWrapper>
+          숫자적기
           <NumberInput />
+          ~
+          <NumberInput />
+          몇개? :
           <NumberInput />
         </NumberWrapper>
         <OverlapWrapper>
