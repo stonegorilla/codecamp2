@@ -6,15 +6,15 @@ import {
   OverlapButton,
 } from "./randomnumber.styles";
 
-export default function RandomnumberPresenter() {
+export default function RandomnumberPresenter(props) {
   return (
     <>
       <Wrapper>
         <NumberWrapper>
           숫자적기
-          <NumberInput />
+          <NumberInput type= {{...props.register("firstnumber")}}/>
           ~
-          <NumberInput />
+          <NumberInput type= {{...props.register("lastnumber")}}/>
           몇개? :
           <NumberInput />
         </NumberWrapper>
