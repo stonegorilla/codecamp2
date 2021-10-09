@@ -26,3 +26,22 @@ export const OverlapButton = styled.button`
   background-color: blue;
   border-radius: 50px;
 `;
+
+export const ListWrapper = styled.div`
+  width: 100%;
+  padding: 50px 500px 50px;
+  /* background-color: red; */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+export const List = styled.div`
+  margin: 0px 10px 0px;
+  cursor: pointer;
+  font-size: 50px;
+  :hover {
+    color: blue;
+  }
+`;
