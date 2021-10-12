@@ -13,6 +13,7 @@ export default function MarketList() {
   const router = useRouter();
   const hasMore = true;
   const istoggled = false;
+  // 아제발좀 
   // const { data } =
   //   useQuery<Pick<IQuery, "fetchUserLoggedIn">>(FETCH_USER_LOGGED_IN);
   const { data } = useQuery(FETCH_USER_LOGGED_IN);
