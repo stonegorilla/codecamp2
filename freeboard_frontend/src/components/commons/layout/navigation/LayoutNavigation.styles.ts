@@ -9,8 +9,8 @@ export const Wrapper = styled.div`
   align-items: center;
   /* transform: perspective(1000px) rotateX(110deg); */
   transform: rotateX(180deg);
-  position: sticky;
-  top: 0px;
+  /* position: sticky;
+  top: 0px; */
 `;
 
 export const Menu = styled.div`
