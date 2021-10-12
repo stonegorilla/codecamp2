@@ -1,6 +1,10 @@
 import {
   Wrapper,
   WrapperLeft,
+  Title,
+  Picture,
+  Point,
+  Menu,
   WrapperRight,
   Row,
   ColumnIndex,
@@ -13,17 +17,21 @@ import {
   ColumnPointIdOrItem,
   ColumnPointAmount,
   ColumnPointBalance,
+  Name,
 } from "./MyPage.styles";
 import { getDates } from "../../../commons/libraries/utils";
 export default function MyPageUI(props) {
   return (
     <Wrapper>
       <WrapperLeft>
-        <div>{props.data?.fetchUserLoggedIn.name}</div>
-        <div>{props.data?.fetchUserLoggedIn.userPoint.amount}</div>
-        <div onClick={props.charge}>충전하세요</div>
-        <div onClick={props.userchange}>회원수정</div>
-        <div onClick={props.changepassword}>비번바꾸기</div>
+        <Title>Profile</Title>
+        <Picture src={"/mypage/noimage.png"} />
+        <Name>{props.data?.fetchUserLoggedIn.name}</Name>
+
+        <Point>Point : {props.data?.fetchUserLoggedIn.userPoint.amount}</Point>
+        <Menu onClick={props.charge}>내 장터</Menu>
+        <Menu onClick={props.userchange}>내 포인트</Menu>
+        <Menu onClick={props.changepassword}>프로필 변경</Menu>
       </WrapperLeft>
       <WrapperRight>
         나의상품
