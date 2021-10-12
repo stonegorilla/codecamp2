@@ -1,6 +1,6 @@
 import { useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
-
+//dmddmdmddm
 import MyPageUI from "./MyPage.presenter";
 import {
   FETCHPOINT,
