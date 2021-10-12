@@ -7,7 +7,7 @@ export default function RandomnumberContainer() {
   const [numbers, setNumbers] = useState([]);
   const { register, handleSubmit, formState } = useForm({
     mode: "onChange",
-    resolver: yupResolver(schema),
+    // resolver: yupResolver(schema),
   });
   function onSubmit(data) {
     console.log("들어가냐");

@@ -15,18 +15,18 @@ export default function RandomnumberPresenter(props) {
         <Wrapper>
           <NumberWrapper>
             숫자적기
-            <NumberInput {...props.register("firstnumber")} />
-            {props.errors.firstnumber?.message}
+            <NumberInput type="text" {...props.register("firstnumber")} />
+            {/* {props.errors.firstnumber?.message} */}
             ~
-            <NumberInput {...props.register("lastnumber")} />
-            {props.errors.lastnumber?.message}
+            <NumberInput type="text" {...props.register("lastnumber")} />
+            {/* {props.errors.lastnumber?.message} */}
             몇개? :
-            <NumberInput {...props.register("numberofitem")} />
+            <NumberInput type="text" {...props.register("numberofitem")} />
           </NumberWrapper>
           <OverlapWrapper>
             <OverlapButton>중복허용</OverlapButton>
             <OverlapButton>중복불가</OverlapButton>
-            <OverlapButton type="submit"> 고고</OverlapButton>
+            <OverlapButton type="submit"  > 고고</OverlapButton>
           </OverlapWrapper>
         </Wrapper>
       </form>

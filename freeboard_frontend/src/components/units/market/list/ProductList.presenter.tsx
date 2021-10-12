@@ -29,6 +29,15 @@ import {
   HeartWrapper,
   Heart,
   HeartNumber,
+  BestItemWrapper,
+  BestItem,
+  BestItemPicture,
+  BestItemName,
+  BestItemPrice,
+  BestItemPickedCount,
+  BestItemHeart,
+  BestItemToggleWrapper,
+  BestItemTextWrapper,
 } from "./ProductList.styles";
 
 export default function MarketListUI(props) {
@@ -36,11 +45,38 @@ export default function MarketListUI(props) {
     <WrapperAll>
       <Wrapper>
         <HeadWrapper>
-          <Head>베스트 상품</Head>
+          <Head>도라에몽의 구슬 마켓</Head>
         </HeadWrapper>
-        <BannerWrapper>
+        {/* <BannerWrapper>
           <LayoutNavigation best={props.best} />
-        </BannerWrapper>
+        </BannerWrapper> */}
+
+         {/* 여기다가 베스트 상품 */}
+         <BestItemWrapper>
+           {props.best?.fetchUseditemsOfTheBest.map((data) =>(
+             <BestItem key = {data._id}>
+               <BestItemPicture 
+               src={`https://storage.googleapis.com/${data.images[0]}`}
+               onClick = {props.detail}
+               id={data._id}
+               />
+               <BestItemTextWrapper>
+               <BestItemName>{data.name}</BestItemName>
+               <BestItemPrice>{data.price}원</BestItemPrice>
+               <BestItemToggleWrapper>
+                 <BestItemHeart src={"/marketpage/heart.png"} />
+               <BestItemPickedCount>{data.pickedCount}</BestItemPickedCount>
+               </BestItemToggleWrapper>
+               
+               </BestItemTextWrapper>
+               
+             </BestItem>
+
+           ))}
+           
+           
+         </BestItemWrapper>
+
         <MenuWrapper>
           <TradingItemWrapper>
             <TradingMenu>판매중 상품</TradingMenu>
@@ -53,6 +89,7 @@ export default function MarketListUI(props) {
           loadMore={props.onLoadMore}
           hasMore={props.hasMore}
         >
+         
           {props.item?.fetchUseditems.map((data) => (
             <ItemWrapper key={data._id}>
               <ItemLeftWrapper>

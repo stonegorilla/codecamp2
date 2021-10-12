@@ -53,7 +53,10 @@ export const FETCH_USED_ITEMS_I_PICKED = gql`
 export const FETCH_USED_ITEM_OF_THE_BEST = gql`
   query fuiotb {
     fetchUseditemsOfTheBest {
+      _id
       name
+      price
+      pickedCount
       images
     }
   }
