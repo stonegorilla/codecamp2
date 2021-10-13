@@ -39,11 +39,33 @@ export const Point = styled.div`
   font-weight: bold;
 `;
 
-export const Menu = styled.div`
+export const Menu01 = styled.div`
   margin-bottom: 0px;
   font-size: 30px;
   line-height: 50px;
-  color: #bdbdbd;
+  color: ${(props:any)=>(props.isActive01 ? "#ffd400" : "#bdbdbd")};
+  :hover {
+    cursor: pointer;
+    font-weight: bold;
+    color: #ffd600;
+  }
+`;
+export const Menu02 = styled.div`
+  margin-bottom: 0px;
+  font-size: 30px;
+  line-height: 50px;
+  color: ${(props:any)=>(props.isActive02 ? "#ffd400" : "#bdbdbd")};
+  :hover {
+    cursor: pointer;
+    font-weight: bold;
+    color: #ffd600;
+  }
+`;
+export const Menu03 = styled.div`
+  margin-bottom: 0px;
+  font-size: 30px;
+  line-height: 50px;
+  color: ${(props:any)=>(props.isActive03 ? "#ffd400" : "#bdbdbd")};
   :hover {
     cursor: pointer;
     font-weight: bold;
@@ -58,54 +80,4 @@ export const WrapperRight = styled.div`
   border-left: 1px solid black;
 `;
 
-export const Row = styled.div`
-  width: 1000px;
-  height: 20px;
-  display: flex;
-  flex-direction: row;
-`;
 
-export const ColumnIndex = styled.div`
-  width: 10%;
-  border: 1px solid;
-`;
-
-export const ColumnTitle = styled.div`
-  width: 30%;
-  border: 1px solid;
-`;
-export const ColumnIsSold = styled.div`
-  width: 15%;
-  color: green;
-  border: 1px solid black;
-`;
-export const ColumnPrice = styled.div`
-  width: 15%;
-  border: 1px solid;
-`;
-
-export const ColumnSeller = styled.div`
-  width: 15%;
-  border: 1px solid;
-`;
-export const ColumnDate = styled.div`
-  width: 15%;
-  border: 1px solid;
-`;
-export const ColumnPointDate = styled.div`
-  width: 25%;
-  border: 1px solid;
-`;
-export const ColumnPointIdOrItem = styled.div`
-  width: 25%;
-  border: 1px solid;
-`;
-export const ColumnPointAmount = styled.div`
-  width: 25%;
-  border: 1px solid;
-`;
-
-export const ColumnPointBalance = styled.div`
-  width: 25%;
-  border: 1px solid;
-`;
