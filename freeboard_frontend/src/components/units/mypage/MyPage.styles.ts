@@ -3,6 +3,7 @@ import styled from "@emotion/styled";
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: row;
+  padding-bottom: 130px;
 `;
 export const WrapperLeft = styled.div`
   width: 330px;
@@ -43,7 +44,7 @@ export const Menu01 = styled.div`
   margin-bottom: 0px;
   font-size: 30px;
   line-height: 50px;
-  color: ${(props:any)=>(props.isActive01 ? "#ffd400" : "#bdbdbd")};
+  color: ${(props: any) => (props.isActive01 ? "#ffd400" : "#bdbdbd")};
   :hover {
     cursor: pointer;
     font-weight: bold;
@@ -54,7 +55,7 @@ export const Menu02 = styled.div`
   margin-bottom: 0px;
   font-size: 30px;
   line-height: 50px;
-  color: ${(props:any)=>(props.isActive02 ? "#ffd400" : "#bdbdbd")};
+  color: ${(props: any) => (props.isActive02 ? "#ffd400" : "#bdbdbd")};
   :hover {
     cursor: pointer;
     font-weight: bold;
@@ -65,7 +66,7 @@ export const Menu03 = styled.div`
   margin-bottom: 0px;
   font-size: 30px;
   line-height: 50px;
-  color: ${(props:any)=>(props.isActive03 ? "#ffd400" : "#bdbdbd")};
+  color: ${(props: any) => (props.isActive03 ? "#ffd400" : "#bdbdbd")};
   :hover {
     cursor: pointer;
     font-weight: bold;
@@ -79,5 +80,3 @@ export const WrapperRight = styled.div`
 
   border-left: 1px solid black;
 `;
-
-
