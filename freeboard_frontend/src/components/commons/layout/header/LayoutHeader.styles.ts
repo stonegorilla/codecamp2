@@ -27,6 +27,12 @@ export const LoginJoinWrapper = styled.div`
   flex-direction: row;
   justify-content: space-between;
 `;
+export const LogOutWrapper = styled.div`
+  width: 250px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+`;
 export const ToLogin = styled.div`
   font-size: 30px;
   font-weight: bold;
@@ -38,4 +44,10 @@ export const ToJoin = styled.div`
   font-weight: bold;
   cursor: pointer;
   color: red;
+`;
+
+export const BeLogOut = styled.div`
+  font-size: 30px;
+  font-weight: bold;
+  cursor: pointer;
 `;
