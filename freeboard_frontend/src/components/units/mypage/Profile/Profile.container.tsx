@@ -1,13 +1,21 @@
-import { useMutation } from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
 import ProfileUI from "./Profile.presenter";
-import { CHANGE_PASSWORD, UPDATE_USER, UPLOAD_FILE } from "./Profile.queries";
+import {
+  CHANGE_PASSWORD,
+  UPDATE_USER,
+  UPLOAD_FILE,
+  FETCH_USER_LOGGED_IN,
+} from "./Profile.queries";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { schemaPassword, schemaUser } from "./Profile.validations";
 import { useState } from "react";
+import { useRouter } from "next/router";
 export default function Profile() {
+  const router = useRouter();
   const [file, setFile] = useState("");
   const [fileUrl, setFileUrl] = useState("");
+  const { data: userinfo } = useQuery(FETCH_USER_LOGGED_IN);
   const {
     register: registerPwd,
     handleSubmit: handleSubmitPwd,
@@ -51,6 +59,7 @@ export default function Profile() {
         },
       });
       alert("회원정보변경성공");
+      router.push("./mypage");
     } catch (error) {
       alert(error.message);
     }
@@ -73,7 +82,7 @@ export default function Profile() {
     };
   };
 
-  async function onSubmitPicture(data) {
+  async function onSubmitPicture() {
     try {
       await changeuser({
         variables: {
@@ -82,7 +91,8 @@ export default function Profile() {
           },
         },
       });
-      alert("회원정보변경성공");
+      alert("사진변경 성공");
+      router.push("./mypage");
     } catch (error) {
       alert(error.message);
     }
@@ -101,6 +111,8 @@ export default function Profile() {
       isActiveUser={formStateUser.isValid}
       onChangeFile={onChangeFile}
       onSubmitPicture={onSubmitPicture}
+      fileUrl={fileUrl}
+      userinfo={userinfo}
     />
   );
 }

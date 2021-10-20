@@ -3,6 +3,7 @@ import styled from "@emotion/styled";
 export const Wrapper = styled.div`
   padding-top: 82px;
   padding-left: 40px;
+  padding-bottom: 100px;
 `;
 
 export const PictureWrapper = styled.div`
@@ -36,4 +37,5 @@ export const Picture = styled.img`
 
   width: 150px;
   height: 150px;
+  border-radius: 75px;
 `;

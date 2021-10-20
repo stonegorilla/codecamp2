@@ -25,13 +25,16 @@ export default function ProfileUI(props) {
             />
           </PictureLeftWrapper>
           <PictureRightWrapper>
-            <Picture src={props.fileUrl ||
-                userInfo?.fetchUserLoggedIn.picture ||
-                "/mypage/noimage.png"} />
+            <Picture
+              src={
+                props.fileUrl ||
+                props.userInfo?.fetchUserLoggedIn.picture ||
+                "/mypage/noimage.png"
+              }
+            />
             <Button01
               buttonName="사진 변경"
-              type="button"
-              onClick={props.onSubmitPicture}
+              gotowhere={props.onSubmitPicture}
             />
           </PictureRightWrapper>
         </PictureWrapper>

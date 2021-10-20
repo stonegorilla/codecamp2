@@ -8,7 +8,7 @@ export const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   /* transform: perspective(1000px) rotateX(110deg); */
-  transform: rotateX(180deg);
+  /* transform: rotateX(180deg); */
   /* position: sticky;
   top: 0px; */
 `;

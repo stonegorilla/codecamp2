@@ -12,6 +12,7 @@ export const UPDATE_USER = gql`
       _id
       email
       name
+      picture
     }
   }
 `;
@@ -20,6 +21,17 @@ export const UPLOAD_FILE = gql`
   mutation uploadFile($file: Upload!) {
     uploadFile(file: $file) {
       url
+    }
+  }
+`;
+
+export const FETCH_USER_LOGGED_IN = gql`
+  query fetchPoint {
+    fetchUserLoggedIn {
+      name
+      userPoint {
+        amount
+      }
     }
   }
 `;

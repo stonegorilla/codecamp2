@@ -1,6 +1,5 @@
 // @ts-nocheck
 
-import LayoutNavigation from "../../../commons/banner/LayoutBanner.container";
 import InfiniteScroll from "react-infinite-scroller";
 import {
   WrapperAll,
@@ -8,7 +7,6 @@ import {
   WrapperRight,
   HeadWrapper,
   Head,
-  BannerWrapper,
   TradingItemWrapper,
   TradingMenu,
   SearchWrapper,
@@ -51,45 +49,41 @@ export default function MarketListUI(props) {
           <LayoutNavigation best={props.best} />
         </BannerWrapper> */}
 
-         {/* 여기다가 베스트 상품 */}
-         <BestItemWrapper>
-           {props.best?.fetchUseditemsOfTheBest.map((data) =>(
-             <BestItem key = {data._id}>
-               <BestItemPicture 
-               src={`https://storage.googleapis.com/${data.images[0]}`}
-               onClick = {props.detail}
-               id={data._id}
-               />
-               <BestItemTextWrapper>
-               <BestItemName>{data.name}</BestItemName>
-               <BestItemPrice>{data.price}원</BestItemPrice>
-               <BestItemToggleWrapper>
-                 <BestItemHeart src={"/marketpage/heart.png"} />
-               <BestItemPickedCount>{data.pickedCount}</BestItemPickedCount>
-               </BestItemToggleWrapper>
-               
-               </BestItemTextWrapper>
-               
-             </BestItem>
-
-           ))}
-           
-           
-         </BestItemWrapper>
+        {/* 여기다가 베스트 상품 */}
+        <BestItemWrapper>
+          {props.best?.fetchUseditemsOfTheBest.map((data) => (
+            <BestItem key={data._id}>
+              <BestItemPicture
+                src={`https://storage.googleapis.com/${data.images[0]}`}
+                onClick={props.detail}
+                id={data._id}
+              />
+              <BestItemTextWrapper>
+                <BestItemName>{data.name}</BestItemName>
+                <BestItemPrice>{data.price}원</BestItemPrice>
+                <BestItemToggleWrapper>
+                  <BestItemHeart src={"/marketpage/heart.png"} />
+                  <BestItemPickedCount>{data.pickedCount}</BestItemPickedCount>
+                </BestItemToggleWrapper>
+              </BestItemTextWrapper>
+            </BestItem>
+          ))}
+        </BestItemWrapper>
 
         <MenuWrapper>
           <TradingItemWrapper>
             <TradingMenu>판매중 상품</TradingMenu>
             <TradingMenu>판매된 상품</TradingMenu>
           </TradingItemWrapper>
-          <SearchWrapper>도와주십시오</SearchWrapper>
+          <SearchWrapper>
+            <button onClick={props.gotoProductNew}>상품등록은 여기로</button>
+          </SearchWrapper>
         </MenuWrapper>
         <InfiniteScroll
           pageStart={0}
           loadMore={props.onLoadMore}
           hasMore={props.hasMore}
         >
-         
           {props.item?.fetchUseditems.map((data) => (
             <ItemWrapper key={data._id}>
               <ItemLeftWrapper>
