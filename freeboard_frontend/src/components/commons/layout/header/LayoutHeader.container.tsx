@@ -19,11 +19,15 @@ export default function LayoutFooter() {
   function gotoJoin() {
     router.push("/market/join");
   }
+  function gotoCharge() {
+    router.push("/mypage/charge");
+  }
   const onClickLogOut = () => {
     logoutUser();
     setAccessToken("");
     setUserInfo({});
     localStorage.setItem("refreshToken", "");
+    router.push("/market/login");
   };
   return (
     <LayoutHeaderUI
@@ -31,6 +35,7 @@ export default function LayoutFooter() {
       gotoMain={gotoMain}
       gotoLogin={gotoLogin}
       gotoJoin={gotoJoin}
+      gotoCharge={gotoCharge}
       onClickLogOut={onClickLogOut}
     />
   );

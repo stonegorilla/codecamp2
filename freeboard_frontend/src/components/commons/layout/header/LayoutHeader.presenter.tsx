@@ -35,7 +35,7 @@ export default function LayoutHeaderUI(props) {
             src={props.data?.fetchUserLoggedIn.picture || "/mypage/noimage.png"}
           />
 
-          <PointCharge>포인트충전</PointCharge>
+          <PointCharge onClick={props.gotoCharge}>포인트충전</PointCharge>
           <BeLogOut onClick={props.onClickLogOut}>로그아웃</BeLogOut>
         </LogOutWrapper>
       )}
