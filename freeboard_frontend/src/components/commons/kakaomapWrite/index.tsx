@@ -72,7 +72,7 @@ export default function KakaomapWrite(props) {
       <Head>
         <script
           type="text/javascript"
-          src="//dapi.kakao.com/v2/maps/sdk.js?appkey=75ce13618a2a3161330793fa9b482a47"
+          src="//dapi.kakao.com/v2/maps/sdk.js?appkey=40dd4db4bcb053e90267e6089b11cb82"
         ></script>
       </Head>
       <div id="map" style={{ width: "384px", height: "292px" }}></div>
