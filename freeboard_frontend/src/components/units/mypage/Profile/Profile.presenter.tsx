@@ -1,11 +1,44 @@
 import Button01 from "../../../commons/buttons/Button01";
 import Inputmain from "../../../commons/inputs/Inputmain";
-import { Wrapper } from "./Profile.styles";
+
+import {
+  PictureLeftWrapper,
+  PictureRightWrapper,
+  PictureWrapper,
+  Wrapper,
+  Picture,
+} from "./Profile.styles";
 
 export default function ProfileUI(props) {
   return (
     <>
       <Wrapper>
+        <h1>프로필 사진 변경</h1>
+        <PictureWrapper>
+          <PictureLeftWrapper>
+            <b>변경하려는 사진 파일을 선택해 주세요</b>
+
+            <input
+              style={{ paddingTop: "30px" }}
+              type="file"
+              onChange={props.onChangeFile}
+            />
+          </PictureLeftWrapper>
+          <PictureRightWrapper>
+            <Picture
+              src={
+                props.fileUrl ||
+                props.userInfo?.fetchUserLoggedIn.picture ||
+                "/mypage/noimage.png"
+              }
+            />
+            <Button01
+              buttonName="사진 변경"
+              gotowhere={props.onSubmitPicture}
+            />
+          </PictureRightWrapper>
+        </PictureWrapper>
+
         <h1>비밀번호 변경</h1>
         <form onSubmit={props.handleSubmitPwd(props.onSubmitPassword)}>
           <Inputmain

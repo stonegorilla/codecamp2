@@ -1,10 +1,10 @@
-import { Wrapper } from "./MyPageCharge.styles";
+import { Wrapper, Title } from "./MyPageCharge.styles";
 import Head from "next/head";
 
 export default function ChargeUI(props) {
   return (
-    <>
-      <Wrapper>아놔 이런</Wrapper>
+    <Wrapper>
+      <Title>포인트를 충전하는 곳입니다. 마음껏 원하는 만큼 충전하세요</Title>
       <Head>
         <script
           type="text/javascript"
@@ -17,6 +17,6 @@ export default function ChargeUI(props) {
       </Head>
       결제금액 : <input type="text" onChange={props.onChangeAmount} />
       <button onClick={props.onClickPayment}>결제하기</button>
-    </>
+    </Wrapper>
   );
 }

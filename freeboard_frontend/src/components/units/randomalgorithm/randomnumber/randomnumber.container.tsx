@@ -1,8 +1,7 @@
 import RandomnumberPresenter from "./randomnumber.presenter";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { schema } from "./randomnumber.validations";
+
 export default function RandomnumberContainer() {
   const [numbers, setNumbers] = useState([]);
   const { register, handleSubmit, formState } = useForm({

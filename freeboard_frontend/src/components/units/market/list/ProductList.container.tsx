@@ -13,7 +13,7 @@ export default function MarketList() {
   const router = useRouter();
   const hasMore = true;
   const istoggled = false;
-  // 아제발좀 
+  // 아제발좀
   // const { data } =
   //   useQuery<Pick<IQuery, "fetchUserLoggedIn">>(FETCH_USER_LOGGED_IN);
   const { data } = useQuery(FETCH_USER_LOGGED_IN);
@@ -75,7 +75,7 @@ export default function MarketList() {
     router.push(`/market/detail/${event.target.id}`);
   };
 
-  const aaa = () => {
+  const gotoProductNew = () => {
     router.push("/market/new");
   };
 
@@ -104,7 +104,7 @@ export default function MarketList() {
       istoggled={istoggled}
       hasMore={hasMore}
       onClickBasket={onClickBasket}
-      aaa={aaa}
+      gotoProductNew={gotoProductNew}
       detail={detail}
       toggle={toggle}
       onLoadMore={onLoadMore}

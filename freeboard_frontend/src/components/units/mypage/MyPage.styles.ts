@@ -24,6 +24,7 @@ export const Picture = styled.img`
   margin-top: 40px;
   width: 100px;
   height: 100px;
+  border-radius: 50px;
 `;
 
 export const Name = styled.div`

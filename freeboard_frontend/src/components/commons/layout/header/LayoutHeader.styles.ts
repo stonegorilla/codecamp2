@@ -16,9 +16,23 @@ export const Wrapper = styled.div`
     color: #000;
   }
 `;
-export const Img = styled.img``;
+export const ImgTitleWrapper = styled.div`
+  width: 450px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+`;
+export const Img = styled.img`
+  cursor: pointer;
+`;
+
+export const Picture = styled.img`
+  width: 100px;
+  height: 100px;
+  border-radius: 50px;
+`;
 export const Title = styled.div`
-  font-size: 100px;
+  font-size: 70px;
   font-weight: bolder;
 `;
 export const LoginJoinWrapper = styled.div`
@@ -27,11 +41,13 @@ export const LoginJoinWrapper = styled.div`
   flex-direction: row;
   justify-content: space-between;
 `;
+
 export const LogOutWrapper = styled.div`
-  width: 250px;
+  width: 400px;
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
+  justify-content: space-between;
+  align-items: center;
 `;
 export const ToLogin = styled.div`
   font-size: 30px;
@@ -45,7 +61,12 @@ export const ToJoin = styled.div`
   cursor: pointer;
   color: red;
 `;
-
+export const PointCharge = styled.div`
+  font-size: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  color: red;
+`;
 export const BeLogOut = styled.div`
   font-size: 30px;
   font-weight: bold;
