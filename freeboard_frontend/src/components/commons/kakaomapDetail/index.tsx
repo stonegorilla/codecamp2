@@ -30,7 +30,7 @@ export default function KakaomapDetail(props) {
           props.lng
         );
 
-        // 마커를 생성한다.
+        // 마커를 생성합니다.
         const marker = new window.kakao.maps.Marker({
           position: markerPosition,
         });
