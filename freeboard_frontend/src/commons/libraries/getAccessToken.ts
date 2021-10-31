@@ -25,3 +25,6 @@ export const getAccessToken = async (setAccessToken) => {
     console.log(error.message);
   }
 };
+
+// 이 getAccessToken 이라는 함수는 accessToken이 만료되었을 때 , 다시 accessToken을 받아오는 함수이다.
+// 그리고 credentials : "include" 는 refreshToken

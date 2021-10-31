@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-
+import { breakPoints } from "../../../../commons/styles/media";
 export const Wrapper = styled.div`
   background-color: #ffd600;
   width: 100%;
@@ -11,6 +11,11 @@ export const Wrapper = styled.div`
   /* transform: rotateX(180deg); */
   /* position: sticky;
   top: 0px; */
+  @media ${breakPoints.mobile} {
+    width: 100%;
+    height: 45px;
+    background-color: blue;
+  }
 `;
 
 export const Menu = styled.div`
