@@ -11,6 +11,9 @@ export default function RandomAlgorithmContainer() {
   function BeforeChess() {
     router.push(`/randomalgorithm/beforechess`);
   }
+  function Calculator() {
+    router.push(`/randomalgorithm/calculator`);
+  }
   function Dices() {
     router.push(`/randomalgorithm/dices`);
   }
@@ -21,6 +24,7 @@ export default function RandomAlgorithmContainer() {
     <RandomAlgorithmPresenter
       Randomnumber={Randomnumber}
       Dices={Dices}
+      Calculator={Calculator}
       BeforeChess={BeforeChess}
       Automation={Automation}
     />
