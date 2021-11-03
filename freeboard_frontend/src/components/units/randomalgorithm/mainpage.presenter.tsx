@@ -20,7 +20,7 @@ export default function RandomAlgorithmPresenter(props) {
         <List>과일썰기</List>
         <List onClick={props.BeforeChess}>체스</List>
         <List>yacht</List>
-        <List>계산기</List>
+        <List onClick={props.Calculator}>계산기</List>
         <List onClick={props.Dices}>주사위 n 개 던지기</List>
         <List onClick={props.Automation}>중고마켓매크로</List>
       </ListWrapper>

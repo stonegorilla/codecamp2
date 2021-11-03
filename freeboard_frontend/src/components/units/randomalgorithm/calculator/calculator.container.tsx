@@ -1,15 +1,26 @@
-import { useRouter } from "next/router";
+import { useState } from "react";
 import CalculatorPresenter from "./calculator.presenter";
 
 export default function CalculatorContainer() {
-  const router = useRouter();
+  const [inputstate, setInputState] = useState("");
 
-  function Lotto() {
-    router.push(`/randomalgorithm/lotto`);
-  }
+  const addToInput = (num) => () => {
+    setInputState(inputstate + num);
+  };
 
-  function Dices() {
-    router.push(`/randomalgorithm/dices`);
-  }
-  return <CalculatorPresenter Lotto={Lotto} Dices={Dices} />;
+  const calculateResult = () => {
+    try {
+      setInputState(eval(inputstate));
+    } catch (error) {
+      setInputState("error");
+    }
+  };
+  return (
+    <CalculatorPresenter
+      addToInput={addToInput}
+      setInputState={setInputState}
+      inputstate={inputstate}
+      calculateResult={calculateResult}
+    />
+  );
 }

@@ -8,6 +8,9 @@ export default function RandomAlgorithmContainer() {
     router.push(`/randomalgorithm/randomnumber`);
   }
 
+  function Calculator() {
+    router.push(`/randomalgorithm/calculator`);
+  }
   function BeforeChess() {
     router.push(`/randomalgorithm/beforechess`);
   }
@@ -17,10 +20,12 @@ export default function RandomAlgorithmContainer() {
   function Automation() {
     router.push("/randomalgorithm/automation");
   }
+
   return (
     <RandomAlgorithmPresenter
       Randomnumber={Randomnumber}
       Dices={Dices}
+      Calculator={Calculator}
       BeforeChess={BeforeChess}
       Automation={Automation}
     />
