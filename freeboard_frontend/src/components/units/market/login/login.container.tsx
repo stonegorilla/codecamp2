@@ -16,7 +16,7 @@ export default function LoginContainer() {
   const [inputsErrors, setInputsErrors] = useState(inputsInit);
   const [loginuser] = useMutation(LOGIN_USER);
   const { setAccessToken } = useContext(GlobalContext);
-
+  // setAccessToken을 useContext라는 react-hook 함수를 이용해 가져온다.
   function onChangeInputs(event) {
     const newInputs = {
       ...inputs,
@@ -32,7 +32,7 @@ export default function LoginContainer() {
         ? ""
         : "1자리 이상 16자리 이하 써주세요",
     });
-
+    // 정규식을 사용해 email과 password 조건을 생성
     if (
       /\w+@\w+\.com$/.test(inputs.email) &&
       /^[a-zA-Z0-9]{1,16}$/.test(inputs.password)
@@ -52,7 +52,7 @@ export default function LoginContainer() {
         // );
 
         localStorage.setItem("refreshToken", "true");
-
+        // localStorage에 refresh 토큰을 저장한다.
         alert("로그인성공");
         router.push("/market/list");
       } catch (error) {

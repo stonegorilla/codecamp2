@@ -24,18 +24,18 @@ export default function KakaomapDetail(props) {
 
         const map = new window.kakao.maps.Map(container, options); // 지도 생성 및 객체 리턴
 
-        // 마커가 표시될 위치입니다
+        // 마커가 표시될 위치이다
         const markerPosition = new window.kakao.maps.LatLng(
           props.lat,
           props.lng
         );
 
-        // 마커를 생성합니다
+        // 마커를 생성합니다.
         const marker = new window.kakao.maps.Marker({
           position: markerPosition,
         });
 
-        // 마커가 지도 위에 표시되도록 설정합니다
+        // 마커가 지도 위에 표시되도록 설정한다.
         marker.setMap(map);
 
         // 지도에 클릭 이벤트를 등록합니다

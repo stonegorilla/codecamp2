@@ -14,6 +14,9 @@ export default function RandomAlgorithmContainer() {
   function BeforeChess() {
     router.push(`/randomalgorithm/beforechess`);
   }
+  function Calculator() {
+    router.push(`/randomalgorithm/calculator`);
+  }
   function Dices() {
     router.push(`/randomalgorithm/dices`);
   }

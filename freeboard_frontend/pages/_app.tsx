@@ -65,7 +65,7 @@ function MyApp({ Component, pageProps }) {
     }
   });
   const uploadLink = createUploadLink({
-    uri: "https://backend02.codebootcamp.co.kr/graphql06",
+    uri: "https://backend02.codebootcamp.co.kr/graphql",
     // 수십개의 함수를 가지고 있다.
     // secure 문제로 https 여야함
     headers: {

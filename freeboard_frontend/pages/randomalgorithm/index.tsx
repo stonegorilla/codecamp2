@@ -2,4 +2,5 @@ import RandomAlgorithmContainer from "../../src/components/units/randomalgorithm
 
 export default function RandomAlgorithm() {
   return <RandomAlgorithmContainer />;
+  // RandomAlgorithm
 }
