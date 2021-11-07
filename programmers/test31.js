@@ -16,4 +16,4 @@ function solution(d, budget) {
   return answer;
 }
 
-console.log(solution([1, 3, 2, 5, 4], 10));
+console.log(solution([1, 3, 2, 5, 4], 15));
