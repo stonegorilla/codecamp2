@@ -96,7 +96,7 @@ export default function MarketListUI(props) {
                 )}
                 {!data.images[0] && (
                   <Picture
-                    src={`/marketpage/noimage.png`}
+                    src={`/marketpage/noimage.jpg`}
                     onClick={props.detail}
                     id={data._id}
                   />

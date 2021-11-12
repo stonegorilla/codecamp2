@@ -52,7 +52,7 @@ export default function ProductDetailUI(props) {
             {props.data
               ? props.data.fetchUseditem.buyer
                 ? props.data.fetchUseditem.buyer.name
-                : "244"
+                : "없음"
               : "343"}
           </Buyer>
         </AvatarRight>
@@ -68,9 +68,15 @@ export default function ProductDetailUI(props) {
       </NameRemarksPriceWrapper>
 
       <PictureAllWrapper>
-        <MainPicture
-          src={`https://storage.googleapis.com/${props.data?.fetchUseditem.images?.[0]}`}
-        />
+        {props.data?.fetchUseditem.images?.[0] && (
+          <MainPicture
+            src={`https://storage.googleapis.com/${props.data?.fetchUseditem.images?.[0]}`}
+          />
+        )}
+
+        {!props.data?.fetchUseditem.images?.[0] && (
+          <MainPicture src={`/marketpage/noimage.jpg`} />
+        )}
         <PictureWrapper>
           {props.data?.fetchUseditem.images?.map((data: string) => (
             <Picture

@@ -3,9 +3,9 @@ import styled from "@emotion/styled";
 export const WrapperAll = styled.div`
   display: flex;
   flex-direction: row;
+  justify-content: center;
 `;
 export const Wrapper = styled.div`
-  width: 1560px;
   padding-top: 80px;
   padding-left: 360px;
   margin-right: 200px;
@@ -57,7 +57,7 @@ export const SearchWrapper = styled.div`
 export const ItemWrapper = styled.div`
   width: 1200px;
   height: 200px;
-  border: 1px solid;
+  border-top: 1px solid;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -75,7 +75,6 @@ export const Picture = styled.img`
   width: 160px;
   height: 160px;
   cursor: pointer;
-  background-color: yellow;
 `;
 
 export const ItemInfoWrapper = styled.div`
@@ -84,7 +83,6 @@ export const ItemInfoWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background-color: pink;
 `;
 export const ItemRightWrapper = styled.div`
   height: 36px;
@@ -156,21 +154,20 @@ export const HeartNumber = styled.div`
   font-size: 16px;
 `;
 
-
 export const BestItemWrapper = styled.div`
-  width : 1200px;
-  height : 450px;
-  padding : 20px;
+  width: 1200px;
+  height: 450px;
+  padding: 20px;
   /* background-color: blue; */
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-`
+`;
 
 export const BestItem = styled.div`
-  margin : 10px;
-  padding-top : 30px;
-  width : 300px;
+  margin: 10px;
+  padding-top: 30px;
+  width: 300px;
   /* background-color: green; */
   display: flex;
   flex-direction: column;
@@ -178,44 +175,41 @@ export const BestItem = styled.div`
   /* border: 1px solid; */
   border-radius: 20px;
   box-shadow: 2px 4px 13px rgba(0, 0, 0, 0.7);
-  
-`
+`;
 
 export const BestItemPicture = styled.img`
   width: 200px;
-  height : 200px;
+  height: 200px;
   border-radius: 10px;
-`
+`;
 
 export const BestItemTextWrapper = styled.div`
-  width : 200px;
-  padding-top : 15px;
-`
+  width: 200px;
+  padding-top: 15px;
+`;
 export const BestItemName = styled.div`
   line-height: 30px;
   font-size: 30px;
-`
+`;
 export const BestItemPrice = styled.div`
-  margin-top : 15px;
+  margin-top: 15px;
   line-height: 25px;
-  font-size : 25px;
-`
+  font-size: 25px;
+`;
 export const BestItemToggleWrapper = styled.div`
   display: flex;
   flex-direction: row;
-  padding-top : 15px;
+  padding-top: 15px;
   /* background-color: red; */
-`
+`;
 export const BestItemPickedCount = styled.div`
-  
-  margin-left : 7px;
+  margin-left: 7px;
   line-height: 20px;
   font-size: 20px;
   /* background-color: yellow; */
-`
+`;
 export const BestItemHeart = styled.img`
-  width : 20px;
-  height : 18.35px;
+  width: 20px;
+  height: 18.35px;
   /* background-color: yellow; */
-  
-`
+`;
