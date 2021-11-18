@@ -50,7 +50,7 @@ import {
 } from "./landing.styles";
 import { useRouter } from "next/router";
 
-export default function LandingUI() {
+export default function LandingUI(props) {
   const router = useRouter();
 
   const onClickNotion = () => {
@@ -89,19 +89,18 @@ export default function LandingUI() {
             <Title> WELCOME! </Title>
           </Fade>
           <ProfileWrapper>
-            <ProfileImg src="/images/myprofile/main_profile.jpg" />
+            <ProfileImg src="/landing/main.jpg" />
             <ProfileExplanationWrapper>
               <Fade bottom>
                 <ProfileExplanationTextWrapper>
                   <ProgileExplanationTitle>
-                    개발을 겁나겁나 사랑하는, 코딩이 없으면 살 이유가 없는,
-                    프론트엔드 개발자 서주광입니다.
+                    항상 고객들이 생각하는 문제에 대해서 생각하고 해결해 나가는
+                    개발자 서주광 입니다.
                   </ProgileExplanationTitle>
                   <ProfileExplanationText>
-                    고객경험을 바탕으로 클라이언트 입장에서 서비스를 구현해보고
-                    싶어서 개발을 시작하게 되었습니다.단순히 코드를 작성하는
-                    개발자가 아니라, 문제를 지혜롭게 해결해 나가는 개발자로
-                    성장하길 희망합니다.
+                    프로그래밍을 통해 고객들이 생각하는 문제들을 해결해나가고자
+                    하는 프론트엔드 개발자 서주광 입니다. 삶의 곳곳에 널려 있는
+                    문제들을 해결하면서 세상을 이롭게 하고 싶습니다.
                   </ProfileExplanationText>
                   {/* <ProfileExplanationText>
                     고객경험을 바탕으로 클라이언트 입장에서 서비스를 구현해보고
@@ -192,16 +191,16 @@ export default function LandingUI() {
           <Fade bottom>
             <AboutWrapper>
               <AboutNotionWrapper>
-                <AboutNotion src="/images/myprofile/notion.png" />
+                <AboutNotion src="/landing/notion.png" />
                 <Fade bottom>
-                  <DetailButton onClick={onClickNotion}>
+                  <DetailButton onClick={props.MyDocument}>
                     {" "}
                     이력서 자세히 보기{" "}
                   </DetailButton>
                 </Fade>
               </AboutNotionWrapper>
               <AboutGithubWrapper>
-                <AboutGithub src="/images/myprofile/github.png" />
+                <AboutGithub src="/landing/github.png" />
                 <Fade bottom>
                   <DetailButton onClick={onClickGithub}>
                     {" "}
@@ -210,7 +209,7 @@ export default function LandingUI() {
                 </Fade>
               </AboutGithubWrapper>
               <AboutBlogWrapper>
-                <AboutBlog src="/images/myprofile/velog.jpeg" />
+                <AboutBlog src="/landing/velog.jpeg" />
                 <Fade bottom>
                   <DetailButton onClick={onClickBlog}>
                     {" "}
