@@ -28,6 +28,7 @@ export default function LoginPresenter(props) {
           onChange={props.onChangeInputs}
         ></Password>
         <SubmitButton onClick={props.onClickSubmit}>로그인</SubmitButton>
+        <SubmitButton>카카오로그인</SubmitButton>
       </EmailPasswordWrapper>
     </Wrapper>
   );

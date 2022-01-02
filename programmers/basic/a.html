@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,700;0,800;0,900;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type='text/css' href="./style.css" />
+    <title>Hello World!</title>
+  </head>
+  <body>
+    <main class='terminal'>
+      <nav class="navigation">
+        <span class='close'></span>
+        <span class='minimize'></span>
+        <span class='zoom'></span>
+      </nav>
+      <section class="content">
+        <div> > 아래에 <span class='emphasis'>Hello World!</span>를 입력해주세요. </div>
+        <form class='hello-world-form'>
+          > 
+          <input type="text" placeholder="Hello World!" autofocus />
+          <button type="submit" class='count-button' onclick=aaa()>count</button>
+        </form>
+        <div class="count-container"> > 총 <span class='emphasis' id='count'>0</span>번 입력되었습니다.</div>
+        <div class='again'> > 다시 입력해주세요! </div>
+        <div class='welcome'> > 환영합니다! </div>
+      </section>
+    </main>
+    <script> 
+    function aaa(){
+        let count = parseInt(document.getElementById('count').innerText);
+    console.log(count)
+    document.getElementById('count').innerText = count + 1;
+      const form = document.querySelector('.hello-world-form');
+      
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        if (e.target[0].value === 'Hello World!') {
+          document.querySelector('.welcome').style.display = 'block';
+          document.querySelector('.again').style.display = 'none';
+        } else {
+          document.querySelector('.again').style.display = 'block';
+          document.querySelector('.welcome').style.display = 'none';
+        }
+      });
+    }
+    
+    </script>
+  </body>
+</html>

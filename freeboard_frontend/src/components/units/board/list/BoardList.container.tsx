@@ -14,6 +14,7 @@ export default function BoardList() {
   const router = useRouter();
   const [startPage, setStartPage] = useState(1);
   const [keyword, setKeyword] = useState("");
+  const [activedPage, setActivedPage] = useState(1);
   const { data, refetch } = useQuery(FETCH_BOARDS, {
     variables: { page: startPage },
   });
@@ -74,6 +75,8 @@ export default function BoardList() {
       onClickNextPage={onClickNextPage}
       gotoBoardNew={gotoBoardNew}
       onChangeKeyword={onChangeKeyword}
+      activedPage={activedPage}
+      setActivedPage={setActivedPage}
     />
   );
 }

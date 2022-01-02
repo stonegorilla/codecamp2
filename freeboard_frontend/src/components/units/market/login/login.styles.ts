@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
-  width: 1920px;
+  width: 100%;
   height: 1200px;
   padding-top: 100px;
   display: flex;
@@ -56,6 +56,7 @@ export const Password = styled.input`
   box-sizing: border-box;
   border-radius: 16px;
   transition: 5s;
+
   :hover {
     transition: 2s;
     background-color: #ffd600;

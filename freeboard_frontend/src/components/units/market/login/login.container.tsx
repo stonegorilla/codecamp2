@@ -1,9 +1,13 @@
 import { useMutation } from "@apollo/client";
 import { useRouter } from "next/router";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState, useCallback } from "react";
 import LoginPresenter from "./login.presenter";
 import { LOGIN_USER } from "./login.queries";
 import { GlobalContext } from "../../../../../pages/_app";
+
+declare const window: typeof globalThis & {
+  kakao: any;
+};
 
 const inputsInit = {
   email: "",
@@ -17,6 +21,10 @@ export default function LoginContainer() {
   const [loginuser] = useMutation(LOGIN_USER);
   const { setAccessToken } = useContext(GlobalContext);
   // setAccessToken을 useContext라는 react-hook 함수를 이용해 가져온다.
+  const KAKAO_SDK = "https://developers.kakao.com/sdk/js/kakao.js";
+  const KAKAO_TOKEN = "75ce13618a2a3161330793fa9b482a47";
+  const KAKAO_REDIRECT = "http://localhost:3000";
+
   function onChangeInputs(event) {
     const newInputs = {
       ...inputs,
@@ -25,6 +33,17 @@ export default function LoginContainer() {
     setInputs(newInputs);
   }
 
+  // useEffect(() => {
+  //   const script = document.createElement("script");
+  //   script.src = KAKAO_SDK;
+  //   script.onload = () => handleSuccess();
+  //   document.body.appendChild(script);
+  //   return () => script.remove();
+  // }, []);
+
+  // const handleSuccess = useCallback(() => {
+  //   window.kakao.init(KAKAO_TOKEN);
+  // }, []);
   async function onClickSubmit(event) {
     setInputsErrors({
       email: /\w+@\w+\./.test(inputs.email) ? "" : "제대로된 이메일 적으세요",

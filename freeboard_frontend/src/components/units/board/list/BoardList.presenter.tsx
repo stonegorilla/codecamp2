@@ -50,7 +50,7 @@ export default function BoardListUI(props) {
           .filter((data) => data.title.includes(props.keyword))
           .map((data, index) => (
             <Row key={data._id}>
-              <Column>{index + 1}</Column>
+              <Column>{index + 1 + 10 * props.activedPage - 10}</Column>
 
               <Column>{data.writer}</Column>
               <ColumnTitle onClick={props.onClickPage} id={data._id}>
@@ -86,6 +86,8 @@ export default function BoardListUI(props) {
           count={props.pageBoardCount?.fetchBoardsCount}
           startPage={props.startPage}
           setStartPage={props.setStartPage}
+          activedPage={props.activedPage}
+          setActivedPage={props.setActivedPage}
         />
       </PageWrapper>
 

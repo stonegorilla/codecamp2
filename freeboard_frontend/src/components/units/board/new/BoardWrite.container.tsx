@@ -199,7 +199,9 @@ export default function BoardWrite(props: IProps) {
         const image3 = resultFiles[2].data.uploadFile.url;
 
         // const images = resultFiles.map((data) => data.data.uploadFile.url);
-
+        console.log("aaa", image1);
+        console.log("bbb", imageUrl1);
+        console.log("ccc", file1);
         const result = await qqq({
           variables: {
             aaa: {
