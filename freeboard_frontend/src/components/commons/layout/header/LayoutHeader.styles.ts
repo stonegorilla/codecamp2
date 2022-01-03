@@ -9,10 +9,11 @@ export const Wrapper = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  background-color: #ffd600;
   transition: 2s;
   :hover {
     transition: 2s;
-    background-color: yellow;
+    background-color: #ffd600;
     color: #000;
   }
 `;
