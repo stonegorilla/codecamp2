@@ -12,7 +12,7 @@ export const Wrapper = styled.div`
   transition: 2s;
   :hover {
     transition: 2s;
-    background-color: #1ddb16;
+    background-color: yellow;
     color: #000;
   }
 `;
