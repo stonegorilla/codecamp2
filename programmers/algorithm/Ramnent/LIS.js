@@ -6,7 +6,7 @@ function solution(array) {
     for (let j = 0; j < i; j++) {
       if (array[j] <= array[i]) lishubo.push(result[j].lis + 1);
     }
-
+    console.log(lishubo);
     result.push({
       number: array[i],
       lis: lishubo.length !== 0 ? Math.max(...lishubo) : 1,
