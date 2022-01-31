@@ -84,7 +84,7 @@ function solution2(n, edge) {
   for (let i = 0; i < array.length; i++) {
     if (array[i] === max) answer++;
   }
-  console.log(answer);
+
   return answer;
 }
 
