@@ -39,15 +39,37 @@ function solution(arrows) {
 
   // 여기까지가 점들 변환
 
-  for (let i = 0; i < arrows.length; i++) {
-    line.push([arrows[i], ...vertex[i]]);
+  for (let i = 0; i < vertex.length - 1; i++) {
+    line.push([
+      arrows[Math.floor(i / 2)] % 4,
+      vertex[i][0] +
+        Math.floor(arrows[Math.floor(i / 2)] / 4) *
+          mechanism[arrows[Math.floor(i / 2)]][0],
+      vertex[i][1] +
+        Math.floor(arrows[Math.floor(i / 2)] / 4) *
+          mechanism[arrows[Math.floor(i / 2)]][1],
+    ]);
   }
 
-  vertex = vertex.filter((val, idx) => {
-    return vertex.indexOf(val) === idx;
-  });
-  console.log(vertex);
-  return answer;
+  vertex = multiDU(vertex);
+
+  line = multiDU(line);
+
+  return 1 - vertex.length + line.length;
 }
 
-solution([6, 6, 6, 4, 4, 4, 2, 2, 2, 0, 0, 0, 1, 6, 5, 5, 3, 6, 0]);
+function multiDU(arr) {
+  let uniques = [];
+  let itemsFound = {};
+  for (let i = 0; i < arr.length; i++) {
+    let stringified = JSON.stringify(arr[i]);
+    if (itemsFound[stringified]) {
+      continue;
+    }
+    uniques.push(arr[i]);
+    itemsFound[stringified] = true;
+  }
+  return uniques;
+}
+// solution([6, 6, 6, 4, 4, 4, 2, 2, 2, 0, 0, 0, 1, 6, 5, 5, 3, 6, 0]);
+solution([6, 5, 2, 7, 1, 4, 2, 4, 6]);
