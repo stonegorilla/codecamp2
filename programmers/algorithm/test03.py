@@ -1,12 +1,9 @@
-def solution(n):
-    answer = ""
-    for i in range(0,n):
-        if(i %2 == 0):
-            answer = answer+ "수"
-        if(i%2 == 1):
-            answer = answer+ "박"
-    print(answer)
-    return answer
+def solution(seoul):
+
+    answer = seoul.index("Kim")
+   
+    return "김서방은 "+str(answer)+"에 있다"
 
 
-solution(4)
+
+solution(["Jane","Kim"])
