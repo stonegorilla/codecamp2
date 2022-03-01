@@ -18,15 +18,15 @@
 function solution3(participant, completion) {
   answer = "";
   console.log(participant);
-  let participant2 = participant.sort((a, b) => b - a);
-  let completion2 = completion.sort((a, b) => b - a);
+  let participant = participant.sort();
+  let completion = completion.sort();
 
-  // for (let i = 0; i < completion.length; i++) {
-  //   if (participant[i] !== completion[i]) {
-  //     answer = participant[i];
-  //   }
-  // }
-  console.log(participant2, completion2);
+  for (let i = 0; i < completion.length; i++) {
+    if (participant[i] !== completion[i]) {
+      answer = participant[i];
+    }
+  }
+
   return answer;
 }
 
