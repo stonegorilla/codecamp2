@@ -1,7 +1,11 @@
 function solution(n, costs) {
-  var answer = 0;
+  let answer = 0;
   costs = costs.sort((a, b) => a[2] - b[2]);
-  console.log(costs);
+
+  let memory = []
+  for(let i=0; i<costs.length; i++){
+    if()
+  }
 
   return answer;
 }
