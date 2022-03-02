@@ -23,6 +23,30 @@
 //   .reduce((r, [k, v]) => ({ ...r, [k]: v }), {});
 // console.log(sortable);
 
-const aaa = { a: "aaa", b: "ttt" };
-let bbb = Object.entries(aaa);
-console.log(bbb);
+// const aaa = { a: "aaa", b: "ttt" };
+// let bbb = Object.entries(aaa);
+// console.log(bbb);
+
+// let aaa = [
+//   [1, 2],
+//   [2, 1],
+//   [3, 9],
+//   [4, 7],
+// ];
+// aaa = aaa.sort(([, a], [, b]) => a - b);
+// console.log(aaa);
+
+// const map1 = new Map();
+// map1.set("a", 1);
+// map1.set("b", 2);
+// let bbb = [...map1];
+// console.log(bbb);
+
+aaa = [5, 3, 2, 6, 3, 88];
+
+aaa.shift();
+aaa.push(5);
+aaa.push(82);
+let bbb = aaa.shift();
+let ccc = aaa.pop();
+console.log(aaa, bbb, ccc);
