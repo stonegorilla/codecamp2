@@ -32,10 +32,43 @@
 // 이렇게 풀면 4,4,3,5 이라는 반례 있음
 
 function solution2(distance, rocks, n) {
+  if (rocks.length <= n) return distance;
   let start = 1;
   let end = distance;
+
+  rocks.push(0);
+  rocks.push(distance);
+  rocks = rocks.sort((a, b) => a - b);
+
   while (true) {
-    let mid = Math.ceil();
+    console.log(start, end);
+    let mid = Math.ceil((start + end) / 2);
+    let testrocks = [...rocks];
+    let testn = n;
+    let test = false;
+
+    if (end - start === 1) return start;
+
+    for (let i = 1; i < testrocks.length; i++) {
+      if (
+        testrocks[i] - testrocks[i - 1] < mid &&
+        testn !== 0 &&
+        i !== testrocks.length - 1
+      ) {
+        testrocks = testrocks.filter((_, idx) => i !== idx);
+        i--;
+        testn--;
+      } else if (testrocks[i] - testrocks[i - 1] < mid && testn === 0) {
+        test = true;
+        end = mid;
+        break;
+      } else {
+      }
+    }
+
+    if (!test) {
+      start = mid;
+    }
   }
 }
 solution2(25, [2, 14, 11, 21, 17], 2);
