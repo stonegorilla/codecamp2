@@ -31,45 +31,80 @@
 // }
 // 이렇게 풀면 4,4,3,5 이라는 반례 있음
 
-function solution2(distance, rocks, n) {
+// function solution2(distance, rocks, n) {
+//   if (rocks.length <= n) return distance;
+//   let start = 1;
+//   let end = distance;
+
+//   rocks.push(0);
+//   rocks.push(distance);
+//   rocks = rocks.sort((a, b) => a - b);
+
+//   while (true) {
+
+//     let mid = Math.ceil((start + end) / 2);
+//     let testrocks = [...rocks];
+//     let testn = n;
+//     let test = false;
+
+//     if (end - start === 1) return start;
+
+//     for (let i = 1; i < testrocks.length; i++) {
+//       if (
+//         testrocks[i] - testrocks[i - 1] < mid &&
+//         testn !== 0 &&
+//         i !== testrocks.length - 1
+//       ) {
+//         testrocks = [...testrocks.slice(0, i), ...testrocks.slice(i + 1)];
+//         i--;
+//         testn--;
+//       } else if (testrocks[i] - testrocks[i - 1] < mid && testn === 0) {
+//         test = true;
+//         end = mid;
+//         break;
+//       } else {
+//       }
+//     }
+
+//     if (!test) {
+//       start = mid;
+//     }
+//   }
+// }
+
+// 이렇게 하면 일부 시간초과
+
+function solution3(distance, rocks, n) {
   if (rocks.length <= n) return distance;
   let start = 1;
   let end = distance;
-
+  let answer = 0;
   rocks.push(0);
   rocks.push(distance);
   rocks = rocks.sort((a, b) => a - b);
 
-  while (true) {
-    console.log(start, end);
+  while (start <= end) {
     let mid = Math.ceil((start + end) / 2);
     let testrocks = [...rocks];
-    let testn = n;
-    let test = false;
-
-    if (end - start === 1) return start;
+    let count = 0;
+    let now = 0;
 
     for (let i = 1; i < testrocks.length; i++) {
-      if (
-        testrocks[i] - testrocks[i - 1] < mid &&
-        testn !== 0 &&
-        i !== testrocks.length - 1
-      ) {
-        testrocks = testrocks.filter((_, idx) => i !== idx);
-        i--;
-        testn--;
-      } else if (testrocks[i] - testrocks[i - 1] < mid && testn === 0) {
-        test = true;
-        end = mid;
-        break;
+      if (testrocks[i] - now < mid) {
+        count++;
       } else {
+        now = testrocks[i];
       }
     }
-
-    if (!test) {
-      start = mid;
+    if (count > n) {
+      end = mid - 1;
+    } else {
+      answer = Math.max(answer, mid);
+      start = mid + 1;
     }
   }
+
+  return answer;
 }
-solution2(25, [2, 14, 11, 21, 17], 2);
-solution2(16, [4, 8, 11], 2);
+solution3(25, [2, 14, 11, 21, 17], 2);
+solution3(16, [4, 8, 11], 2);

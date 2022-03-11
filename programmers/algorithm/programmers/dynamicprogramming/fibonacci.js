@@ -3,4 +3,4 @@ function solution(number) {
   return solution(number - 1) + solution(number - 2);
 }
 
-console.log(solution(40));
+console.log(solution(50));
