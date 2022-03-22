@@ -35,4 +35,4 @@ function solution(numbers, target) {
   return -1;
 }
 
-console.log(solution(2, 11));
+console.log(solution(5, 91));
