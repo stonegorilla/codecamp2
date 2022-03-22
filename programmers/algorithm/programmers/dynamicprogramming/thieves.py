@@ -47,18 +47,20 @@
 #     answer = max(a1[len(a1)-1][0],a1[len(a1)-1][2],a2[len(a2)-1][0],a2[len(a2)-1][1],a3[len(a3)-1][1],a3[len(a3)-1][2])
 #     return answer
 
-def solution2(money):
-    memory = []
-    for i in range(0,len(money)):
-        if i == 0 :
-            memory.append(money[0]-money[1]-money[len(money)-1])
-        elif i == len(money)-1:
-            memory.append(money[len(money)-1]-money[0]-money[len(money)-2])
-        else:
-            memory.append(money[i]-money[i+1]-money[i-1])
+# def solution2(money):
+#     memory = []
+#     for i in range(0,len(money)):
+#         if i == 0 :
+#             memory.append(money[0]-money[1]-money[len(money)-1])
+#         elif i == len(money)-1:
+#             memory.append(money[len(money)-1]-money[0]-money[len(money)-2])
+#         else:
+#             memory.append(money[i]-money[i+1]-money[i-1])
 
-    
+def solution3(money):
 
 
 
-solution2([1,2,3,1])
+
+solution3([1,2,3,1])
+
