@@ -10,6 +10,14 @@
 // let c = ccc.find((r) => Math.abs(r - 2) <= 1);
 // console.log(c);
 
-const aaa = ["a", "b", "c"];
-const bbb = aaa.splice(1, 1);
+// let aaa = ["a", "t", "sda", "rttt"];
+
+// bbb = aaa.findIndex((data) => data === "sda");
+
+// console.log(bbb);
+
+let aaa = ["333a", "fws"];
+
+aaa.push("fds");
+
 console.log(aaa);

@@ -23,7 +23,6 @@ function solution(numbers, target) {
           arr[i].push(op1 / op2);
         }
       }
-      arr[i].push();
     }
   }
 
@@ -35,4 +34,4 @@ function solution(numbers, target) {
   return -1;
 }
 
-console.log(solution(5, 91));
+console.log(solution(5, 60));
