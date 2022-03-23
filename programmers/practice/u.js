@@ -10,14 +10,12 @@
 // let c = ccc.find((r) => Math.abs(r - 2) <= 1);
 // console.log(c);
 
-// let aaa = ["a", "t", "sda", "rttt"];
+// let aaa = ["333a", "fws"];
 
-// bbb = aaa.findIndex((data) => data === "sda");
+// aaa.push("fds");
 
-// console.log(bbb);
+// console.log(aaa);
 
-let aaa = ["333a", "fws"];
-
-aaa.push("fds");
-
-console.log(aaa);
+let aaa = ["a", "t", "sda", "rttt"];
+const result = _.includes(aaa, "as");
+console.log(result);
