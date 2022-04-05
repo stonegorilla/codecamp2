@@ -34,13 +34,15 @@ function solution1(num) {
       num = 3 * num + 1;
       answer += 1;
     }
+    console.log(num);
   }
+  console.log(answer);
   //   if (answer >= 500) answer = -1;
   return answer;
 }
 
-console.log(solution1(6));
-console.log(solution1(16));
-console.log(solution1(626331));
+solution1(27);
+// console.log(solution1(16));
+// console.log(solution1(626331));
 
 // recursion 함수 사용 가능 (함수내 함수 선언? )

@@ -17,5 +17,5 @@
 // console.log(aaa);
 
 let aaa = ["a", "t", "sda", "rttt"];
-const result = _.includes(aaa, "as");
-console.log(result);
+aaa.reverse();
+console.log(aaa);
