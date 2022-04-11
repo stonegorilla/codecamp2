@@ -16,6 +16,12 @@
 
 // console.log(aaa);
 
-let aaa = ["a", "t", "sda", "rttt"];
-aaa.reverse();
+// let aaa = ["a", "t", "sda", "rttt"];
+// aaa.reverse();
+// console.log(aaa);
+
+let aaa = new Queue();
+
+aaa.enqueue("534a");
+
 console.log(aaa);
