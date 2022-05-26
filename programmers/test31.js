@@ -15,5 +15,8 @@ function solution(d, budget) {
   }
   return answer;
 }
-
+let start = new Date().getTime();
 console.log(solution([1, 3, 2, 5, 4], 15));
+let end = new Date().getTime();
+
+console.log(start, end);

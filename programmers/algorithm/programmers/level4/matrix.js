@@ -5,26 +5,22 @@ function solution(matrix_sizes) {
   for (let i = 0; i < n; i++) {
     dp[i][i] = 0;
   }
-  console.log(dp);
+
   for (let i = 1; i < n; i++) {
-    for (let start = 0; start < n; start++) {
-      const end = start + i;
-
-      if (end >= n) break;
-
-      for (let fixed = start; fixed < end; fixed++) {
-        dp[start][end] = Math.min(
-          dp[start][end],
-          dp[start][fixed] +
-            dp[fixed + 1][end] +
-            matrix_sizes[start][0] *
-              matrix_sizes[fixed + 1][0] *
-              matrix_sizes[end][1]
+    for (let j = 0; j < n - i; j++) {
+      for (let k = 0; k < i; k++) {
+        dp[j][j + i] = Math.min(
+          dp[j][j + i],
+          dp[j][j + k] +
+            dp[j + k + 1][j + i] +
+            matrix_sizes[j][0] *
+              matrix_sizes[j + k + 1][0] *
+              matrix_sizes[j + i][1]
         );
       }
     }
   }
-  console.log(dp);
+
   return dp[0][n - 1];
 }
 
@@ -32,4 +28,12 @@ solution([
   [5, 3],
   [3, 10],
   [10, 6],
+]);
+
+solution([
+  [10, 4],
+  [4, 6],
+  [6, 7],
+  [7, 3],
+  [3, 12],
 ]);
