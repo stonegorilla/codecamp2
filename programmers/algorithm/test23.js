@@ -24,3 +24,21 @@ function solution(s, n) {
 // 물론 지금은 컴퓨터 시대라 25번정도만 돌려보면 이런 방식의 암호는 모두 다 풀린다.
 //(위의 코드에서 조금만 수정하면 암호 찾는 것은 식은 죽 먹기이다 ㅋㅋ)
 // 하지만, 그 당시에는 그런대로 잘 먹혔던 방식이다.
+
+function solution(s, n) {
+  let uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  let lowercase = "abcdefghijklmnopqrstuvwxyz";
+  let result = "";
+  for (let i = 0; i < s.length; i++) {
+    if (uppercase.indexOf(s[i])) {
+      result += uppercase[(uppercase.indexOf(s[i]) + n) % 26];
+    } else if (lowercase.indexOf(s[i])) {
+      result += lowercase[(lowercase.indexOf(s[i]) + n) % 26];
+    } else {
+      result += " ";
+    }
+  }
+
+  return result;
+}
+solution(3, 3);
