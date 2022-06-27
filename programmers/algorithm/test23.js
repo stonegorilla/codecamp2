@@ -25,7 +25,7 @@ function solution(s, n) {
 //(위의 코드에서 조금만 수정하면 암호 찾는 것은 식은 죽 먹기이다 ㅋㅋ)
 // 하지만, 그 당시에는 그런대로 잘 먹혔던 방식이다.
 
-function solution(s, n) {
+function solution2(s, n) {
   let uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   let lowercase = "abcdefghijklmnopqrstuvwxyz";
   let result = "";
@@ -41,4 +41,4 @@ function solution(s, n) {
 
   return result;
 }
-solution(3, 3);
+solution("abCd E", 4);
