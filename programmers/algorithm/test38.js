@@ -1,41 +1,41 @@
 function solution(dartResult) {
   let sum = 0;
   let i = 0;
-  let sumperframeprev = 0;
-  let sumperframe = 0;
+  let prev = 0;
+  let current = 0;
   while (i < dartResult.length) {
-    sumperframeprev = sumperframe;
-    sumperframe = 0;
+    prev = current;
+    current = 0;
 
-    sumperframe += Number(dartResult[i]);
+    current += Number(dartResult[i]);
     i++;
     if (dartResult[i] === "0") {
-      sumperframe = 10 * sumperframe;
+      current = 10 * current;
       i++;
     }
     if (dartResult[i] === "S") {
-      sumperframe = Math.pow(sumperframe, 1);
+      current = Math.pow(current, 1);
       i++;
     } else if (dartResult[i] === "D") {
-      sumperframe = Math.pow(sumperframe, 2);
+      current = Math.pow(current, 2);
       i++;
     } else {
-      sumperframe = Math.pow(sumperframe, 3);
+      current = Math.pow(current, 3);
       i++;
     }
 
     if (dartResult[i] === "*") {
-      sumperframeprev = sumperframeprev * 2;
-      sumperframe = sumperframe * 2;
+      prev = prev * 2;
+      current = current * 2;
       i++;
     } else if (dartResult[i] === "#") {
-      sumperframe = -1 * sumperframe;
+      current = -1 * current;
       i++;
     } else {
     }
-    sum += sumperframeprev;
+    sum += prev;
   }
-  sum += sumperframe;
+  sum += current;
 
   return sum;
 }
